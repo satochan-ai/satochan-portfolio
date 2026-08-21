@@ -81,8 +81,8 @@ export const works: Work[] = [
       "「管理すること」ではなく「次にどこへ動くべきか分かること」を基準に設計",
     ],
     stack: ["JavaScript", "HTML", "CSS", "CSV"],
-    image: null,
-    imageAlt: null,
+    image: "/images/works/matchpilot.png",
+    imageAlt: "MatchPilotの今月KPI画面。人材紹介数・案件提案数・打ち合わせ数の実績と達成率が並んでいる。",
   },
   {
     slug: "ai-mini-seminar",
@@ -101,8 +101,8 @@ export const works: Work[] = [
       "2026年9月15日に第2回を予定",
     ],
     stack: ["生成AI活用", "業務適用の設計", "登壇・教育"],
-    image: null,
-    imageAlt: null,
+    image: "/images/works/ai-mini-seminar.png",
+    imageAlt: "AI活用ミニ講座「明日から仕事で使える 生成AI活用入門」のスライド表紙。2026.08.18 実施。",
   },
   {
     slug: "obsidian-ai-knowledge",
