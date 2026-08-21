@@ -24,7 +24,7 @@ export function Proof() {
                 {point.footnote && (
                   <a
                     href="#proof-note"
-                    aria-label="注記へ"
+                    aria-label={`※${index + 1} の注記へ`}
                     className="ml-1 align-super font-sans text-[0.3em] font-medium text-muted hover:text-fg"
                   >
                     ※{index + 1}
