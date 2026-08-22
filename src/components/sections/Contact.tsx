@@ -37,23 +37,35 @@ export function Contact() {
           <p className="mt-4 text-sm leading-relaxed text-inverse-fg/70">
             現状のヒアリングから始めます。いきなりツールを作る前に、どこに手間がかかっているのか、AIに任せる工程と人が判断する工程をどう分けるのかを整理するところからご一緒します。
           </p>
-
-          {availableChannels.length > 0 && (
-            <ul className="mt-7 flex flex-wrap gap-3">
-              {availableChannels.map((channel) => (
-                <li key={channel.label}>
-                  <a
-                    href={channel.href as string}
-                    className="inline-flex items-center justify-center rounded-full bg-inverse-fg px-6 py-3.5 text-sm font-medium text-fg transition-opacity hover:opacity-85"
-                  >
-                    {channel.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
         </div>
       </div>
+
+      {availableChannels.length > 0 && (
+        <div className="mt-6 rounded-card border border-inverse-fg/15 p-7">
+          <h3 className="text-eyebrow font-medium uppercase text-accent-on-dark">
+            Contact / Links
+          </h3>
+          <ul className="mt-5 flex flex-wrap gap-x-8 gap-y-4">
+            {availableChannels.map((channel) => (
+              <li key={channel.label}>
+                <a
+                  href={channel.href as string}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-baseline gap-2 py-1 text-sm text-inverse-fg hover:underline"
+                >
+                  <span className="font-medium">{channel.label}</span>
+                  <span className="text-inverse-fg/70">{channel.value}</span>
+                  <span className="sr-only">（別タブで開きます）</span>
+                  <span aria-hidden className="text-inverse-fg/70">
+                    &#8599;
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </Section>
   );
 }
