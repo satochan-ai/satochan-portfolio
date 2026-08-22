@@ -4,15 +4,28 @@ import { Tag } from "@/components/ui/Tag";
 import { caseStudies, type CaseStudy as CaseStudyType } from "@/content/caseStudies";
 
 function Block({
+  index,
   label,
+  emphasis,
   children,
 }: {
+  index: number;
   label: string;
+  emphasis?: boolean;
   children: React.ReactNode;
 }) {
   return (
-    <div>
-      <h4 className="text-eyebrow font-medium uppercase text-accent">
+    <div
+      className={
+        emphasis
+          ? "rounded-card border border-line bg-surface p-6 sm:p-7"
+          : undefined
+      }
+    >
+      <h4 className="flex items-baseline gap-2 font-mono text-eyebrow font-medium uppercase text-accent">
+        <span aria-hidden className="text-muted">
+          {String(index).padStart(2, "0")}
+        </span>
         {label}
       </h4>
       <div className="mt-3">{children}</div>
@@ -70,16 +83,16 @@ function CaseStudyArticle({
       {children && <div className="mt-10">{children}</div>}
 
       <div className="mt-10 grid gap-10 lg:grid-cols-[1.15fr_0.85fr]">
-        <div className="space-y-8">
-          <Block label="Problem">
+        <div className="space-y-8 border-l-2 border-line pl-6 sm:pl-8">
+          <Block index={1} label="Problem">
             <Paragraphs items={study.problem} />
           </Block>
 
-          <Block label="Approach">
+          <Block index={2} label="Approach">
             <Paragraphs items={study.approach} />
           </Block>
 
-          <Block label="Solution">
+          <Block index={3} label="Solution">
             <ul className="grid gap-x-6 gap-y-2.5 text-sm text-fg sm:grid-cols-2">
               {study.solution.map((item) => (
                 <li key={item} className="flex gap-2.5">
@@ -93,7 +106,7 @@ function CaseStudyArticle({
             </ul>
           </Block>
 
-          <Block label="Impact">
+          <Block index={4} label="Impact" emphasis>
             <Paragraphs items={study.impact.body} />
             {study.impact.metrics.length > 0 && (
               <dl className="mt-5 grid grid-cols-2 gap-6 border-t border-line pt-5 sm:grid-cols-3">
