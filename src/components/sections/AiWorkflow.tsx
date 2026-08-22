@@ -108,7 +108,7 @@ export function AiWorkflow() {
               SES営業・採用の実務で繰り返し発生する業務を、AIが再利用できる形に整理しています。提案書作成、BP営業、案件・人材マッチング、採用スクリーニング、KPI分析など、現場で培った判断基準や手順を業務Skillとして体系化しています。
             </p>
             <p className="mt-4 text-sm leading-relaxed text-inverse-fg/60">
-              特定のAIサービスに依存するのではなく、業務プロセスや判断基準そのものを再利用できる形で残すことを重視しています。利用するAIに応じて、Claude Code Skills / GPTs / Gem などへ展開しています。
+              特定のAIサービスに依存するのではなく、業務プロセスや判断基準そのものを再利用できる形で残すことを重視しています。Claude Code Skillsに加え、業務用途に合わせたGPTs・Gemの設計・作成にも取り組んでいます。
             </p>
 
             <ul className="mt-6 flex flex-wrap gap-2">

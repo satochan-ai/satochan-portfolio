@@ -11,7 +11,7 @@ const groups: TechGroup[] = [
   {
     label: "AI",
     note: "業務のどの工程で使うかを決めたうえで使い分けています",
-    items: ["ChatGPT", "Claude Code", "Gemini"],
+    items: ["ChatGPT / GPTs", "Claude Code / Skills", "Gemini / Gem"],
   },
   {
     label: "Development",
