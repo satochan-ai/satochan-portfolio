@@ -14,6 +14,7 @@ type SectionProps = {
   title?: string;
   lead?: string;
   tone?: SectionTone;
+  eyebrowVariant?: "default" | "code";
   children: ReactNode;
 };
 
@@ -23,6 +24,7 @@ export function Section({
   title,
   lead,
   tone = "default",
+  eyebrowVariant = "default",
   children,
 }: SectionProps) {
   return (
@@ -37,6 +39,8 @@ export function Section({
             {eyebrow && (
               <p
                 className={`text-eyebrow font-medium uppercase ${
+                  eyebrowVariant === "code" ? "font-mono" : ""
+                } ${
                   tone === "dark" ? "text-accent-on-dark" : "text-accent"
                 }`}
               >
