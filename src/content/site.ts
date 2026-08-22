@@ -89,16 +89,21 @@ export type ContactChannel = {
   label: string;
   /** 正式な連絡先が確定するまでは null。架空の連絡先は置かない。 */
   href: string | null;
+  /** 表示するアカウント名やアドレス */
   value: string | null;
 };
 
 /**
- * 公開前フェーズで正式情報を追加する。
- * href / value が null の間は UI 側で CTA を出さない。
+ * href / value が揃っているものだけ UI に表示される。
+ * 公開先が確認できていない連絡手段（メール・X など）は、
+ * 確定するまで追加しない。推測でURLを作らないこと。
  */
 export const contactChannels: ContactChannel[] = [
-  { label: "Email", href: null, value: null },
-  { label: "お問い合わせフォーム", href: null, value: null },
+  {
+    label: "GitHub",
+    href: "https://github.com/satochan-ai",
+    value: "satochan-ai",
+  },
 ];
 
 export const contactTopics = [
