@@ -116,7 +116,7 @@ export function AiWorkflow() {
           {"// Business Skills"}
         </p>
 
-        <p className="mt-3 font-mono text-xs tracking-wide text-inverse-fg/45">
+        <p className="mt-3 font-mono text-xs tracking-wide text-inverse-fg/50">
           skills.registry · 40 entries · 10 categories
         </p>
 
