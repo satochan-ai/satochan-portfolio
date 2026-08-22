@@ -155,3 +155,48 @@ export const works: Work[] = [
       "領収証生成ツールの入力画面。左側にイベント情報と発行会社情報の入力欄、右側に領収証のプレビューが表示されている。",
   },
 ];
+
+export type SupportingProject = {
+  slug: string;
+  title: string;
+  category: string;
+  description: string;
+  /** 完成度を正直に伝えるラベル。Production の実績と誤認させない。 */
+  statusLabel: string;
+  /** 公開が確認できているものだけ設定する。未確認ならリンクを持たせない。 */
+  demoHref?: string;
+  repoHref?: string;
+};
+
+/**
+ * Selected Works の従属コンテンツ。代表作ではなく、業務課題から試作したものを補足として並べる。
+ * 未接続・将来機能は書かない。公開URLが確認できたものだけリンクを付ける。
+ */
+export const supportingProjects: SupportingProject[] = [
+  {
+    slug: "matchfollow",
+    title: "MatchFollow",
+    category: "Follow-up Operations",
+    description:
+      "稼働後の勤怠・契約更新・請求・フォロー状況を一元化し、見落としを防ぐSES業務管理プロトタイプ。",
+    statusLabel: "Prototype",
+  },
+  {
+    slug: "meetroute",
+    title: "MeetRoute",
+    category: "Meeting Operations",
+    description:
+      "オンライン・対面の候補日時を受け付け、移動条件を確認して承認する日程調整プロトタイプ。",
+    statusLabel: "Prototype",
+  },
+  {
+    slug: "matchhire",
+    title: "MatchHire",
+    category: "Recruiting Operations",
+    description:
+      "候補者・求人・応募・面接評価を横断し、採用ファネルの停滞とNG理由を可視化する公開デモ。",
+    statusLabel: "Demo",
+    demoHref: "https://satochan-ai.github.io/matchhire-demo/",
+    repoHref: "https://github.com/satochan-ai/matchhire-demo",
+  },
+];
