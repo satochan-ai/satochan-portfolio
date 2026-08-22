@@ -18,6 +18,8 @@ export type Work = {
    * 未確認の場合は空配列にして UI 側で非表示にする。
    */
   stack: string[];
+  /** 一覧カードでは比較しやすい主要技術だけを表示する。 */
+  cardStack?: string[];
   /** public/images/works/ 配下のパス。未用意の間は null。 */
   image: string | null;
   imageAlt: string | null;
@@ -42,14 +44,9 @@ export const works: Work[] = [
       "自分が運営しているSES営業交流会の、申込から当日運用までを支えるWebサイト。イベント告知ページではなく、定員管理・受付メール・キャンセル・残席復元まで、運営に必要な仕組みを実装しています。",
     usedFor: "SES営業交流会の申込受付・定員管理・受付連絡（本番運用中）",
     highlights: [
-      "イベント別ページ",
-      "申込フォーム",
-      "定員管理",
+      "申込フォームと定員管理",
       "受付メール送信",
-      "キャンセル受付",
       "キャンセル時の残席復元",
-      "プライバシーポリシー",
-      "SEO改善",
     ],
     stack: [
       "Next.js",
@@ -59,10 +56,12 @@ export const works: Work[] = [
       "Google Spreadsheet",
       "Vercel",
     ],
+    cardStack: ["Next.js", "TypeScript", "GAS Web App", "Google Spreadsheet"],
     image: "/images/works/ses-meetup-site.png",
     imageAlt:
       "SES営業交流会 申込サイトのトップページ。開催中の回の申込ボタンと、現在・前回の開催情報が並んでいる。",
     caseStudyHref: "#case-ses-meetup",
+    href: "https://event-entry-site.vercel.app/",
   },
   {
     slug: "matchpilot",
@@ -74,10 +73,8 @@ export const works: Work[] = [
       "SES営業における企業・担当者との接点、打ち合わせ、関係値、次回アクションを整理・可視化し、営業活動を属人的な記憶だけに頼らない状態へ変えるための営業支援ツール。",
     usedFor: "SES営業の接点・関係値の可視化と、次アクションの判断",
     highlights: [
-      "企業・担当者との接点の記録",
-      "打ち合わせ履歴の蓄積",
-      "関係値の可視化",
-      "次回アクションの整理",
+      "企業・担当者との接点・打ち合わせ履歴",
+      "関係値の可視化と次回アクションの整理",
       "「管理すること」ではなく「次にどこへ動くべきか分かること」を基準に設計",
     ],
     stack: ["JavaScript", "HTML", "CSS", "CSV"],
@@ -94,11 +91,9 @@ export const works: Work[] = [
       "生成AI初心者向けに「明日から仕事で使える生成AI活用入門」をテーマとしたミニ講座を実施。自分が使えることではなく、聞いた人が翌日から業務で使える状態にすることを目的に構成しました。",
     usedFor: "生成AI活用の社内・社外向け教育",
     highlights: [
-      "生成AIの基本",
       "商談メモの整理",
       "営業業務へのAI活用",
       "AIを「相談相手」だけでなく「実務担当」として使う考え方",
-      "2026年9月15日に第2回を予定",
     ],
     stack: ["生成AI活用", "業務適用の設計", "登壇・教育"],
     image: "/images/works/ai-mini-seminar.png",
@@ -114,11 +109,9 @@ export const works: Work[] = [
       "2019年から蓄積している営業・打ち合わせ記録をObsidianへ集約し、AIから横断的に分析できる形へ変えている個人運用の仕組み。公開するのは仕組みと考え方のみで、記録の原文は非公開です。",
     usedFor: "商談準備・過去との比較・次回アクションの設計",
     highlights: [
-      "紙 → PC上の記録 → Obsidian → AI分析 への移行",
       "過去記録の検索・比較・傾向分析",
       "次回アクションの設計に再利用",
       "AIからは読み取り専用で分析する運用",
-      "記録の原文は非公開",
     ],
     stack: ["Obsidian", "生成AI", "ナレッジ設計"],
     image: null,
@@ -147,6 +140,7 @@ export const works: Work[] = [
       "GitHub",
       "Vercel",
     ],
+    cardStack: ["Next.js", "TypeScript", "React PDF"],
     image: "/images/works/receipt-generator.png",
     imageAlt:
       "領収証生成ツールの入力画面。左側にイベント情報と発行会社情報の入力欄、右側に領収証のプレビューが表示されている。",

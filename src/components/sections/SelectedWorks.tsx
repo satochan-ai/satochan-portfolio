@@ -37,6 +37,8 @@ function WorkThumb({ work }: { work: Work }) {
 }
 
 function WorkCard({ work }: { work: Work }) {
+  const cardStack = work.cardStack ?? work.stack.slice(0, 4);
+
   return (
     <li className="flex h-full flex-col overflow-hidden rounded-card border border-line bg-bg transition-colors hover:border-fg/40">
       <WorkThumb work={work} />
@@ -73,9 +75,9 @@ function WorkCard({ work }: { work: Work }) {
         </ul>
 
         <div className="mt-auto pt-5">
-          {work.stack.length > 0 && (
+          {cardStack.length > 0 && (
             <ul className="flex flex-wrap gap-2">
-              {work.stack.map((item) => (
+              {cardStack.map((item) => (
                 <li key={item}>
                   <Tag>{item}</Tag>
                 </li>
