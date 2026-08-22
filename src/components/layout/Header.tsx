@@ -37,7 +37,7 @@ export function Header() {
           </ul>
           <a
             href="#contact"
-            className="ml-2 rounded-full bg-fg px-4 py-2 text-sm font-medium text-bg transition-opacity hover:opacity-85"
+            className="ml-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-bg transition-colors hover:bg-accent-hover"
           >
             お問い合わせ
           </a>

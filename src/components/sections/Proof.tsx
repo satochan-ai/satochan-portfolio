@@ -14,7 +14,7 @@ export function Proof() {
           {proofPoints.map((point, index) => (
             <div key={point.label} className="min-w-0">
               <dt className="text-sm font-medium text-fg">{point.label}</dt>
-              <dd className="mt-2 text-stat font-bold tracking-tight">
+              <dd className="mt-2 text-stat font-bold tracking-tight text-accent">
                 {point.value}
                 {point.unit && (
                   <span className="ml-0.5 align-super text-[0.45em] font-semibold text-muted">

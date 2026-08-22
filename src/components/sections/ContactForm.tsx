@@ -178,7 +178,7 @@ export function ContactForm() {
         )}
       </div>
 
-      <button type="submit" disabled={status === "submitting"} className="mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-fg px-5 py-3 text-sm font-medium text-bg transition-opacity hover:opacity-85 disabled:cursor-not-allowed disabled:opacity-60">
+      <button type="submit" disabled={status === "submitting"} className="mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-accent px-5 py-3 text-sm font-medium text-bg transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60">
         {status === "submitting" ? "送信中…" : "送信する"}
       </button>
       <p className="mt-4 text-xs leading-relaxed text-muted">

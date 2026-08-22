@@ -35,7 +35,7 @@ export function Hero() {
         <div className="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
           <a
             href="#works"
-            className="inline-flex items-center justify-center rounded-full bg-fg px-6 py-3.5 text-sm font-medium text-bg transition-opacity hover:opacity-85"
+            className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3.5 text-sm font-medium text-bg transition-colors hover:bg-accent-hover"
           >
             実績を見る
           </a>

@@ -7,15 +7,16 @@
 @theme {
   /* color */
   --color-bg: #ffffff;
-  --color-surface: #f6f6f3;
-  --color-fg: #0e1013;
-  --color-muted: #5c626b;
-  --color-line: #e4e4de;
+  --color-surface: #f3f7ff;
+  --color-fg: #111827;
+  --color-muted: #586375;
+  --color-line: #dbe3f0;
   --color-accent: #1d4ed8;
-  /* ダーク背景（#0e1013）上で 4.5:1 を満たすアクセント */
-  --color-accent-on-dark: #93b1ff;
-  --color-accent-soft: #eef2ff;
-  --color-inverse-fg: #f4f4f1;
+  --color-accent-hover: #173ea9;
+  /* Deep Navy背景（#111827）上で 4.5:1 を満たすアクセント */
+  --color-accent-on-dark: #9bb8ff;
+  --color-accent-soft: #eaf1ff;
+  --color-inverse-fg: #f8fafc;
 
   /* typography */
   --font-sans: var(--font-inter), var(--font-noto-jp), ui-sans-serif, system-ui,
@@ -186,6 +187,10 @@
     transition: transform 200ms ease-out;
   }
 
+  .work-card a.text-accent {
+    transition: color 160ms ease-out;
+  }
+
   @media (hover: hover) and (pointer: fine) {
     .work-card:hover .work-card-image {
       transform: scale(1.015);
@@ -193,6 +198,10 @@
 
     .work-card:hover .work-card-arrow {
       transform: translateX(2px);
+    }
+
+    .work-card a.text-accent:hover {
+      color: var(--color-accent-hover);
     }
   }
 
@@ -224,4 +233,14 @@
       transform: none;
     }
   }
+}
+
+/* Keep the editorial section rhythm content-led rather than mechanically striped. */
+#about,
+#technology {
+  background-color: var(--color-bg);
+}
+
+#speaking {
+  background-color: var(--color-surface);
 }
