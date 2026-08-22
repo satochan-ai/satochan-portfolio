@@ -8,10 +8,18 @@ const highlights = [
   "Web・業務ツール 実運用",
 ];
 
+const codeSequence = [
+  "field_experience",
+  "structure_workflow",
+  "apply_ai",
+  "build_if_needed",
+  "verify → operate → improve",
+];
+
 export function Hero() {
   return (
     <section id="hero" className="relative overflow-hidden bg-bg">
-      <div className="mx-auto w-full max-w-page px-5 pb-20 pt-16 sm:px-8 sm:pb-28 sm:pt-24">
+      <div className="relative mx-auto w-full max-w-page px-5 pb-20 pt-16 sm:px-8 sm:pb-28 sm:pt-24">
         <p className="text-eyebrow font-medium uppercase text-accent">
           Sales &middot; Recruiting &middot; AI &middot; Build
         </p>
@@ -37,6 +45,22 @@ export function Hero() {
           >
             プロフィールを見る
           </a>
+        </div>
+
+        <div
+          aria-hidden
+          className="hero-code-sequence mt-10 max-w-72 lg:absolute lg:right-8 lg:top-44 lg:mt-0"
+        >
+          {codeSequence.map((line, index) => (
+            <p
+              key={line}
+              className="hero-code-line"
+              style={{ "--sequence-index": index } as React.CSSProperties}
+            >
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              {line}
+            </p>
+          ))}
         </div>
 
         <ul className="mt-12 flex flex-wrap gap-x-6 gap-y-3 border-t border-line pt-6 text-sm text-muted">

@@ -14,7 +14,7 @@ function WorkThumb({ work }: { work: Work }) {
           alt={work.imageAlt ?? work.title}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover"
+          className="work-card-image object-cover"
         />
       </div>
     );
@@ -40,7 +40,7 @@ function WorkCard({ work }: { work: Work }) {
   const cardStack = work.cardStack ?? work.stack.slice(0, 4);
 
   return (
-    <li className="flex h-full flex-col overflow-hidden rounded-card border border-line bg-bg transition-colors hover:border-fg/40">
+    <li className="work-card flex h-full flex-col overflow-hidden rounded-card border border-line bg-bg transition-[border-color,box-shadow] duration-200 hover:border-fg/40 hover:shadow-[0_6px_16px_rgb(14_16_19/0.06)]">
       <WorkThumb work={work} />
 
       <div className="flex flex-1 flex-col p-6">
@@ -96,7 +96,7 @@ function WorkCard({ work }: { work: Work }) {
                 >
                   サイトを見る
                   <span className="sr-only">（{work.title}・別タブで開く）</span>
-                  <span aria-hidden>&#8599;</span>
+                  <span aria-hidden className="work-card-arrow">&#8599;</span>
                 </a>
               )}
               {work.caseStudyHref && (
@@ -106,7 +106,7 @@ function WorkCard({ work }: { work: Work }) {
                 >
                   Case Study を見る
                   <span className="sr-only">（{work.title}）</span>
-                  <span aria-hidden>&rarr;</span>
+                  <span aria-hidden className="work-card-arrow">&rarr;</span>
                 </a>
               )}
             </div>
@@ -121,7 +121,8 @@ export function SelectedWorks() {
   return (
     <Section
       id="works"
-      eyebrow="Selected Works"
+      eyebrow="// Selected Works"
+      eyebrowVariant="code"
       title="実際に使われているものを、つくって、運用しています。"
       lead="学習用のモックではなく、自分やまわりの業務で実際に動いているものを中心に掲載しています。技術構成は、実装で確認できたものだけを記載しています。"
     >
