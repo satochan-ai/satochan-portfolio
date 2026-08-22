@@ -137,17 +137,16 @@
 
 @layer components {
   .hero-code-sequence {
-    border-left: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent);
-    background: color-mix(in srgb, var(--color-accent-soft) 42%, transparent);
-    padding: 0.75rem 0.875rem;
+    border-left: 1px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+    padding: 0.25rem 0 0.25rem 1rem;
   }
 
   .hero-code-line {
     color: var(--color-muted);
     font-family: var(--font-mono);
-    font-size: 0.6875rem;
+    font-size: 0.78125rem;
     letter-spacing: 0.04em;
-    line-height: 1.75;
+    line-height: 1.7;
     opacity: 0;
     animation: hero-code-enter 360ms ease-out both;
     animation-delay: calc(var(--sequence-index) * 180ms + 120ms);

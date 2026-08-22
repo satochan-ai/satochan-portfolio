@@ -49,7 +49,7 @@ export function Hero() {
 
         <div
           aria-hidden
-          className="hero-code-sequence mt-10 max-w-72 lg:absolute lg:right-8 lg:top-44 lg:mt-0"
+          className="hero-code-sequence mt-10 max-w-72 lg:absolute lg:right-12 lg:top-60 lg:mt-0"
         >
           {codeSequence.map((line, index) => (
             <p
