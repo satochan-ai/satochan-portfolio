@@ -13,7 +13,13 @@ export function Contact() {
       id="contact"
       eyebrow="// Contact"
       eyebrowVariant="code"
-      title="仕事やAI活用について、お気軽にご相談ください。"
+      title={
+        <>
+          仕事やAI活用について、
+          <br className="sm:hidden lg:block" />
+          お気軽にご相談ください。
+        </>
+      }
       lead="採用、営業・業務改善、AI活用、Web・業務ツール制作についてのご相談を受け付けています。課題がまだ整理できていない段階でも構いません。"
       tone="dark"
     >
