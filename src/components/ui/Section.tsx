@@ -11,7 +11,7 @@ const toneClass: Record<SectionTone, string> = {
 type SectionProps = {
   id: string;
   eyebrow?: string;
-  title?: string;
+  title?: ReactNode;
   lead?: string;
   tone?: SectionTone;
   eyebrowVariant?: "default" | "code";

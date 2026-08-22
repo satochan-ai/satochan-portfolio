@@ -35,7 +35,13 @@ export function Speaking() {
     <Section
       id="speaking"
       eyebrow="Speaking / Writing"
-      title="使えるだけでなく、人に伝えられること。"
+      title={
+        <>
+          使えるだけでなく、
+          <br className="sm:hidden xl:block" />
+          人に伝えられること。
+        </>
+      }
       lead="AI活用は、自分が使えて終わりではありません。聞いた人が翌日から業務で使える状態にするところまでを対象にしています。"
     >
       <ul className="border-t border-line">
