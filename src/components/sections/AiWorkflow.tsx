@@ -46,6 +46,20 @@ const steps: Step[] = [
   },
 ];
 
+type SkillStat = {
+  value: string;
+  label: string;
+};
+
+/** 事実ベースの規模のみ。個々のSkill名は一覧化しない。 */
+const skillStats: SkillStat[] = [
+  { value: "40", label: "Business Skills" },
+  { value: "10", label: "Categories" },
+];
+
+/** 代表例として一部のみ表示。カテゴリ全10件は列挙しない。 */
+const skillCategories = ["Sales", "Recruiting", "Matching", "KPI Analysis", "Knowledge"];
+
 export function AiWorkflow() {
   return (
     <Section
@@ -79,6 +93,49 @@ export function AiWorkflow() {
       <p className="mt-8 max-w-prose text-sm leading-relaxed text-inverse-fg/60">
         AIはすべてを任せる相手ではなく、それぞれの工程を加速させる実務パートナーとして使っています。
       </p>
+
+      <div className="mt-16 border-t border-inverse-fg/15 pt-10 sm:mt-20 sm:pt-12">
+        <p className="text-eyebrow font-medium uppercase text-accent-on-dark">
+          Business Skills
+        </p>
+
+        <div className="mt-6 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-start lg:gap-16">
+          <div className="max-w-prose">
+            <h3 className="text-h3 font-bold text-inverse-fg">
+              現場の知識を、再利用できるSkillへ。
+            </h3>
+            <p className="mt-4 text-sm leading-relaxed text-inverse-fg/70 sm:text-base">
+              SES営業・採用の実務で繰り返し発生する業務を、AIが再利用できる形に整理しています。提案書作成、BP営業、案件・人材マッチング、採用スクリーニング、KPI分析など、現場で培った判断基準や手順を業務Skillとして体系化しています。
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-inverse-fg/60">
+              特定のAIサービスに依存するのではなく、業務プロセスや判断基準そのものを再利用できる形で残すことを重視しています。利用するAIに応じて、Claude Code Skills / GPTs / Gem などへ展開しています。
+            </p>
+
+            <ul className="mt-6 flex flex-wrap gap-2">
+              {skillCategories.map((category) => (
+                <li key={category}>
+                  <span className="rounded-full border border-inverse-fg/20 px-2.5 py-1 text-xs font-medium text-inverse-fg/70">
+                    {category}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <dl className="flex gap-10 sm:gap-12 lg:flex-col lg:gap-6">
+            {skillStats.map((stat) => (
+              <div key={stat.label}>
+                <dt className="text-sm font-medium text-inverse-fg/70">
+                  {stat.label}
+                </dt>
+                <dd className="mt-1 text-stat font-bold text-inverse-fg">
+                  {stat.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
     </Section>
   );
 }
