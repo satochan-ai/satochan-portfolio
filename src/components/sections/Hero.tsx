@@ -1,8 +1,6 @@
 import { site } from "@/content/site";
 
 const highlights = [
-  "SES営業 16年",
-  "採用 10年",
   "営業・商談接点 1,500+",
   "AI活用ミニ講座 登壇",
   "Web・業務ツール 実運用",
