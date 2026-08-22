@@ -3,6 +3,7 @@ import { Section } from "@/components/ui/Section";
 type Talk = {
   date: string;
   title: string;
+  category: string;
   audience: string;
   topics: string[];
   upcoming: boolean;
@@ -10,8 +11,22 @@ type Talk = {
 
 const talks: Talk[] = [
   {
+    date: "2025.01.16",
+    title: "SES営業勉強会",
+    category: "SES Sales Training",
+    audience: "社外向け / SES営業経験 約1年",
+    topics: [
+      "SESの基礎・契約形態",
+      "新規開拓・営業フロー",
+      "案件・人材マッチング",
+      "案件情報の読み解き・信頼関係",
+    ],
+    upcoming: false,
+  },
+  {
     date: "2026.08.18",
     title: "明日から仕事で使える生成AI活用入門",
+    category: "Generative AI Training",
     audience: "生成AI初心者向けミニ講座",
     topics: [
       "生成AIの基本",
@@ -24,6 +39,7 @@ const talks: Talk[] = [
   {
     date: "2026.09.15",
     title: "仕事で使える生成AI活用 実践編",
+    category: "Generative AI Training",
     audience: "第2回",
     topics: [],
     upcoming: true,
@@ -42,7 +58,7 @@ export function Speaking() {
           人に伝えられること。
         </>
       }
-      lead="AI活用は、自分が使えて終わりではありません。聞いた人が翌日から業務で使える状態にするところまでを対象にしています。"
+      lead="AI活用に限らず、実務で培った知識は、自分が使えて終わりではありません。聞いた人が翌日から業務で使える状態にするところまでを対象にしています。"
     >
       <ul className="border-t border-line">
         {talks.map((talk) => (
@@ -64,7 +80,8 @@ export function Speaking() {
             </div>
 
             <div>
-              <h3 className="text-h3 font-bold">{talk.title}</h3>
+              <p className="text-xs font-medium text-accent">{talk.category}</p>
+              <h3 className="mt-1 text-h3 font-bold">{talk.title}</h3>
               <p className="mt-1.5 text-sm text-muted">{talk.audience}</p>
 
               {talk.topics.length > 0 && (
