@@ -86,7 +86,7 @@ export function AiWorkflow() {
           >
             <div className="flex items-baseline justify-between gap-3">
               <div className="flex items-baseline gap-3">
-                <span className="font-mono text-sm text-inverse-fg/65">
+                <span className="font-mono text-sm text-accent-on-dark/85">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <h3 className="text-h3 font-bold text-inverse-fg">
@@ -116,7 +116,7 @@ export function AiWorkflow() {
           {"// Business Skills"}
         </p>
 
-        <p className="mt-3 font-mono text-xs tracking-wide text-inverse-fg/50">
+        <p className="mt-3 font-mono text-xs tracking-wide text-inverse-fg/65">
           skills.registry · 40 entries · 10 categories
         </p>
 
@@ -156,7 +156,7 @@ export function AiWorkflow() {
                 <dt className="text-sm font-medium text-inverse-fg/70">
                   {stat.label}
                 </dt>
-                <dd className="mt-1 text-stat font-bold text-inverse-fg">
+                <dd className="mt-1 text-stat font-bold text-accent-on-dark">
                   {stat.value}
                 </dd>
               </div>
