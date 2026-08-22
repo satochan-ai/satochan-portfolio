@@ -26,6 +26,11 @@ export type Work = {
   /** 詳細な Case Study がある場合、そのアンカー */
   caseStudyHref?: string;
   href?: string;
+  /** プロトタイプ等で「導入前後」を短く示したい場合のみ設定。デモ上の数値は含めない。 */
+  beforeAfter?: {
+    before: string;
+    after: string;
+  };
 };
 
 /**
@@ -80,6 +85,10 @@ export const works: Work[] = [
     stack: ["JavaScript", "HTML", "CSS", "CSV"],
     image: "/images/works/matchpilot.png",
     imageAlt: "MatchPilotの今月KPI画面。人材紹介数・案件提案数・打ち合わせ数の実績と達成率が並んでいる。",
+    beforeAfter: {
+      before: "感覚・記憶に依存し、停滞理由が見えにくい。",
+      after: "KPI・NG理由・関係値から、注力先と次アクションを判断できる。",
+    },
   },
   {
     slug: "ai-mini-seminar",

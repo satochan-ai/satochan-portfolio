@@ -75,6 +75,34 @@ function WorkCard({ work }: { work: Work }) {
           ))}
         </ul>
 
+        {work.beforeAfter && (
+          <div className="mt-3.5 flex flex-col gap-2 rounded-lg border border-line bg-surface p-3.5 sm:flex-row sm:items-stretch">
+            <div className="flex-1">
+              <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[0.6875rem] font-medium uppercase tracking-wide text-muted ring-1 ring-inset ring-line">
+                Before
+              </span>
+              <p className="mt-2 text-xs leading-relaxed text-muted">
+                {work.beforeAfter.before}
+              </p>
+            </div>
+            <div
+              aria-hidden
+              className="flex items-center justify-center text-muted"
+            >
+              <span className="sm:hidden">&darr;</span>
+              <span className="hidden sm:inline">&rarr;</span>
+            </div>
+            <div className="flex-1">
+              <span className="inline-flex items-center rounded-full bg-accent-soft px-2 py-0.5 text-[0.6875rem] font-medium uppercase tracking-wide text-accent">
+                After
+              </span>
+              <p className="mt-2 text-xs leading-relaxed text-fg">
+                {work.beforeAfter.after}
+              </p>
+            </div>
+          </div>
+        )}
+
         <div className="mt-auto pt-4">
           {cardStack.length > 0 && (
             <ul className="flex flex-wrap gap-2">

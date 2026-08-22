@@ -52,7 +52,11 @@ export type ProofPoint = {
   footnote?: string;
 };
 
-/** 事実ベースの数字のみ。推測値・誇張値は載せない。 */
+/**
+ * 事実ベースの数字のみ。推測値・誇張値は載せない。
+ * 「AI活用ミニ講座 登壇」「Web・業務ツール 実運用」は Speaking / Selected Works で
+ * より具体的に証明済みのため、Career Evidence（数字の実績）に絞る。
+ */
 export const proofPoints: ProofPoint[] = [
   {
     value: "16",
@@ -73,15 +77,30 @@ export const proofPoints: ProofPoint[] = [
     note: "企業・技術者との接点の累計",
     footnote: "長期間保存している営業・打ち合わせ記録をもとにした概算です。",
   },
+];
+
+export type BusinessImpactMetric = {
+  value: string;
+  label: string;
+  description: string;
+};
+
+/** 個人の活動量だけでなく、立ち上げ・仕組み化まで担った範囲を示す。確定していない数字（社数の集計等）は含めない。 */
+export const businessImpactMetrics: BusinessImpactMetric[] = [
   {
-    value: "登壇",
-    label: "AI活用ミニ講座",
-    note: "2026年8月 第1回実施 / 9月 第2回予定",
+    value: "0→1",
+    label: "営業立ち上げ",
+    description: "営業基盤がない状態から、BPネットワークと提案導線を構築",
   },
   {
-    value: "実運用",
-    label: "Web・業務ツール",
-    note: "モックではなく、実際に使われている状態で運用",
+    value: "月50〜60社規模",
+    label: "打ち合わせ創出",
+    description: "新規商談・情報収集を継続的に創出",
+  },
+  {
+    value: "若手教育 / KPI管理",
+    label: "営業運用の仕組み化",
+    description: "教育・進捗管理まで横断して担当",
   },
 ];
 
