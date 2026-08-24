@@ -26,21 +26,21 @@ export function Header() {
           <ul className="hidden items-center gap-1 lg:flex">
             {navItems.map((item) => (
               <li key={item.href}>
-                <a
+                <Link
                   href={item.href}
                   className="rounded-md px-3 py-2 text-sm text-muted transition-colors hover:text-fg"
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
-          <a
-            href="#contact"
+          <Link
+            href="/#contact"
             className="ml-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-bg transition-colors hover:bg-accent-hover"
           >
             お問い合わせ
-          </a>
+          </Link>
         </nav>
       </div>
     </header>
