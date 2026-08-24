@@ -35,12 +35,12 @@ export type NavItem = {
 };
 
 export const navItems: NavItem[] = [
-  { href: "#works", label: "Works" },
-  { href: "#what-i-do", label: "What I Do" },
-  { href: "#case-study", label: "Case Study" },
-  { href: "#ai-workflow", label: "AI Workflow" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#works", label: "Works" },
+  { href: "/#what-i-do", label: "What I Do" },
+  { href: "/#case-study", label: "Case Study" },
+  { href: "/#ai-workflow", label: "AI Workflow" },
+  { href: "/#about", label: "About" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export type ProofPoint = {
