@@ -51,16 +51,30 @@ export default function ServicesPage() {
               </div>
               <div>
                 <p className="text-sm leading-relaxed text-muted">{service.support}</p>
-                <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-line pt-4 text-sm text-fg">
+
+                <div className="mt-3.5">
+                  <span className="font-mono text-xs text-accent">OUTCOME</span>
+                  <p className="mt-1 text-sm font-medium leading-relaxed text-fg [word-break:auto-phrase]">
+                    {service.after}
+                  </p>
+                </div>
+
+                <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 border-t border-line pt-4 text-sm text-fg">
                   {service.examples.map((example) => <li key={example}>{example}</li>)}
                 </ul>
-                <div className="mt-5 flex flex-wrap items-baseline gap-x-3 gap-y-1 text-sm">
+                <div className="mt-4">
                   <span className="font-mono text-xs text-muted">RELATED</span>
-                  {service.relatedWorks.map((work) => (
-                    <Link key={work} href="/#works" className="text-accent hover:text-accent-hover hover:underline">
-                      {work}
-                    </Link>
-                  ))}
+                  <ul className="mt-2 space-y-1.5">
+                    {service.relatedWorks.map((work) => (
+                      <li key={work.name} className="text-xs leading-relaxed text-muted [word-break:auto-phrase]">
+                        <Link href={work.href ?? "/#works"} className="font-medium text-accent hover:text-accent-hover hover:underline">
+                          {work.name}
+                        </Link>
+                        <span className="mx-1.5 text-line" aria-hidden>/</span>
+                        {work.reason}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </li>
