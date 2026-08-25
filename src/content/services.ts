@@ -122,12 +122,49 @@ export const services: Service[] = [
   },
 ];
 
-export const commonConsultationIssues = [
-  "AIを使いたいが、対象業務を決められていない",
-  "営業情報が人ごとに分かれ、次の行動が見えない",
-  "採用フローや評価基準が担当者に依存している",
-  "同じ入力・確認・転記を繰り返している",
-  "既存ツールでは合わないが、大規模開発までは必要ない",
+export type UseCaseCategory = {
+  no: string;
+  title: string;
+  cases: string[];
+};
+
+export const useCaseCategories: UseCaseCategory[] = [
+  {
+    no: "01",
+    title: "営業・SES",
+    cases: [
+      "商談前の企業情報を整理する",
+      "案件・人材情報を比較しやすくする",
+      "BP企業との接点と次のアクションを管理する",
+    ],
+  },
+  {
+    no: "02",
+    title: "採用・人事",
+    cases: [
+      "求人情報と候補者情報を整理する",
+      "面談記録と選考・NG理由を整理する",
+      "採用フローの進捗を見えるようにする",
+    ],
+  },
+  {
+    no: "03",
+    title: "AI・ナレッジ活用",
+    cases: [
+      "過去の営業・商談記録を再利用する",
+      "業務手順や判断基準をSkillとして整理する",
+      "提案書やメールの下書きを支援する",
+    ],
+  },
+  {
+    no: "04",
+    title: "業務運用・小規模ツール",
+    cases: [
+      "申込受付や日程調整を管理する",
+      "同じ入力・確認・転記を減らす",
+      "PDF・帳票やDashboardを小さく試す",
+    ],
+  },
 ];
 
 export const supportProcess = [

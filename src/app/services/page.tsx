@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Section } from "@/components/ui/Section";
-import { commonConsultationIssues, services, supportProcess } from "@/content/services";
+import { services, supportProcess, useCaseCategories } from "@/content/services";
 import { getSiteUrl } from "@/content/site";
 
 const title = "営業・採用のAI活用・業務改善支援｜Portfolio";
@@ -90,15 +90,33 @@ export default function ServicesPage() {
         </div>
       </Section>
 
-      <Section id="common-issues" eyebrow="Common Issues" title="よくある課題">
-        <ul className="border-t border-line">
-          {commonConsultationIssues.map((issue, index) => (
-            <li key={issue} className="flex gap-4 border-b border-line py-4 text-sm leading-relaxed sm:text-base">
-              <span className="font-mono text-xs text-accent">{String(index + 1).padStart(2, "0")}</span>
-              {issue}
+      <Section
+        id="use-cases"
+        eyebrow="Use Case"
+        title="業務のこんな場面から、改善できます。"
+        lead="「AIを導入したい」から考えるのではなく、日々の業務で手間や属人化が起きている場面から整理します。"
+      >
+        <ol className="grid border-t border-line sm:grid-cols-2">
+          {useCaseCategories.map((category) => (
+            <li
+              key={category.no}
+              className="border-b border-line py-2 sm:px-6 sm:[&:nth-child(odd)]:border-r"
+            >
+              <div className="flex items-baseline gap-3">
+                <span className="font-mono text-xs text-accent">{category.no}</span>
+                <h3 className="text-h3 font-bold [word-break:auto-phrase]">{category.title}</h3>
+              </div>
+              <ul className="mt-2 space-y-1 text-sm leading-normal text-muted">
+                {category.cases.map((useCase) => (
+                  <li key={useCase} className="flex gap-2.5">
+                    <span aria-hidden className="mt-2 size-1 shrink-0 rounded-full bg-accent" />
+                    <span className="[word-break:auto-phrase]">{useCase}</span>
+                  </li>
+                ))}
+              </ul>
             </li>
           ))}
-        </ul>
+        </ol>
       </Section>
 
       <Section
