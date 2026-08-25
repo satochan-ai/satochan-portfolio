@@ -26,11 +26,14 @@ export type Work = {
   /** 詳細な Case Study がある場合、そのアンカー */
   caseStudyHref?: string;
   href?: string;
-  /** プロトタイプ等で「導入前後」を短く示したい場合のみ設定。デモ上の数値は含めない。 */
-  beforeAfter?: {
-    before: string;
-    after: string;
-  };
+  /** 代表的な事例のみ設定する要約。未実測の成果数値は含めない。 */
+  miniCase?: MiniCase;
+};
+
+export type MiniCase = {
+  problem: string;
+  approach: string;
+  changedState: string;
 };
 
 /**
@@ -67,6 +70,14 @@ export const works: Work[] = [
       "SES営業交流会 申込サイトのトップページ。開催中の回の申込ボタンと、現在・前回の開催情報が並んでいる。",
     caseStudyHref: "#case-ses-meetup",
     href: "https://event-entry-site.vercel.app/",
+    miniCase: {
+      problem:
+        "申込受付・定員管理・受付連絡・キャンセル対応が別々に残ると、告知サイトだけでは運営を支えられない。",
+      approach:
+        "申込から当日運用までを一つのフローとして設計し、Next.js、GAS、Google Spreadsheetで役割を分けた。",
+      changedState:
+        "申込受付、定員管理、受付連絡、キャンセル後の残席復元を一つの運用で進められ、開催ごとに使用・改善できる状態。",
+    },
   },
   {
     slug: "matchpilot",
@@ -85,9 +96,11 @@ export const works: Work[] = [
     stack: ["JavaScript", "HTML", "CSS", "CSV"],
     image: "/images/works/matchpilot.png",
     imageAlt: "MatchPilotの今月KPI画面。人材紹介数・案件提案数・打ち合わせ数の実績と達成率が並んでいる。",
-    beforeAfter: {
-      before: "感覚・記憶に依存し、停滞理由が見えにくい。",
-      after: "KPI・NG理由・関係値から、注力先と次アクションを判断できる。",
+    miniCase: {
+      problem: "営業状況が感覚や記憶に依存し、停滞理由が見えにくい。",
+      approach:
+        "KPI・NG理由・企業との接点・関係値・次アクションを一つのDashboardへ整理。",
+      changedState: "注力先と次に動くべき相手を、情報から判断できる状態へ。",
     },
   },
   {
@@ -166,6 +179,8 @@ export type SupportingProject = {
   /** 公開が確認できているものだけ設定する。未確認ならリンクを持たせない。 */
   demoHref?: string;
   repoHref?: string;
+  /** 代表的な事例のみ設定する要約。未実測の成果数値は含めない。 */
+  miniCase?: MiniCase;
 };
 
 /**
@@ -198,5 +213,11 @@ export const supportingProjects: SupportingProject[] = [
     statusLabel: "Demo",
     demoHref: "https://satochan-ai.github.io/matchhire-demo/",
     repoHref: "https://github.com/satochan-ai/matchhire-demo",
+    miniCase: {
+      problem: "選考状況や評価理由が分散すると、採用ファネルの停滞が見えにくい。",
+      approach: "候補者・求人・応募・面接評価を横断して確認できるDemoを設計。",
+      changedState:
+        "採用ファネルの停滞とNG理由を確認できる形を、公開Demoとして試作。",
+    },
   },
 ];

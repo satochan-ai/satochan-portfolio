@@ -3,7 +3,56 @@ import Image from "next/image";
 import { Section } from "@/components/ui/Section";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { Tag } from "@/components/ui/Tag";
-import { supportingProjects, works, type Work } from "@/content/works";
+import {
+  supportingProjects,
+  works,
+  type MiniCase as MiniCaseData,
+  type Work,
+} from "@/content/works";
+
+/** PROBLEM → APPROACH → CHANGED STATE の要約。compact指定でMore Projects向けに視覚強度を下げる。 */
+function MiniCase({
+  data,
+  compact,
+}: {
+  data: MiniCaseData;
+  compact?: boolean;
+}) {
+  const items = [
+    { label: "PROBLEM", text: data.problem },
+    { label: "APPROACH", text: data.approach },
+    { label: "CHANGED STATE", text: data.changedState },
+  ];
+
+  return (
+    <dl
+      className={
+        compact
+          ? "mt-2.5 space-y-1.5 border-t border-line pt-2.5"
+          : "mt-3 space-y-2 border-t border-line pt-3"
+      }
+    >
+      {items.map((item) => (
+        <div key={item.label}>
+          <dt
+            className={`font-mono text-[0.6875rem] uppercase tracking-wide ${
+              compact ? "text-muted" : "text-accent"
+            }`}
+          >
+            {item.label}
+          </dt>
+          <dd
+            className={`mt-1 leading-relaxed text-fg [word-break:auto-phrase] ${
+              compact ? "text-xs" : "text-sm"
+            }`}
+          >
+            {item.text}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
 
 function WorkThumb({ work }: { work: Work }) {
   if (work.image) {
@@ -75,33 +124,7 @@ function WorkCard({ work }: { work: Work }) {
           ))}
         </ul>
 
-        {work.beforeAfter && (
-          <div className="mt-3.5 flex flex-col gap-2 rounded-lg border border-line bg-surface p-3.5 sm:flex-row sm:items-stretch">
-            <div className="flex-1">
-              <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[0.6875rem] font-medium uppercase tracking-wide text-muted ring-1 ring-inset ring-line">
-                Before
-              </span>
-              <p className="mt-2 text-xs leading-relaxed text-muted">
-                {work.beforeAfter.before}
-              </p>
-            </div>
-            <div
-              aria-hidden
-              className="flex items-center justify-center text-muted"
-            >
-              <span className="sm:hidden">&darr;</span>
-              <span className="hidden sm:inline">&rarr;</span>
-            </div>
-            <div className="flex-1">
-              <span className="inline-flex items-center rounded-full bg-accent-soft px-2 py-0.5 text-[0.6875rem] font-medium uppercase tracking-wide text-accent">
-                After
-              </span>
-              <p className="mt-2 text-xs leading-relaxed text-fg">
-                {work.beforeAfter.after}
-              </p>
-            </div>
-          </div>
-        )}
+        {work.miniCase && <MiniCase data={work.miniCase} compact />}
 
         <div className="mt-auto pt-4">
           {cardStack.length > 0 && (
@@ -215,6 +238,8 @@ function FeaturedWorkCard({ work }: { work: Work }) {
             ))}
           </ul>
 
+          {work.miniCase && <MiniCase data={work.miniCase} />}
+
           <div className="mt-auto pt-6 lg:pt-7">
             {work.stack.length > 0 && (
               <ul className="flex flex-wrap gap-2">
@@ -284,57 +309,65 @@ function MoreProjects() {
           <li
             key={project.slug}
             id={project.slug === "matchhire" ? "matchhire" : undefined}
-            className="scroll-mt-24 grid gap-x-6 gap-y-2 border-b border-line py-5 lg:grid-cols-[2rem_10.5rem_1fr_auto] lg:items-baseline lg:gap-y-0"
+            className="scroll-mt-24 border-b border-line py-5"
           >
-            <span aria-hidden className="font-mono text-xs text-muted">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-
-            <div>
-              <h4 className="text-sm font-semibold text-fg">{project.title}</h4>
-              <p className="mt-1 text-xs font-medium text-accent">
-                {project.category}
-              </p>
-            </div>
-
-            <p className="text-sm leading-relaxed text-muted">
-              {project.description}
-            </p>
-
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 lg:justify-end">
-              <span className="inline-flex items-center rounded-full border border-line bg-surface px-2.5 py-0.5 font-mono text-[0.6875rem] text-muted">
-                {project.statusLabel}
+            <div className="grid gap-x-6 gap-y-2 lg:grid-cols-[2rem_10.5rem_1fr_auto] lg:items-baseline lg:gap-y-0">
+              <span aria-hidden className="font-mono text-xs text-muted">
+                {String(index + 1).padStart(2, "0")}
               </span>
 
-              {project.demoHref && (
-                <a
-                  href={project.demoHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-medium text-accent hover:underline"
-                >
-                  Live Demo
-                  <span className="sr-only">（{project.title}・別タブで開く）</span>
-                  <span aria-hidden className="work-card-arrow">
-                    &#8599;
-                  </span>
-                </a>
-              )}
-              {project.repoHref && (
-                <a
-                  href={project.repoHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-medium text-accent hover:underline"
-                >
-                  GitHub
-                  <span className="sr-only">（{project.title}・別タブで開く）</span>
-                  <span aria-hidden className="work-card-arrow">
-                    &#8599;
-                  </span>
-                </a>
-              )}
+              <div>
+                <h4 className="text-sm font-semibold text-fg">{project.title}</h4>
+                <p className="mt-1 text-xs font-medium text-accent">
+                  {project.category}
+                </p>
+              </div>
+
+              <p className="text-sm leading-relaxed text-muted">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 lg:justify-end">
+                <span className="inline-flex items-center rounded-full border border-line bg-surface px-2.5 py-0.5 font-mono text-[0.6875rem] text-muted">
+                  {project.statusLabel}
+                </span>
+
+                {project.demoHref && (
+                  <a
+                    href={project.demoHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-accent hover:underline"
+                  >
+                    Live Demo
+                    <span className="sr-only">（{project.title}・別タブで開く）</span>
+                    <span aria-hidden className="work-card-arrow">
+                      &#8599;
+                    </span>
+                  </a>
+                )}
+                {project.repoHref && (
+                  <a
+                    href={project.repoHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-accent hover:underline"
+                  >
+                    GitHub
+                    <span className="sr-only">（{project.title}・別タブで開く）</span>
+                    <span aria-hidden className="work-card-arrow">
+                      &#8599;
+                    </span>
+                  </a>
+                )}
+              </div>
             </div>
+
+            {project.miniCase && (
+              <div className="lg:pl-[calc(2rem+1.5rem)]">
+                <MiniCase data={project.miniCase} compact />
+              </div>
+            )}
           </li>
         ))}
       </ul>
