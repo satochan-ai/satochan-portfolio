@@ -13,7 +13,9 @@ export function Consultation() {
         <div className="max-w-prose">
           <p className="text-eyebrow font-medium uppercase text-accent">Consultation</p>
           <h2 id="consultation-title" className="mt-4 text-h2 font-bold [text-wrap:balance]">
-            こんな課題から、ご相談いただけます。
+            こんな課題から、
+            <br />
+            ご相談いただけます。
           </h2>
           <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
             課題がまだ整理できていない段階でも構いません。現状を伺いながら、どこから手を付けるかを整理します。
