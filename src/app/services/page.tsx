@@ -59,6 +59,12 @@ export default function ServicesPage() {
                   </p>
                 </div>
 
+                {service.principle && (
+                  <p className="mt-3 text-xs leading-relaxed text-muted [word-break:auto-phrase]">
+                    {service.principle}
+                  </p>
+                )}
+
                 <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 border-t border-line pt-4 text-sm text-fg">
                   {service.examples.map((example) => <li key={example}>{example}</li>)}
                 </ul>
