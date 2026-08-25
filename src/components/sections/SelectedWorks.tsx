@@ -283,7 +283,8 @@ function MoreProjects() {
         {supportingProjects.map((project, index) => (
           <li
             key={project.slug}
-            className="grid gap-x-6 gap-y-2 border-b border-line py-5 lg:grid-cols-[2rem_10.5rem_1fr_auto] lg:items-baseline lg:gap-y-0"
+            id={project.slug === "matchhire" ? "matchhire" : undefined}
+            className="scroll-mt-24 grid gap-x-6 gap-y-2 border-b border-line py-5 lg:grid-cols-[2rem_10.5rem_1fr_auto] lg:items-baseline lg:gap-y-0"
           >
             <span aria-hidden className="font-mono text-xs text-muted">
               {String(index + 1).padStart(2, "0")}

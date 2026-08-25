@@ -38,6 +38,8 @@ export type Service = {
   support: string;
   /** 整理後に目指す状態。成果保証ではなく、未実測の数値も含めない。 */
   after: string;
+  /** AIと人の役割分担など、設計上の前提を明示したい場合のみ設定する。 */
+  principle?: string;
   examples: string[];
   relatedWorks: RelatedWork[];
 };
@@ -89,11 +91,14 @@ export const services: Service[] = [
     support:
       "募集から面談、選考、フォローまでを棚卸しし、管理項目や判断基準を標準化します。必要に応じてAI活用も組み込みます。",
     after: "採用フローと判断基準が整理され、停滞している箇所が見える。",
+    principle:
+      "AIは情報整理や比較を支援し、候補者との対話や最終判断は人が行う前提で設計します。",
     examples: ["採用フロー整理", "面談 / 選考情報整理", "判断基準の標準化", "採用状況の可視化"],
     relatedWorks: [
       {
         name: "MatchHire",
         reason: "採用の停滞とNG理由を可視化した公開デモ。",
+        href: "/#matchhire",
       },
     ],
   },

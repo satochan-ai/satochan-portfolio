@@ -68,7 +68,7 @@ export const proofPoints: ProofPoint[] = [
     value: "10",
     unit: "年",
     label: "採用",
-    note: "母集団形成から面接・入社後フォローまで",
+    note: "母集団形成から面談・面接、入社後フォローまで担当",
   },
   {
     value: "1,500",
