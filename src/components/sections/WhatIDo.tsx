@@ -45,7 +45,7 @@ export function WhatIDo() {
       id="what-i-do"
       eyebrow="What I Do"
       title="課題の発見から、整理・設計・実装・運用まで。"
-      lead="どれか1つだけを担当するのではなく、つながった形で取り組めることを強みにしています。"
+      lead="現場理解を起点に、業務整理・AI活用・実装をつなげて扱えることを強みにしています。"
       tone="surface"
     >
       <ul className="grid gap-6 sm:grid-cols-2">
