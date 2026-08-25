@@ -67,6 +67,15 @@ const skillStats: SkillStat[] = [
 /** 代表例として一部のみ表示。カテゴリ全10件は列挙しない。 */
 const skillCategories = ["Sales", "Recruiting", "Matching", "KPI Analysis", "Knowledge"];
 
+/** 実在するSkillのみ。営業・採用・分析の幅が分かる範囲に絞り、一覧化はしない。 */
+const skillExamples = [
+  "提案書作成",
+  "BP営業",
+  "案件・人材マッチング",
+  "採用スクリーニング",
+  "KPI分析",
+];
+
 export function AiWorkflow() {
   return (
     <Section
@@ -126,8 +135,25 @@ export function AiWorkflow() {
               現場の知識を、再利用できるSkillへ。
             </h3>
             <p className="mt-4 text-sm leading-relaxed text-inverse-fg/70 sm:text-base">
-              SES営業・採用の実務で繰り返し発生する業務を、AIが再利用できる形に整理しています。提案書作成、BP営業、案件・人材マッチング、採用スクリーニング、KPI分析など、現場で培った判断基準や手順を業務Skillとして体系化しています。
+              SES営業・採用の実務で繰り返し発生する業務を、AIが再利用できる形に整理しています。現場で培った判断基準や手順を、業務Skillとして体系化しています。
             </p>
+
+            <div className="mt-5">
+              <p className="font-mono text-xs uppercase tracking-wide text-inverse-fg/50">
+                Skill Examples
+              </p>
+              <ul className="mt-2.5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-inverse-fg/80">
+                {skillExamples.map((example) => (
+                  <li key={example} className="flex gap-2">
+                    <span
+                      aria-hidden
+                      className="mt-2 size-1 shrink-0 rounded-full bg-inverse-fg/30"
+                    />
+                    {example}
+                  </li>
+                ))}
+              </ul>
+            </div>
             <p className="mt-4 text-sm leading-relaxed text-inverse-fg/60">
               特定のAIサービスに依存するのではなく、業務プロセスや判断基準そのものを再利用できる形で残すことを重視しています。Claude Code Skillsに加え、業務用途に合わせたGPTs・Gemの設計・作成にも取り組んでいます。
             </p>
