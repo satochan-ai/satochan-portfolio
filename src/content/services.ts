@@ -131,6 +131,8 @@ export type UseCaseCategory = {
   no: string;
   title: string;
   cases: string[];
+  /** Homeの代表Use Caseとして cases のどのindexを見せるか（未指定ならHomeには出さない）。 */
+  homeCaseIndex?: number;
 };
 
 export const useCaseCategories: UseCaseCategory[] = [
@@ -142,6 +144,7 @@ export const useCaseCategories: UseCaseCategory[] = [
       "案件・人材情報を比較しやすくする",
       "BP企業との接点と次のアクションを管理する",
     ],
+    homeCaseIndex: 2,
   },
   {
     no: "02",
@@ -151,6 +154,7 @@ export const useCaseCategories: UseCaseCategory[] = [
       "面談記録と選考・NG理由を整理する",
       "採用フローの進捗を見えるようにする",
     ],
+    homeCaseIndex: 1,
   },
   {
     no: "03",
@@ -160,6 +164,7 @@ export const useCaseCategories: UseCaseCategory[] = [
       "業務手順や判断基準をSkillとして整理する",
       "提案書やメールの下書きを支援する",
     ],
+    homeCaseIndex: 1,
   },
   {
     no: "04",
@@ -169,6 +174,7 @@ export const useCaseCategories: UseCaseCategory[] = [
       "同じ入力・確認・転記を減らす",
       "PDF・帳票やDashboardを小さく試す",
     ],
+    homeCaseIndex: 0,
   },
 ];
 

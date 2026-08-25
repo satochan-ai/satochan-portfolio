@@ -9,6 +9,7 @@ import { Proof } from "@/components/sections/Proof";
 import { SelectedWorks } from "@/components/sections/SelectedWorks";
 import { Speaking } from "@/components/sections/Speaking";
 import { Technology } from "@/components/sections/Technology";
+import { UseCases } from "@/components/sections/UseCases";
 import { WhatIDo } from "@/components/sections/WhatIDo";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <Hero />
       <Proof />
       <Consultation />
+      <UseCases />
       <SelectedWorks />
       <Philosophy />
       <WhatIDo />
