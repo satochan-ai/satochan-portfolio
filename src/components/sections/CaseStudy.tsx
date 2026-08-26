@@ -134,12 +134,6 @@ function CaseStudyArticle({
               ))}
             </ul>
 
-            <h4 className="mt-8 text-eyebrow font-medium uppercase text-muted">
-              Status
-            </h4>
-            <p className="mt-3 text-sm font-medium text-fg">
-              {study.statusLabel}
-            </p>
           </div>
         </aside>
       </div>

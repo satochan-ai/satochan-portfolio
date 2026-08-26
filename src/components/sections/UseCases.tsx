@@ -28,7 +28,7 @@ export function UseCases() {
             こんな業務から、改善できます。
           </h2>
           <p className="mt-3 text-base leading-relaxed text-muted sm:text-lg">
-            ツールありきではなく、手間や属人化が起きている業務から整理します。ここでは代表的な4つを紹介します。
+            ツールありきではなく、手間や属人化が起きている業務から整理します。
           </p>
         </div>
 
