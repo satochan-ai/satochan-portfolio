@@ -105,24 +105,28 @@ function WorkCard({ work }: { work: Work }) {
           {work.summary}
         </p>
 
-        <dl className="mt-4 border-t border-line pt-3.5 text-sm">
-          <dt className="text-xs font-medium uppercase tracking-wide text-muted">
-            Used for
-          </dt>
-          <dd className="mt-1 leading-relaxed text-fg">{work.usedFor}</dd>
-        </dl>
+        {work.usedFor && (
+          <dl className="mt-4 border-t border-line pt-3.5 text-sm">
+            <dt className="text-xs font-medium uppercase tracking-wide text-muted">
+              Used for
+            </dt>
+            <dd className="mt-1 leading-relaxed text-fg">{work.usedFor}</dd>
+          </dl>
+        )}
 
-        <ul className="mt-3.5 space-y-1.5 text-sm text-fg">
-          {work.highlights.map((item) => (
-            <li key={item} className="flex gap-2.5">
-              <span
-                aria-hidden
-                className="mt-2 size-1 shrink-0 rounded-full bg-line"
-              />
-              <span className="text-muted">{item}</span>
-            </li>
-          ))}
-        </ul>
+        {work.highlights.length > 0 && (
+          <ul className="mt-3.5 space-y-1.5 text-sm text-fg">
+            {work.highlights.map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span
+                  aria-hidden
+                  className="mt-2 size-1 shrink-0 rounded-full bg-line"
+                />
+                <span className="text-muted">{item}</span>
+              </li>
+            ))}
+          </ul>
+        )}
 
         {work.miniCase && <MiniCase data={work.miniCase} compact />}
 
@@ -219,24 +223,28 @@ function FeaturedWorkCard({ work }: { work: Work }) {
             {work.summary}
           </p>
 
-          <dl className="mt-5 border-t border-line pt-4 text-sm lg:mt-6 lg:pt-5">
-            <dt className="text-xs font-medium uppercase tracking-wide text-muted">
-              Used for
-            </dt>
-            <dd className="mt-1 leading-relaxed text-fg">{work.usedFor}</dd>
-          </dl>
+          {work.usedFor && (
+            <dl className="mt-5 border-t border-line pt-4 text-sm lg:mt-6 lg:pt-5">
+              <dt className="text-xs font-medium uppercase tracking-wide text-muted">
+                Used for
+              </dt>
+              <dd className="mt-1 leading-relaxed text-fg">{work.usedFor}</dd>
+            </dl>
+          )}
 
-          <ul className="mt-4 space-y-1.5 text-sm text-fg lg:mt-5">
-            {work.highlights.map((item) => (
-              <li key={item} className="flex gap-2.5">
-                <span
-                  aria-hidden
-                  className="mt-2 size-1 shrink-0 rounded-full bg-line"
-                />
-                <span className="text-muted">{item}</span>
-              </li>
-            ))}
-          </ul>
+          {work.highlights.length > 0 && (
+            <ul className="mt-4 space-y-1.5 text-sm text-fg lg:mt-5">
+              {work.highlights.map((item) => (
+                <li key={item} className="flex gap-2.5">
+                  <span
+                    aria-hidden
+                    className="mt-2 size-1 shrink-0 rounded-full bg-line"
+                  />
+                  <span className="text-muted">{item}</span>
+                </li>
+              ))}
+            </ul>
+          )}
 
           {work.miniCase && <MiniCase data={work.miniCase} />}
 

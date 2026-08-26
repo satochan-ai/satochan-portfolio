@@ -65,7 +65,7 @@ export function Proof() {
             立ち上げと仕組み化まで。
           </h2>
           <p className="mt-4 max-w-prose text-sm leading-relaxed text-muted sm:text-base">
-            新規開拓の立ち上げから打ち合わせ創出、若手教育、KPI管理まで。個人の成果だけでなく、営業が継続して動く状態をつくってきました。
+            新規開拓の立ち上げから、打ち合わせ創出、若手教育、KPI管理まで、営業が継続して動く状態をつくってきました。
           </p>
 
           <dl className="mt-8 grid grid-cols-1 gap-y-8 sm:grid-cols-3 sm:gap-x-8 sm:gap-y-0">
@@ -82,9 +82,6 @@ export function Proof() {
             ))}
           </dl>
 
-          <p className="mt-8 max-w-prose text-sm leading-relaxed text-muted">
-            数字を追うだけでなく、状況を共通認識にし、次の行動を判断できる運用へ整えてきました。
-          </p>
         </div>
       </div>
     </section>

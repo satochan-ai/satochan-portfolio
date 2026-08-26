@@ -69,9 +69,7 @@ const skillCategories = ["Sales", "Recruiting", "Matching", "KPI Analysis", "Kno
 
 /** 実在するSkillのみ。営業・採用・分析の幅が分かる範囲に絞り、一覧化はしない。 */
 const skillExamples = [
-  "提案書作成",
   "BP営業",
-  "案件・人材マッチング",
   "採用スクリーニング",
   "KPI分析",
 ];
@@ -116,17 +114,9 @@ export function AiWorkflow() {
         ))}
       </ol>
 
-      <p className="mt-8 max-w-prose text-sm leading-relaxed text-inverse-fg/60">
-        AIはすべてを任せる相手ではなく、それぞれの工程を加速させる実務パートナーとして使っています。
-      </p>
-
       <div className="mt-16 border-t border-inverse-fg/15 pt-10 sm:mt-20 sm:pt-12">
         <p className="font-mono text-eyebrow font-medium uppercase text-accent-on-dark">
           {"// Business Skills"}
-        </p>
-
-        <p className="mt-3 font-mono text-xs tracking-wide text-inverse-fg/65">
-          skills.registry · 40 entries · 10 categories
         </p>
 
         <div className="mt-6 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-start lg:gap-16">
@@ -155,7 +145,7 @@ export function AiWorkflow() {
               </ul>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-inverse-fg/60">
-              特定のAIサービスに依存するのではなく、業務プロセスや判断基準そのものを再利用できる形で残すことを重視しています。Claude Code Skillsに加え、業務用途に合わせたGPTs・Gemの設計・作成にも取り組んでいます。
+              特定のAIサービスではなく、業務プロセスと判断基準を再利用できる形で残すことを重視しています。
             </p>
 
             <ul className="mt-6 flex flex-wrap gap-2">

@@ -16,10 +16,8 @@ const talks: Talk[] = [
     category: "SES Sales Training",
     audience: "社外向け / SES営業経験 約1年",
     topics: [
-      "SESの基礎・契約形態",
       "新規開拓・営業フロー",
       "案件・人材マッチング",
-      "案件情報の読み解き・信頼関係",
     ],
     upcoming: false,
   },
@@ -29,10 +27,8 @@ const talks: Talk[] = [
     category: "Generative AI Training",
     audience: "生成AI初心者向けミニ講座",
     topics: [
-      "生成AIの基本",
       "商談メモの整理",
       "営業業務へのAI活用",
-      "AIを「相談相手」だけでなく「実務担当」として使う考え方",
     ],
     upcoming: false,
   },
@@ -58,7 +54,7 @@ export function Speaking() {
           人に伝えられること。
         </>
       }
-      lead="AI活用に限らず、実務で培った知識は、自分が使えて終わりではありません。聞いた人が翌日から業務で使える状態にするところまでを対象にしています。"
+      lead="実務で培った知識を、聞いた人が翌日から使える形へ整理して共有しています。"
     >
       <ul className="border-t border-line">
         {talks.map((talk) => (
