@@ -1,116 +1,116 @@
 <!-- BEGIN:nextjs-agent-rules -->
 
-# This is NOT the Next.js you know
+# これは、あなたが知っているNext.jsとは異なる
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+このversionにはbreaking changeがあり、API、規約、ファイル構成が学習データと異なる場合がある。コードを書く前に、`node_modules/next/dist/docs/`の関連guideを読むこと（このファイルのdirectoryから解決する。monorepoでは`next` packageがrepository rootから見えない場合がある）。deprecation noticeに従うこと。
 
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+このblockは`next dev`が書き込み、再追加する。`node_modules/next/dist/server/lib/generate-agent-files.js`で確認すること。diffから削除しても未commit変更が再作成されるだけなので、作業とともにcommitするとtreeをcleanに保てる。
 
 <!-- END:nextjs-agent-rules -->
 
-## Project Purpose and Positioning
+## Projectの目的とpositioning
 
-This portfolio is not merely a software-engineering showcase. Its core positioning is the combination of SES sales and recruiting experience, practical AI use, business improvement, and implementation when needed.
+このportfolioは単なるsoftware engineeringの実績紹介ではない。中心となるpositioningは、SES営業・採用の経験、実務でのAI活用、業務改善、必要に応じた実装の組み合わせである。
 
-Keep domain knowledge, problem definition, workflow improvement, implementation, and knowledge sharing connected. Do not rewrite the site toward generic labels such as “AI Engineer” or “Full-Stack Developer” unless that positioning is explicitly requested.
+domain knowledge、課題定義、workflow改善、実装、知識共有をつなげて見せること。明示的に依頼されない限り、「AI Engineer」や「Full-Stack Developer」のような一般的な肩書きへsiteを書き換えないこと。
 
-## Content Sources of Truth
+## Contentのsource of truth
 
-Treat these files as the primary sources for public content:
+公開contentの主要なsourceとして、次のファイルを扱うこと。
 
 - `src/content/site.ts`
 - `src/content/works.ts`
 - `src/content/services.ts`
 - `src/content/caseStudies.ts`
 
-Do not create unnecessary duplicate hard-coded facts in presentation components. When changing numbers, statuses, links, descriptions, or claims, check the content source and every affected section together. README files and internal notes are references, not automatically the sole source of truth.
+presentation componentに不要な重複hard-coded factを作らないこと。数値、status、link、説明、主張を変更する場合は、content sourceと影響を受けるすべてのsectionをまとめて確認すること。READMEとinternal noteはreferenceであり、自動的に唯一のsource of truthとはしないこと。
 
-## Audience and Messaging
+## Audienceとmessage
 
-The site addresses business owners and company representatives seeking AI or workflow improvement, SES sales or recruiting leaders, people requesting Web or business-tool work, hiring or work contacts, and AI training or speaking organizers.
+このsiteの対象は、AIまたはworkflow改善を求める経営者・企業担当者、SES営業・採用責任者、Webまたは業務toolの依頼者、採用・業務の相談者、AI研修・登壇の主催者である。
 
-Explain value through the business problem, how AI or implementation is used, and what changed. Do not let tool names or technical terms replace the practical outcome.
+業務課題、AIまたは実装の使い方、何が変わったかを通じて価値を説明すること。tool名やtechnical termで実務上の成果を置き換えないこと。
 
-## Hero and Brand Positioning
+## Heroとbrand positioning
 
-The Hero is a positioning-critical area. Preserve the relationship between field experience, AI, business improvement, and implementation. Shortening copy must not erase the value of understanding real work and applying improvements in practice.
+Heroはpositioning上重要な領域である。現場経験、AI、業務改善、実装の関係を維持すること。copyを短縮する場合も、実際の業務を理解し、改善を実践する価値を消さないこと。
 
-## Business Skills and AI Tools
+## Business skillとAI tool
 
-Present AI tools and technologies with their purpose, target work, workflow, role, or demonstrated outcome where possible. Do not treat a tool name as an achievement by itself.
+可能な範囲で、AI toolやtechnologyを目的、対象業務、workflow、役割、実証された成果とともに示すこと。tool名だけを実績として扱わないこと。
 
-Technology and service names change over time. Add only tools that are actually used or explainable from the implementation, and do not make the portfolio dependent on a temporary product or model name.
+technologyやserviceの名称は時間とともに変わる。実際に使用しているか、実装から説明できるtoolだけを追加し、一時的なproduct名やmodel名にportfolioを依存させないこと。
 
-## Works and Evidence
+## Worksと根拠
 
-Manage works as factual evidence. Verify project status, production status, technology, role, business value, quantitative results, live URLs, repository links, and public availability before changing them.
+Worksは事実に基づく根拠として管理すること。変更前にproject status、production status、technology、role、business value、quantitative result、live URL、repository link、public availabilityを確認すること。
 
-Preserve distinctions such as Prototype, Demo, Live / Production, Speaking, and Personal. Do not present unpublished, in-development, or planned work as completed or production-ready. Prefer a clear Problem → Approach → Solution → Impact explanation for new work.
+Prototype、Demo、Live / Production、Speaking、Personalなどの区別を維持すること。未公開、開発中、計画中のworkを完了済みまたはproduction-readyとして示さないこと。新しいworkでは、Problem → Approach → Solution → Impactの明確な説明を優先すること。
 
-## Factuality and Publication Status
+## 事実性と公開status
 
-Do not guess or embellish experience years, project counts, skill counts, speaking history, qualifications, revenue, time savings, user counts, conversion results, or other metrics. Preserve notes explaining estimates and distinguish planned events from completed ones.
+経験年数、project数、skill数、登壇歴、資格、売上、時間削減、user数、conversion結果、その他のmetricを推測または誇張しないこと。見積もりを説明するnoteを保持し、予定されたeventと完了したeventを区別すること。
 
-Do not add a claim merely because it sounds plausible or is common for a similar project. “The AI suggested it” is not evidence; verify public claims against the implementation, source content, or an appropriate primary record.
+もっともらしい、または似たprojectでは一般的という理由だけでclaimを追加しないこと。「AIが提案した」は根拠ではない。公開する主張は、実装、source content、または適切なprimary recordに照らして確認すること。
 
-## Image and Confidential Information Safety
+## Imageと機密情報の安全
 
-Before adding or replacing images, verify that they are approved for publication and contain no customer names, unapproved company names, personal names, email addresses, phone numbers, internal sales data, contract information, or confidential UI data.
+画像を追加・置換する前に、公開承認済みであり、顧客名、未承認の会社名、個人名、email address、phone number、internal sales data、contract information、confidential UI dataを含まないことを確認すること。
 
-Do not reverse masking or anonymization, restore information from an original image, or treat a sanitized screenshot as permission to publish the underlying data.
+maskingやanonymizationを元に戻したり、original imageから情報を復元したり、sanitized screenshotを元データ公開の許可とみなしたりしないこと。
 
-## Contact and External Links
+## Contactと外部link
 
-Use only contact channels and external links explicitly confirmed in repository content. Do not infer or recreate email, X, LinkedIn, or other personal contact details from memory or older context. For a new link, verify that it exists, is public, and belongs to the intended project.
+repository contentで明示的に確認できるcontact channelとexternal linkだけを使うこと。記憶や古いcontextからemail、X、LinkedIn、その他の個人contact情報を推測・再作成しないこと。新しいlinkは、存在し、公開され、意図したprojectに属することを確認すること。
 
-## Contact Form Safety
+## Contact formの安全
 
-The contact form uses a Next.js Route Handler and an external form service. Preserve server-side validation, payload-size limits, the honeypot field, generic error responses, timeout/error handling, and server-only handling of the form service identifier.
+contact formはNext.js Route Handlerとexternal form serviceを使う。server-side validation、payload-size limit、honeypot field、generic error response、timeout/error handling、form service identifierのserver-only handlingを維持すること。
 
-Do not expose the form service identifier or other server configuration in client bundles, public content, logs, or examples.
+form service identifierやその他のserver configurationをclient bundle、public content、log、exampleに公開しないこと。
 
-## SEO and Metadata
+## SEOとmetadata
 
-Do not exaggerate a title, role, experience, or result for SEO. When changing metadata or routes, check title, description, canonical, Open Graph, Twitter card, sitemap, and robots behavior together.
+SEOのためにtitle、role、experience、resultを誇張しないこと。metadataやrouteを変更する場合は、title、description、canonical、Open Graph、Twitter card、sitemap、robots behaviorをまとめて確認すること。
 
-Preserve the null guard in `getSiteUrl()`. Do not generate fictional canonical, sitemap, or social URLs when the site URL is unresolved, and do not hard-code environment-specific production values in this file.
+`getSiteUrl()`のnull guardを維持すること。site URLを解決できない場合に架空のcanonical、sitemap、social URLを生成せず、このファイルにenvironment-specificなproduction valueをhard-codeしないこと。
 
 ## Responsive UX
 
-UI changes are incomplete until both desktop and mobile behavior have been considered. Check mobile navigation, Hero copy, works cards, long text, CTA layout, images, forms, and external links. Do not rely on a desktop-only visual review.
+UI変更はdesktopとmobileの両方を考慮するまで未完了である。mobile navigation、Hero copy、works card、long text、CTA layout、image、form、external linkを確認すること。desktopだけのvisual reviewに依存しないこと。
 
-## Dependency and Architecture Boundary
+## Dependencyとarchitectureの境界
 
-The current site intentionally has a lightweight architecture without a database, CMS, authentication system, or animation framework. Do not add dependencies or new infrastructure for a cosmetic improvement or small content change. Treat any such addition as an architecture decision requiring a clear reason.
+現行siteは、database、CMS、authentication system、animation frameworkを持たない軽量なarchitectureとして意図的に構成されている。見た目の改善や小さなcontent変更のためにdependencyやnew infrastructureを追加しないこと。その追加は、明確な理由を要するarchitecture decisionとして扱うこと。
 
-## Validation and Verification
+## validationと検証
 
-Choose checks according to the change:
+変更内容に応じて確認を選ぶこと。
 
-- UI or TypeScript: `npm run lint`, `npm run typecheck`, and `npm run build` as appropriate
-- content or works: verify facts, status, links, evidence, and wording
-- image: inspect for confidential information and masking integrity
-- metadata or route: verify canonical, OGP, sitemap, and robots behavior
-- contact: verify validation, honeypot, server handling, external submission, and error behavior
-- any diff: `git diff --check`
+- UIまたはTypeScript: 必要に応じて`npm run lint`、`npm run typecheck`、`npm run build`
+- contentまたはworks: fact、status、link、evidence、wordingを確認
+- image: confidential informationとmasking integrityを確認
+- metadataまたはroute: canonical、OGP、sitemap、robots behaviorを確認
+- contact: validation、honeypot、server handling、external submission、error behaviorを確認
+- すべてのdiff: `git diff --check`
 
-Where practical, use representative desktop and mobile viewports and verify external links. Never report a check that was not actually run.
+可能な場合は、代表的なdesktopおよびmobile viewportを使い、external linkを確認すること。実際に実行していない確認を報告しないこと。
 
-## Deployment and Environment Safety
+## Deploymentとenvironmentの安全
 
-Vercel is part of the deployment model, but repository contents alone do not establish the production branch, automatic deployment rules, or current external settings. Verify those facts when they matter.
+Vercelはdeployment modelの一部だが、repository内容だけではproduction branch、automatic deployment rule、現在のexternal settingは確定しない。重要な場合は事実を確認すること。
 
-Do not expand a local implementation or content task into deployment or external configuration changes. Treat a push as potentially production-relevant when the repository's deployment integration indicates that risk.
+local implementationやcontent taskをdeploymentまたはexternal configuration変更へ拡張しないこと。repositoryのdeployment integrationがリスクを示す場合、pushはproductionに関係する可能性があるものとして扱うこと。
 
-## Completion Checks
+## 完了時の確認
 
-For portfolio work, report the relevant impact on:
+portfolio作業では、次への関連する影響を報告すること。
 
-- positioning and audience
-- content-source consistency
-- factual accuracy and publication status
-- confidential information and image masking
-- external links and contact form
-- SEO metadata and indexing
+- positioningとaudience
+- content sourceの整合性
+- factual accuracyとpublication status
+- confidential informationとimage masking
+- external linkとcontact form
+- SEO metadataとindexing
 - mobile UX
 - deployment behavior
