@@ -177,14 +177,13 @@ function WorkCard({ work }: { work: Work }) {
 }
 
 /**
- * Featured Work（代表作）。1024px以上でのみ画像・本文を並列2カラムへ広げ、
- * それ未満（Mobile / Tablet）ではラベルだけで差を出す通常サイズのカードとして表示する。
+ * Featured Work（代表作）。Featuredラベルで差を出しつつ、他のWorkと同じグリッドの1枠に置く。
  */
 function FeaturedWorkCard({ work }: { work: Work }) {
   return (
-    <li className="lg:col-span-2">
-      <article className="work-card flex h-full flex-col overflow-hidden rounded-card border border-line bg-bg transition-[border-color,box-shadow] duration-200 hover:border-fg/40 hover:shadow-[0_6px_16px_rgb(14_16_19/0.06)] lg:grid lg:grid-cols-2">
-        <div className="relative aspect-16/10 w-full overflow-hidden border-b border-line bg-surface lg:self-start lg:border-b-0 lg:border-r">
+    <li>
+      <article className="work-card flex h-full flex-col overflow-hidden rounded-card border border-line bg-bg transition-[border-color,box-shadow] duration-200 hover:border-fg/40 hover:shadow-[0_6px_16px_rgb(14_16_19/0.06)]">
+        <div className="relative aspect-16/10 w-full overflow-hidden border-b border-line bg-surface">
           {work.image ? (
             <Image
               src={work.image}
