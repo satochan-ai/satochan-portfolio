@@ -96,9 +96,10 @@ export const services: Service[] = [
     examples: ["採用フロー整理", "面談 / 選考情報整理", "判断基準の標準化", "採用状況の可視化"],
     relatedWorks: [
       {
-        name: "MatchHire",
-        reason: "採用の停滞とNG理由を可視化した公開デモ。",
-        href: "/#matchhire",
+        name: "Recruitment Insight",
+        reason:
+          "候補者・求人・企業・選考情報を横断し、採用ファネルや離脱理由を可視化した公開デモ。",
+        href: "/#recruitment-insight",
       },
     ],
   },

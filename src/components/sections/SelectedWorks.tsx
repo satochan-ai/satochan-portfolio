@@ -90,7 +90,10 @@ function WorkCard({ work }: { work: Work }) {
   const cardStack = work.cardStack ?? work.stack.slice(0, 4);
 
   return (
-    <li className="work-card flex h-full flex-col overflow-hidden rounded-card border border-line bg-bg transition-[border-color,box-shadow] duration-200 hover:border-fg/40 hover:shadow-[0_6px_16px_rgb(14_16_19/0.06)]">
+    <li
+      id={work.slug === "recruitment-insight" ? "recruitment-insight" : undefined}
+      className="work-card flex h-full flex-col overflow-hidden rounded-card border border-line bg-bg transition-[border-color,box-shadow] duration-200 hover:border-fg/40 hover:shadow-[0_6px_16px_rgb(14_16_19/0.06)]"
+    >
       <WorkThumb work={work} />
 
       <div className="flex flex-1 flex-col p-5 sm:p-6">
@@ -150,7 +153,7 @@ function WorkCard({ work }: { work: Work }) {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
                 >
-                  サイトを見る
+                  {work.hrefLabel ?? "サイトを見る"}
                   <span className="sr-only">（{work.title}・別タブで開く）</span>
                   <span aria-hidden className="work-card-arrow">&#8599;</span>
                 </a>
@@ -316,7 +319,6 @@ function MoreProjects() {
         {supportingProjects.map((project, index) => (
           <li
             key={project.slug}
-            id={project.slug === "matchhire" ? "matchhire" : undefined}
             className="scroll-mt-24 border-b border-line py-5"
           >
             <div className="grid gap-x-6 gap-y-2 lg:grid-cols-[2rem_10.5rem_1fr_auto] lg:items-baseline lg:gap-y-0">
