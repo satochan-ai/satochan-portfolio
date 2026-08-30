@@ -109,8 +109,9 @@ export const works: Work[] = [
     highlights: [],
     // 実装を確認できるリポジトリがこの作業環境にないため、推測で技術名は載せない。
     stack: [],
-    image: null,
-    imageAlt: null,
+    image: "/images/works/recruitment-insight-dashboard.webp",
+    imageAlt:
+      "候補者・選考ファネル・要対応を可視化したRecruitment Insightのダッシュボード",
     href: "https://recruitment-insight-demo.vercel.app/",
     hrefLabel: "Live Demo",
     miniCase: {
