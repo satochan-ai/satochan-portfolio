@@ -26,6 +26,8 @@ export type Work = {
   /** 詳細な Case Study がある場合、そのアンカー */
   caseStudyHref?: string;
   href?: string;
+  /** 公開リンクの表示名。未指定時は既定の文言を使う。 */
+  hrefLabel?: string;
   /** 代表的な事例のみ設定する要約。未実測の成果数値は含めない。 */
   miniCase?: MiniCase;
 };
@@ -94,6 +96,30 @@ export const works: Work[] = [
       approach:
         "KPI・NG理由・企業との接点・関係値・次アクションを一つのDashboardへ整理。",
       changedState: "注力先と次に動くべき相手を、情報から判断できる状態へ。",
+    },
+  },
+  {
+    slug: "recruitment-insight",
+    title: "Recruitment Insight",
+    category: "Recruiting Operations",
+    statusLabel: "Demo / Recruiting Operations",
+    statusKind: "development",
+    summary:
+      "候補者・求人・企業・選考情報を横断し、採用ファネル、停滞、離脱理由、次回アクションを可視化する採用業務デモ。",
+    highlights: [],
+    // 実装を確認できるリポジトリがこの作業環境にないため、推測で技術名は載せない。
+    stack: [],
+    image: null,
+    imageAlt: null,
+    href: "https://recruitment-insight-demo.vercel.app/",
+    hrefLabel: "Live Demo",
+    miniCase: {
+      problem:
+        "候補者・求人・面接評価・選考状況が分散すると、停滞箇所や離脱理由を把握しにくい。",
+      approach:
+        "候補者・求人・企業・選考履歴をつなぎ、ファネル・停滞・離脱理由・次回アクションを横断して確認できる構成に整理。",
+      changedState:
+        "採用状況を候補者単位だけでなく、企業・求人・選考ファネルの視点から確認できるDemoとして可視化。",
     },
   },
   {
@@ -184,21 +210,5 @@ export const supportingProjects: SupportingProject[] = [
     description:
       "候補日時と移動条件を確認・承認する日程調整プロトタイプ。",
     statusLabel: "Prototype",
-  },
-  {
-    slug: "matchhire",
-    title: "MatchHire",
-    category: "Recruiting Operations",
-    description:
-      "候補者・求人・応募・面接評価を横断し、採用ファネルを可視化する公開デモ。",
-    statusLabel: "Demo",
-    demoHref: "https://satochan-ai.github.io/matchhire-demo/",
-    repoHref: "https://github.com/satochan-ai/matchhire-demo",
-    miniCase: {
-      problem: "選考状況や評価理由が分散すると、採用ファネルの停滞が見えにくい。",
-      approach: "候補者・求人・応募・面接評価を横断して確認できるDemoを設計。",
-      changedState:
-        "採用ファネルの停滞とNG理由を確認できる形を、公開Demoとして試作。",
-    },
   },
 ];
