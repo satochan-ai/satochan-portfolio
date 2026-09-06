@@ -10,6 +10,9 @@ export function Proof() {
       className="border-y border-line bg-surface py-14 sm:py-16"
     >
       <div className="mx-auto w-full max-w-page px-5 sm:px-8">
+        <p className="mb-8 max-w-prose text-sm leading-relaxed text-muted">
+          営業・採用の現場経験を、業務の詰まり・例外・判断基準を理解する土台にしています。
+        </p>
         <dl className="grid grid-cols-1 gap-y-8 sm:grid-cols-3 sm:gap-x-8 sm:gap-y-0">
           {proofPoints.map((point, index) => (
             <div key={point.label} className="min-w-0">

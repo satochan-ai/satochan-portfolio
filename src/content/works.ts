@@ -74,28 +74,9 @@ export const works: Work[] = [
       problem:
         "申込受付・定員管理・受付連絡・キャンセル対応が別々に残ると、告知サイトだけでは運営を支えられない。",
       approach:
-        "申込から当日運用までを一つのフローとして設計し、Next.js、GAS、Google Spreadsheetで役割を分けた。",
+        "告知だけでなく、申込から当日運用までを一つの業務フローとして設計。運営側が使い慣れた表計算でデータを扱える構成を選んだ。",
       changedState:
         "申込受付、定員管理、受付連絡、キャンセル後の残席復元を一つの運用で進められ、開催ごとに使用・改善できる状態。",
-    },
-  },
-  {
-    slug: "matchpilot",
-    title: "MatchPilot",
-    category: "Sales Operations / CRM",
-    statusLabel: "Prototype / In Development",
-    statusKind: "development",
-    summary:
-      "SES営業における企業・担当者との接点、打ち合わせ、関係値、次回アクションを整理・可視化し、営業活動を属人的な記憶だけに頼らない状態へ変えるための営業支援ツール。",
-    highlights: [],
-    stack: ["JavaScript", "HTML", "CSS", "CSV"],
-    image: "/images/works/matchpilot.png",
-    imageAlt: "MatchPilotの今月KPI画面。人材紹介数・案件提案数・打ち合わせ数の実績と達成率が並んでいる。",
-    miniCase: {
-      problem: "営業状況が感覚や記憶に依存し、停滞理由が見えにくい。",
-      approach:
-        "KPI・NG理由・企業との接点・関係値・次アクションを一つのDashboardへ整理。",
-      changedState: "注力先と次に動くべき相手を、情報から判断できる状態へ。",
     },
   },
   {
@@ -116,11 +97,30 @@ export const works: Work[] = [
     hrefLabel: "Live Demo",
     miniCase: {
       problem:
-        "候補者・求人・面接評価・選考状況が分散すると、停滞箇所や離脱理由を把握しにくい。",
+        "候補者・求人・選考情報が分散すると、停滞と次の対応が見えにくい。",
       approach:
-        "候補者・求人・企業・選考履歴をつなぎ、ファネル・停滞・離脱理由・次回アクションを横断して確認できる構成に整理。",
+        "単なる人数集計ではなく、求人・企業・選考ファネル・次回アクションをつなぎ、採用情報を横断して確認できる構成にした。",
       changedState:
-        "採用状況を候補者単位だけでなく、企業・求人・選考ファネルの視点から確認できるDemoとして可視化。",
+        "採用情報を横断して確認できる公開Demoとして、改善案を画面で議論・検討できる状態にした。",
+    },
+  },
+  {
+    slug: "matchpilot",
+    title: "MatchPilot",
+    category: "Sales Operations / CRM",
+    statusLabel: "Prototype / In Development",
+    statusKind: "development",
+    summary:
+      "SES営業における企業・担当者との接点、打ち合わせ、関係値、次回アクションを整理・可視化する営業支援プロトタイプ。属人的な記憶に依存しない業務設計を検討するための試作です。",
+    highlights: [],
+    stack: ["JavaScript", "HTML", "CSS", "CSV"],
+    image: "/images/works/matchpilot.png",
+    imageAlt: "MatchPilotの今月KPI画面。人材紹介数・案件提案数・打ち合わせ数の実績と達成率が並んでいる。",
+    miniCase: {
+      problem: "営業状況が感覚や記憶に依存し、停滞理由が見えにくい。",
+      approach:
+        "KPI・NG理由・企業との接点・関係値・次アクションを一つのDashboardへ整理。",
+      changedState: "KPI・接点・次回アクションを、一つの画面で確認できる試作を作成。実際の営業判断への効果は今後検証する。",
     },
   },
   {

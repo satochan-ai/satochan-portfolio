@@ -81,7 +81,7 @@ export function AiWorkflow() {
       eyebrow="// AI Workflow"
       eyebrowVariant="code"
       title="AIを使うこと自体は、目的にしない。"
-      lead="ツールを並べるのではなく、業務の工程のどこに置くかを決めています。各工程の質と速度を上げるために配置し、判断と責任は人が持つ。この前提を崩さない使い方をしています。"
+      lead="業務改善の中で、情報整理・比較・下書き・傾向整理・試作支援にAIを使います。課題設定、判断、確認、合意形成と最終責任は人が担い、工程ごとに役割を切り分けています。"
       tone="dark"
     >
       <ol className="grid gap-px overflow-hidden rounded-card bg-inverse-fg/15 sm:grid-cols-2 lg:grid-cols-3">
@@ -122,10 +122,10 @@ export function AiWorkflow() {
         <div className="mt-6 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-start lg:gap-16">
           <div className="max-w-prose">
             <h3 className="text-h3 font-bold text-inverse-fg">
-              現場の知識を、再利用できるSkillへ。
+              実務の判断基準と手順を、再利用できる形へ。
             </h3>
             <p className="mt-4 text-sm leading-relaxed text-inverse-fg/70 sm:text-base">
-              SES営業・採用の実務で繰り返し発生する業務を、AIが再利用できる形に整理しています。現場で培った判断基準や手順を、業務Skillとして体系化しています。
+              SES営業・採用の実務で培った判断基準や手順を、AIでも人でも再利用できる形に整理しています。業務Skillとして、繰り返す業務の進め方を残しています。
             </p>
 
             <div className="mt-5">
@@ -172,7 +172,7 @@ export function AiWorkflow() {
                 <dt className="text-sm font-medium text-inverse-fg/70">
                   {stat.label}
                 </dt>
-                <dd className="mt-1 text-stat font-bold text-accent-on-dark">
+                <dd className="mt-1 text-xl font-bold text-accent-on-dark">
                   {stat.value}
                 </dd>
               </div>

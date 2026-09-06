@@ -15,18 +15,18 @@ import { WhatIDo } from "@/components/sections/WhatIDo";
 export default function Home() {
   return (
     <>
-      {/* 情報設計: 何者か → 証拠 → 実績 → なぜできるか */}
+      {/* 情報設計: 何者か → 経験と事例 → 改善の進め方 → 相談 */}
       <Hero />
       <Proof />
-      <Consultation />
-      <UseCases />
       <SelectedWorks />
-      <Philosophy />
-      <WhatIDo />
       <CaseStudy />
+      <WhatIDo />
+      <Philosophy />
       <AiWorkflow />
       <About />
       <Speaking />
+      <Consultation />
+      <UseCases />
       <Technology />
       <Contact />
     </>
