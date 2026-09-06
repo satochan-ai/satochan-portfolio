@@ -25,12 +25,14 @@ SES営業・採用の現場経験をもとに、AI活用・業務改善・Web / 
 | --- | --- |
 | Hero | メインメッセージ |
 | Proof | 実績サマリー（事実ベースの数値のみ） |
-| Selected Works | 実運用中のサイト・ツールなど5件 |
-| What I Do | 対応領域4つ |
+| Selected Works | 実運用・Demo・Prototype・登壇・個人運用の6件 |
 | Case Study | SES営業交流会 申込サイト / Obsidian × AI |
+| What I Do | 業務整理 / AI活用設計 / 仕組み化・試作 / 検証・改善 |
+| Philosophy | AIと人の判断・責任の役割分担 |
 | AI Workflow | Research → Think → Build → Verify → Operate → Improve |
 | About | 経歴と現在の取り組み |
 | Speaking | 登壇実績 |
+| Consultation / Use Case | 相談内容と代表的な業務例（詳細は `/services`） |
 | Technology | 使用している技術・サービス |
 | Contact | 相談可能な内容と進め方 |
 

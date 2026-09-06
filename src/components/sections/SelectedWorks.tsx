@@ -19,9 +19,9 @@ function MiniCase({
   compact?: boolean;
 }) {
   const items = [
-    { label: "PROBLEM", text: data.problem },
-    { label: "APPROACH", text: data.approach },
-    { label: "CHANGED STATE", text: data.changedState },
+    { label: "課題", text: data.problem },
+    { label: "判断・設計", text: data.approach },
+    { label: "現在確認できている状態", text: data.changedState },
   ];
 
   return (
@@ -398,8 +398,8 @@ export function SelectedWorks() {
       id="works"
       eyebrow="// Selected Works"
       eyebrowVariant="code"
-      title="実際に使われているものを、つくって、運用しています。"
-      lead="学習用のモックではなく、自分やまわりの業務で実際に動いているものを中心に掲載しています。技術構成は、実装で確認できたものだけを記載しています。"
+      title="営業・採用の課題を、運用と試作で具体化。"
+      lead="交流会の実運用、採用・営業の業務設計DemoやPrototypeを紹介します。対象業務と設計の判断、現在確認できている状態を、公開状況とともに記載しています。"
     >
       <ul className="grid gap-6 sm:grid-cols-2">
         <FeaturedWorkCard work={featuredWork} />

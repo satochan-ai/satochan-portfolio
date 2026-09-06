@@ -19,14 +19,14 @@ export function Hero() {
     <section id="hero" className="relative overflow-hidden bg-bg">
       <div className="relative mx-auto w-full max-w-page px-5 pb-20 pt-16 sm:px-8 sm:pb-28 sm:pt-24">
         <p className="text-eyebrow font-medium uppercase text-accent">
-          Sales &middot; Recruiting &middot; AI &middot; Build
+          {site.tagline}
         </p>
 
         <h1 className="mt-6 max-w-[19ch] whitespace-pre-line text-display font-bold [word-break:auto-phrase]">
           {site.hero.headline}
         </h1>
 
-        <p className="mt-8 max-w-prose text-base leading-loose text-muted sm:text-lg">
+        <p className="mt-8 max-w-prose text-base leading-loose text-muted sm:text-lg lg:max-w-[calc(100%-20rem)] xl:max-w-prose">
           {site.hero.sub}
         </p>
 
@@ -35,13 +35,13 @@ export function Hero() {
             href="#works"
             className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3.5 text-sm font-medium text-bg transition-colors hover:bg-accent-hover"
           >
-            実績を見る
+            業務改善の事例を見る
           </a>
           <a
             href="#about"
             className="inline-flex items-center justify-center rounded-full border border-line px-6 py-3.5 text-sm font-medium text-fg transition-colors hover:border-fg"
           >
-            プロフィールを見る
+            経歴を見る
           </a>
         </div>
 
