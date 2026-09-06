@@ -26,7 +26,7 @@ SES営業・採用の現場経験をもとに、AI活用・業務改善・Web / 
 | Hero | メインメッセージ |
 | Proof | 実績サマリー（事実ベースの数値のみ） |
 | Selected Works | 実運用・Demo・Prototype・登壇・個人運用の6件 |
-| Case Study | SES営業交流会 申込サイト / Obsidian × AI |
+| Case Study | SES営業交流会 / Recruitment Insight / MatchPilotの判断・証拠・限界・次の検証、既存のObsidian × AI事例 |
 | What I Do | 業務整理 / AI活用設計 / 仕組み化・試作 / 検証・改善 |
 | Philosophy | AIと人の判断・責任の役割分担 |
 | AI Workflow | Research → Think → Build → Verify → Operate → Improve |

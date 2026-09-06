@@ -21,6 +21,7 @@ export type CaseStudy = {
     metrics: CaseStudyMetric[];
   };
   stack: string[];
+  evidence?: { basis: string; limitation: string; nextMeasure: string };
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -62,6 +63,45 @@ export const caseStudies: CaseStudy[] = [
       "Google Spreadsheet",
       "Vercel",
     ],
+    evidence: {
+      basis: "公開サイトと申込・キャンセルの運用フロー。主催する交流会で開催ごとに使用し、運営中に見つかった不便を改善している。",
+      limitation: "自分が主催する交流会での運用事例。定量的な作業時間の削減値は未計測。",
+      nextMeasure: "開催ごとの申込・キャンセル件数、手動修正・問い合わせ・例外対応の件数と作業時間を記録する。",
+    },
+  },
+  {
+    id: "case-recruitment-insight",
+    title: "Recruitment Insight",
+    category: "Recruiting Operations",
+    statusLabel: "Demo / Recruiting Operations",
+    lead: "候補者・求人・企業・選考を横断して確認する業務設計を、公開Demoとして検討できる形にしています。",
+    problem: ["採用情報が分散すると、選考がどこで、なぜ止まり、次に誰が動くべきかを追いにくい。"],
+    approach: ["人数集計だけでは停滞の背景が見えないため、候補者・求人・企業・選考ファネルをつなぎ、離脱理由と次回アクションを横断して確認する構造を選んだ。"],
+    solution: ["採用ダッシュボード・KPI", "選考ファネル", "要対応・停滞の可視化", "離脱理由", "候補者・求人・企業の横断整理", "次回アクション"],
+    impact: { body: ["採用業務の改善案を、実際の画面を見ながら検討できる状態にした。"], metrics: [] },
+    stack: [],
+    evidence: {
+      basis: "公開Demoのダッシュボードと、候補者・求人・企業・選考情報の構造。画面でどの情報を横断して見るかを確認できる。",
+      limitation: "正式導入前のDemo。採用成果と工数削減は未検証で、AIによる自動合否を示す事例ではない。",
+      nextMeasure: "初見の採用担当者が停滞箇所と次の対応を特定できるか、迷う箇所や情報量を観察し、表計算での確認と比較する。",
+    },
+  },
+  {
+    id: "case-matchpilot",
+    title: "MatchPilot",
+    category: "Sales Operations / CRM",
+    statusLabel: "Prototype / In Development",
+    lead: "SES営業の管理項目を、触って検討できるPrototypeとして具体化した事例です。",
+    problem: ["営業状況が記憶・個人メモ・接点履歴に分散すると、フォロー対象や停滞理由を継続して追いにくい。"],
+    approach: ["KPIだけでは次の行動が決まらないため、企業との接点・関係値・NG理由・次回アクションを一緒に確認する設計を試作した。"],
+    solution: ["KPIダッシュボード", "企業との接点", "関係値", "NG理由", "次回アクション"],
+    impact: { body: ["KPI・接点・次回アクションを、一つの画面で確認する営業管理の仮説を試作した。"], metrics: [] },
+    stack: ["JavaScript", "HTML", "CSS", "CSV"],
+    evidence: {
+      basis: "Prototype画面と、SES営業で扱うKPI・接点・理由・次回アクションの管理項目。掲載画像では今月のKPI画面を示している。",
+      limitation: "営業成果、チーム定着、他者による継続利用は未検証。既存CRMの代替を証明したものではない。",
+      nextMeasure: "入力負担、更新の継続、フォロー漏れ、会議で他者が理解できるかを検証する。既存CRMや表計算、運用変更で足りるなら自作を増やさない。",
+    },
   },
   {
     id: "case-obsidian-ai",
