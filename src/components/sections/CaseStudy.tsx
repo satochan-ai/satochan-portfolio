@@ -84,15 +84,15 @@ function CaseStudyArticle({
 
       <div className="mt-10 grid gap-10 lg:grid-cols-[1.15fr_0.85fr]">
         <div className="space-y-8 border-l-2 border-line pl-6 sm:pl-8">
-          <Block index={1} label="Problem">
+          <Block index={1} label={study.evidence ? "課題" : "Problem"}>
             <Paragraphs items={study.problem} />
           </Block>
 
-          <Block index={2} label="Approach">
+          <Block index={2} label={study.evidence ? "判断" : "Approach"}>
             <Paragraphs items={study.approach} />
           </Block>
 
-          <Block index={3} label="Solution">
+          <Block index={3} label={study.evidence ? "実装" : "Solution"}>
             <ul className="grid gap-x-6 gap-y-2.5 text-sm text-fg sm:grid-cols-2">
               {study.solution.map((item) => (
                 <li key={item} className="flex gap-2.5">
@@ -106,7 +106,7 @@ function CaseStudyArticle({
             </ul>
           </Block>
 
-          <Block index={4} label="Impact" emphasis>
+          <Block index={4} label={study.evidence ? "現在確認できている変化" : "Impact"} emphasis>
             <Paragraphs items={study.impact.body} />
             {study.impact.metrics.length > 0 && (
               <dl className="mt-5 grid grid-cols-2 gap-6 border-t border-line pt-5 sm:grid-cols-3">
@@ -123,6 +123,21 @@ function CaseStudyArticle({
 
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <div className="rounded-card border border-line bg-surface p-7">
+            {study.evidence && (
+              <dl className="space-y-5 text-sm leading-relaxed">
+                {[
+                  ["検証方法 / Evidence", study.evidence.basis],
+                  ["限界", study.evidence.limitation],
+                  ["次に測ること（未計測）", study.evidence.nextMeasure],
+                ].map(([label, body]) => (
+                  <div key={label}>
+                    <dt className="font-medium text-fg">{label}</dt>
+                    <dd className="mt-2 text-muted">{body}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
+            {study.stack.length > 0 && <div className={study.evidence ? "mt-6 border-t border-line pt-5" : undefined}>
             <h4 className="text-eyebrow font-medium uppercase text-muted">
               Stack
             </h4>
@@ -133,7 +148,7 @@ function CaseStudyArticle({
                 </li>
               ))}
             </ul>
-
+            </div>}
           </div>
         </aside>
       </div>
@@ -147,7 +162,7 @@ export function CaseStudy() {
       id="case-study"
       eyebrow="Case Study"
       title="何を課題と捉え、どう設計し、実際にどう使われているか。"
-      lead="実際に作って運用しているものと、情報・業務の設計思想。この2つが分かる事例を選んでいます。"
+      lead="実運用・Demo・Prototypeを区別し、設計の判断と確認できている状態、検証の限界を紹介します。"
     >
       <div className="space-y-16">
         {caseStudies.map((study, index) => (
