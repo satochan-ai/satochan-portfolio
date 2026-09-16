@@ -34,11 +34,14 @@ const talks: Talk[] = [
   },
   {
     date: "2026.09.15",
-    title: "仕事で使える生成AI活用 実践編",
-    category: "Generative AI Training",
-    audience: "第2回",
-    topics: [],
-    upcoming: true,
+    title: "AI活用質問会",
+    category: "Generative AI Q&A",
+    audience: "第2回 / 参加者からの事前質問に回答",
+    topics: [
+      "生成AI・業務活用の質問対応",
+      "Geminiを使ったSESマッチング実演",
+    ],
+    upcoming: false,
   },
 ];
 
