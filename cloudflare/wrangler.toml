@@ -1,0 +1,11 @@
+# Cloudflare Pages（Backup）用 Wrangler 設定。
+# `wrangler pages download config satochan-portfolio` の取得内容をもとに作成。
+#
+# scripts/build-cloudflare.mjs が隔離 build root（.next/cloudflare-build/）へ
+# wrangler.toml としてコピーし、wrangler はそこで実行する。
+# pages_build_output_dir は隔離 build root 基準のため、リポジトリ直下には置かない
+# （直下の out/ を誤って deploy しないため）。
+# Secret（FORMSPREE_FORM_ID）は Cloudflare 側で管理し、ここには書かない。
+name = "satochan-portfolio"
+pages_build_output_dir = "out"
+compatibility_date = "2026-09-25"

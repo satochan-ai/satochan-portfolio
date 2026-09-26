@@ -14,11 +14,10 @@
 // --ref 未指定時は現在の作業ツリーから、指定時は git archive でそのコミットから
 // ソースを取り出す（本番手順はコミット基準で再現できるよう --ref を使う）。
 //
-// Cloudflare runtime の compatibility_date は CLOUDFLARE_COMPATIBILITY_DATE を正本とする。
-// wrangler の Pages 設定ファイルは name（Pages project 名）が必須で、compatibility_date だけの
-// 設定ファイルは `pages deploy` で無視されるため、現時点では設定ファイルを置かない。
+// Wrangler 設定（project 名・compatibility_date など）は cloudflare/wrangler.toml を正本とし、
+// 隔離 build root へ wrangler.toml としてコピーする。wrangler は必ず隔離 build root で実行する。
 // ローカル確認（隔離ディレクトリ内で実行）:
-//   npx wrangler@<WRANGLER_VERSION> pages dev out --compatibility-date=<CLOUDFLARE_COMPATIBILITY_DATE>
+//   npx wrangler@<WRANGLER_VERSION> pages dev
 
 import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
@@ -44,9 +43,10 @@ const SOURCE_ENTRIES = [
   "next.config.ts",
   "tsconfig.json",
   "postcss.config.mjs",
+  "cloudflare/wrangler.toml",
 ];
+const WRANGLER_CONFIG_SOURCE = "cloudflare/wrangler.toml";
 const EXCLUDED_FROM_EXPORT = "src/app/api/contact";
-const CLOUDFLARE_COMPATIBILITY_DATE = "2026-09-25";
 const WRANGLER_VERSION = process.env.WRANGLER_VERSION ?? "4.141.0";
 if (!/^\d+\.\d+\.\d+$/.test(WRANGLER_VERSION)) {
   console.error("[build:cloudflare] FAIL: WRANGLER_VERSION は x.y.z 形式で指定してください。");
@@ -243,6 +243,10 @@ if (ref) {
 }
 
 // 隔離コピー内でのみ Next.js Route Handler を除外する。
+// Wrangler 設定を隔離 build root 直下へ配置する（pages_build_output_dir・functions/ と同じ基準）。
+fs.renameSync(path.join(buildRoot, WRANGLER_CONFIG_SOURCE), path.join(buildRoot, "wrangler.toml"));
+fs.rmSync(path.join(buildRoot, path.dirname(WRANGLER_CONFIG_SOURCE)), { recursive: true, force: true });
+
 fs.rmSync(path.join(buildRoot, EXCLUDED_FROM_EXPORT), { recursive: true, force: true });
 if (fs.existsSync(path.join(buildRoot, EXCLUDED_FROM_EXPORT))) fail(`${EXCLUDED_FROM_EXPORT} を除外できませんでした。`);
 log(`隔離コピーから ${EXCLUDED_FROM_EXPORT} を除外しました。`);
@@ -258,7 +262,7 @@ run(process.execPath, [nextBin, "build"], { cwd: buildRoot, env: childEnv });
 if (!fs.existsSync(outDir)) fail("out/ が生成されていません。");
 
 log(
-  `Pages Functions のコンパイル確認（wrangler@${WRANGLER_VERSION}、compatibility_date ${CLOUDFLARE_COMPATIBILITY_DATE}、deploy なし）`,
+  `Pages Functions のコンパイル確認（wrangler@${WRANGLER_VERSION}、wrangler.toml 使用、deploy なし）`,
 );
 // Windows の npx は .cmd のため shell 経由で実行する（引数は固定値のみ）。
 const wranglerCommand = [
@@ -266,7 +270,6 @@ const wranglerCommand = [
   "--yes",
   `wrangler@${WRANGLER_VERSION}`,
   "pages functions build functions --outdir .functions-check",
-  `--compatibility-date=${CLOUDFLARE_COMPATIBILITY_DATE}`,
 ].join(" ");
 run(wranglerCommand, [], {
   cwd: buildRoot,
