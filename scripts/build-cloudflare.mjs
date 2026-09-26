@@ -62,7 +62,9 @@ function run(command, args, options = {}) {
 }
 
 function git(args) {
-  const result = spawnSync("git", args, { cwd: repoRoot, encoding: "buffer" });
+  // git archive の出力（画像を含む）が既定の maxBuffer 1MB を超えるため上限を広げる。
+  const result = spawnSync("git", args, { cwd: repoRoot, encoding: "buffer", maxBuffer: 512 * 1024 * 1024 });
+  if (result.error) fail(`git ${args.join(" ")} を実行できませんでした: ${result.error.message}`);
   if (result.status !== 0) fail(`git ${args.join(" ")} が失敗しました。\n${result.stderr}`);
   return result.stdout;
 }
