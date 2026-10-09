@@ -36,6 +36,8 @@
 |---|---|
 | `cloudflare/wrangler.toml` | Cloudflare Pages の Wrangler 設定（project 名・出力先・compatibility_date の正本）。 |
 | `scripts/build-cloudflare.mjs` | 元の作業ツリーを変えずに隔離コピーで static export し、Functions compile と成果物検査まで行う。 |
+| `scripts/cloudflare-output-check.mjs` | 成果物検査のうち SEO 関連（canonical / OGP / sitemap / robots）と、localhost・Backup 自身のホストの混入を判定する。 |
+| `scripts/cloudflare-output-check.test.mjs` | 上記の判定を fixture で確認するテスト（負のテストを含む）。 |
 | `functions/api/contact.ts` | Cloudflare 用のお問い合わせ受け口（Pages Functions）。Formspree へ転送する。 |
 | `src/app/api/contact/route.ts` | Vercel 用のお問い合わせ受け口（Route Handler）。Cloudflare build では隔離コピーから除外される。 |
 | `src/lib/contact.ts` | 入力 validation。Vercel / Cloudflare の両方から使う。 |
@@ -93,6 +95,8 @@ CLI が必ず失敗するという意味ではなく、今回確認された事�
 - [ ] `FORMSPREE_FORM_ID` が Production に登録済み
 - [ ] Primary URL が `https://satochan-portfolio.vercel.app` のまま
 - [ ] GitHub の状態は Cloudflare deploy に影響しない
+- [ ] 同じ commit で Vercel 向けの `npm run lint` / `npm run typecheck` / `npm run build` が PASS（Primary を壊していない）
+- [ ] 成果物検査のテスト（`node --test scripts/cloudflare-output-check.test.mjs`）が全件 PASS
 
 未追跡の `docs/research/` や `tmp/` があっても、build はコミット（`--ref`）から取り出すため deploy 対象には含まれない。
 
@@ -122,6 +126,54 @@ NEXT_PUBLIC_SITE_URL=https://satochan-portfolio.vercel.app npm run build:cloudfl
 - 成果物検査が 14 項目すべて `PASS`
 - `Compiled Worker successfully`（Functions compile）
 - `元リポジトリのソース・git status に変化がないことを確認しました。`
+
+### 成果物検査（14 項目）の方針
+
+| # | 検査 | 目的 |
+|---|---|---|
+| 1〜6 | `index.html` / `services.html` / `404.html` / `robots.txt` / `sitemap.xml` / `icon` が存在 | 主要ページ・メタデータの出力漏れを防ぐ |
+| 7 | `_next/static` が存在 | CSS / JS の出力漏れを防ぐ |
+| 8 | `api/contact` の静的出力がない | Next.js Route Handler が静的ファイルとして出ていないこと |
+| 9〜10 | index / services の canonical が Primary URL | Backup を正規 URL として扱わせない |
+| 11 | OGP・Twitter の URL（`og:*` / `twitter:*` のうち値が URL のもの）がすべて Primary URL 配下 | SNS 共有先を Primary に固定する |
+| 12 | sitemap の `<loc>` がすべて Primary URL 配下 | 検索エンジンに Backup の URL を渡さない |
+| 13 | robots の `Sitemap:` 行がすべて Primary の `/sitemap.xml` | 同上 |
+| 14 | 出力全体に localhost / `127.0.0.1` / `[::1]` / Backup 自身のホスト（`satochan-portfolio.pages.dev`）を含まない | 開発用 URL と Backup 自身の URL の混入を防ぐ |
+
+- 9〜13 の URL は URL として解析し、オリジン（scheme + host + port）で比較する。大文字・既定ポート・末尾スラッシュなどの表記違いでは回避できない。1 件でも不正な URL があれば FAIL になる。
+- 14 は大文字・小文字を区別しない。Backup 自身のホスト名は `cloudflare/wrangler.toml` の `name` から求める。
+- **他の `*.pages.dev`（Public Tools の 4 ツールなど）への外部リンクは正当なリンクとして許容する。** 以前は `*.pages.dev` 全体を禁止していたため、公開ツール掲載後に誤検出していた（下記「過去のトラブル事例」6）。
+- 検査を無効化したり、FAIL を無視して deploy したりしない。
+
+### 検査ロジックのテスト（負のテスト）
+
+検査ロジックを変更したとき、または deploy 前に実行する（本番成果物は使わず、fixture の文字列だけで検証する）:
+
+```bash
+node --test scripts/cloudflare-output-check.test.mjs
+```
+
+確認している内容:
+
+- 公開ツールへの正当な `*.pages.dev` リンクがあっても PASS
+- 正しい Primary の canonical・OGP・sitemap は PASS（表記揺れも正規化）
+- canonical / `og:url` / `twitter:image` / sitemap の `<loc>` が Backup 自身の URL なら FAIL
+- SEO メタデータに localhost / `127.0.0.1` が入ると FAIL
+- 正常な URL に 1 件だけ不正な URL が混ざっていても FAIL
+- Backup のホストを大文字で書いても FAIL
+- Primary に似た別ホスト（例: `satochan-portfolio.vercel.app.evil.example`）は FAIL
+
+### 失敗時の停止条件
+
+次のいずれかなら deploy しない:
+
+- 成果物検査が 14/14 PASS にならない
+- 検査ロジックのテストに FAIL がある
+- `Compiled Worker successfully` が出ない
+- 元リポジトリの変化を検知した
+- 同じ commit の Vercel 向け lint / typecheck / build が FAIL
+
+検査の FAIL を回避するために、検査ロジックを緩めて合格扱いにしない。正当な出力が誤検出された場合は、原因を確認してから、保護目的を保ったまま検査を修正する。
 
 ### build の順序
 
@@ -201,6 +253,13 @@ Formspree へ実送信されない確認（毎 deploy で実施してよい）:
 | 16KiB 超 | 413 |
 | honeypot（`website` に値あり） | 200 `{"success":true}`（Formspree へは送らない） |
 
+### Backup でのお問い合わせの動作条件
+
+- ContactForm は相対パス `/api/contact` へ POST する。Backup では Backup 自身の Pages Functions（`functions/api/contact.ts`）が受け、Formspree へ転送する（Primary の API へは送らない）。
+- 送信できる条件は、Production の `FORMSPREE_FORM_ID` に正しい値が入っていて、その後に作成した deployment であること。
+- 確認済みの事実: 2026-09-26 に、deployment `15fd6e05` で正常 POST 1 回が `200 {"success":true}` になった。それ以降の deployment での実送信は、その deployment で改めて確認するまで未確認として扱う。
+- Secret が未設定・空の場合は 503（`FORMSPREE_FORM_ID is not configured.`）になる。
+
 ### 実送信確認
 
 新規環境の構築時と Secret 更新時のみ、正常 POST を **1 回だけ** 行う。
@@ -227,6 +286,30 @@ npx wrangler@4.141.0 pages deployment tail <FULL_DEPLOYMENT_ID> --project-name s
 
 ---
 
+## Primary と Backup の内容比較
+
+Backup を更新する前後で、Primary と同じ内容かを確認する。例（Public Tools のブロックを比較）:
+
+```bash
+curl -s https://satochan-portfolio.vercel.app/ -o primary.html
+curl -s https://satochan-portfolio.pages.dev/ -o backup.html
+```
+
+- 確認対象: 主要セクションの見出し、Public Tools の表示名・URL・説明文・リンク属性・表示順、canonical。
+- Backup は Direct Upload のため、Primary（GitHub 連携の自動 deploy）を更新しただけでは追従しない。Primary へ反映した commit を、この runbook の手順で Backup にも deploy する。
+- 比較に使ったファイルは repository に置かない（作業用の一時ディレクトリを使う）。
+
+---
+
+## Rollback の考え方
+
+- Backup の deployment は上書きされず、過去の deployment が残る（`pages deployment list` で確認できる）。
+- 確実な戻し方は、問題のなかった commit を `npm run build:cloudflare -- --ref=<commit>` で build し、通常の Deploy 手順で deploy し直すこと（この runbook で検証済みの流れ）。
+- Cloudflare Dashboard の過去 deployment への rollback 機能は、この project ではまだ使っていない（未確認）。
+- Primary（Vercel）の rollback は Vercel 側の手順で行い、Backup とは独立して扱う。どちらか一方だけを戻した場合は、内容の違いを記録しておく。
+
+---
+
 ## 過去のトラブル事例
 
 1. **`spawnSync` ENOBUFS**: `git archive` の出力（約 2.2MB）が Node の既定 `maxBuffer`（1MB）を超えて失敗した。build script で `maxBuffer` を拡大済み。
@@ -234,6 +317,7 @@ npx wrangler@4.141.0 pages deployment tail <FULL_DEPLOYMENT_ID> --project-name s
 3. **Secret の KEY はあるのに値が空**: API 上は `FORMSPREE_FORM_ID`（`secret_text`）が project と deployment に存在していたが、実行時は未設定扱いだった。Dashboard から値を保存し直した後、`200 {"success":true}` になった。
 4. **Windows で wrangler 停止後にプロセスが残る**: `pages dev` を止めても `node` / `workerd` が残り、`.next/` がロックされて `npm run build` が EBUSY になることがあった。自分で起動した wrangler / workerd を確実に停止してから再 build する。
 5. **tail は完全な deployment ID が必要**: 短縮 ID では API エラーになる。
+6. **公開ツールの `*.pages.dev` リンクを誤検出**: 成果物検査が出力全体の `*.pages.dev` を禁止していたため、Public Tools（他の Pages project への外部リンク）を掲載した commit で 14 項目目が FAIL した。canonical / OGP / sitemap / robots を意味に応じて検査し、全体スキャンは localhost 系と Backup 自身のホストだけを禁止する方式へ修正した。
 
 ---
 
@@ -267,5 +351,6 @@ GitHub が使えない場合でも、commit 済みの local repository があれ
 - deploy 前に commit hash を確認する
 - Cloudflare build の後に通常の build をしない（成果物が消える）
 - 実送信テストを繰り返さない
+- 成果物検査を無効化・緩和して FAIL を回避しない
 - Production は `main` branch
 - Vercel を Primary として維持する

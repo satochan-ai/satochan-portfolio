@@ -26,6 +26,8 @@ import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { inspectSeoOutput } from "./cloudflare-output-check.mjs";
+
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 // 既存の gitignore 領域（/.next/）配下に隔離する。
 // 注意: 元リポジトリで `next build` を実行すると .next 配下とともに消える一時成果物。
@@ -164,8 +166,12 @@ function listFiles(dir) {
     .map((entry) => path.join(entry.parentPath, entry.name));
 }
 
-function canonicalOf(html) {
-  return html.match(/<link rel="canonical" href="([^"]+)"/)?.[1] ?? null;
+// Backup 自身のホスト（<project>.pages.dev）。project 名は隔離 build root の wrangler.toml から読む。
+function backupHostOf() {
+  const config = fs.readFileSync(path.join(buildRoot, "wrangler.toml"), "utf8");
+  const name = config.match(/^name\s*=\s*"([^"]+)"/m)?.[1];
+  if (!name) fail("wrangler.toml から project 名を読めませんでした。");
+  return `${name}.pages.dev`;
 }
 
 function verifyOutput(siteUrl) {
@@ -183,37 +189,21 @@ function verifyOutput(siteUrl) {
     : [];
   check("out/api/contact の静的出力がない", apiOutputs.length === 0, apiOutputs.join(", "));
 
-  const indexHtml = readOut("index.html");
-  const servicesHtml = readOut("services.html");
-  const indexCanonical = canonicalOf(indexHtml);
-  const servicesCanonical = canonicalOf(servicesHtml);
-  check("index canonical が Primary URL", indexCanonical === siteUrl, String(indexCanonical));
-  check("services canonical が Primary URL", servicesCanonical === `${siteUrl}/services`, String(servicesCanonical));
-
-  const ogUrls = [...indexHtml.matchAll(/<meta property="og:(?:url|image)" content="([^"]+)"/g)].map((m) => m[1]);
-  check(
-    "index OGP（og:url / og:image）が Primary URL 配下",
-    ogUrls.length > 0 && ogUrls.every((u) => u === siteUrl || u.startsWith(`${siteUrl}/`)),
-    ogUrls.join(", "),
-  );
-
-  const sitemap = readOut("sitemap.xml");
-  const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-  check(
-    "sitemap の <loc> がすべて Primary URL 配下",
-    locs.length > 0 && locs.every((u) => u === siteUrl || u.startsWith(`${siteUrl}/`)),
-    locs.join(", "),
-  );
-
-  const robots = readOut("robots.txt");
-  check("robots の Sitemap 指定が Primary URL", robots.includes(`Sitemap: ${siteUrl}/sitemap.xml`));
-
-  const textFiles = listFiles(outDir).filter((f) => /\.(html|txt|xml|json)$/.test(f));
-  const offenders = textFiles.filter((f) => /localhost|127\.0\.0\.1|\.pages\.dev/.test(fs.readFileSync(f, "utf8")));
-  check(
-    "localhost / *.pages.dev を含む出力がない",
-    offenders.length === 0,
-    offenders.map((f) => path.relative(outDir, f)).join(", "),
+  // SEO 関連（canonical / OGP / sitemap / robots）と、localhost・Backup 自身のホストの混入を検査する。
+  // 公開ツールなど他の *.pages.dev への外部リンクは許容する（scripts/cloudflare-output-check.mjs）。
+  const textFiles = listFiles(outDir)
+    .filter((f) => /\.(html|txt|xml|json)$/.test(f))
+    .map((f) => ({ name: path.relative(outDir, f), content: fs.readFileSync(f, "utf8") }));
+  checks.push(
+    ...inspectSeoOutput({
+      siteUrl,
+      backupHost: backupHostOf(),
+      indexHtml: readOut("index.html"),
+      servicesHtml: readOut("services.html"),
+      sitemap: readOut("sitemap.xml"),
+      robots: readOut("robots.txt"),
+      textFiles,
+    }),
   );
 
   for (const { label, ok, detail } of checks) {
