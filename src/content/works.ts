@@ -177,39 +177,63 @@ export const works: Work[] = [
   },
 ];
 
-export type SupportingProject = {
+export type PublicTool = {
   slug: string;
   title: string;
-  category: string;
+  /** 何の業務で使えるか。技術より先に見せる。 */
+  usedFor: string;
+  /** 公開版で動作を確認できた機能だけを書く。効果・導入実績は書かない。 */
   description: string;
-  /** 完成度を正直に伝えるラベル。Production の実績と誤認させない。 */
+  /** 公開状態。Live / Demo / Prototype とは別の区分として扱う。 */
   statusLabel: string;
-  /** 公開が確認できているものだけ設定する。未確認ならリンクを持たせない。 */
-  demoHref?: string;
-  repoHref?: string;
-  /** 代表的な事例のみ設定する要約。未実測の成果数値は含めない。 */
-  miniCase?: MiniCase;
+  /** 利用者検証の記録がないものは、その旨を補足する。 */
+  statusNote?: string;
+  href: string;
 };
 
 /**
- * Selected Works の従属コンテンツ。代表作ではなく、業務課題から試作したものを補足として並べる。
- * 未接続・将来機能は書かない。公開URLが確認できたものだけリンクを付ける。
+ * Selected Works の従属コンテンツ。実際に公開している小規模な診断・チェックツール。
+ * 公開URLと動作を確認できたものだけ載せる。試算・判定の結果を削減実績や効果として表現しない。
  */
-export const supportingProjects: SupportingProject[] = [
+export const publicTools: PublicTool[] = [
   {
-    slug: "matchfollow",
-    title: "MatchFollow",
-    category: "Follow-up Operations",
+    slug: "ses-check-lite",
+    title: "SES案件・人材チェックLite",
+    usedFor: "SES営業 / 提案前の案件・人材確認",
     description:
-      "勤怠・契約更新・請求・フォロー状況を一元化するSES業務管理プロトタイプ。",
-    statusLabel: "Prototype",
+      "案件1件と人材1名の条件を、確認済み・未確認を分けて入力し、「提案検討可」「確認・調整が必要」「現条件では見送り」の判定と、確認先ごとの確認事項を表示します。最終的な提案判断は営業担当者が行います。",
+    statusLabel: "公開ツール",
+    statusNote: "利用者検証前",
+    href: "https://ses-check-lite.pages.dev/",
   },
   {
-    slug: "meetroute",
-    title: "MeetRoute",
-    category: "Meeting Operations",
+    slug: "sales-hearing-check",
+    title: "SES案件ヒアリングチェック",
+    usedFor: "SES営業 / 案件ヒアリング後の確認",
     description:
-      "候補日時と移動条件を確認・承認する日程調整プロトタイプ。",
-    statusLabel: "Prototype",
+      "15項目の確認状況と次に予定する行動をもとに、優先して確認すべき事項、進行上の懸念、次に聞く質問例を整理します。担当者の採点や受注確度の予測は行いません。",
+    statusLabel: "公開ツール",
+    statusNote: "利用者検証前",
+    href: "https://sales-hearing-check.pages.dev/",
+  },
+  {
+    slug: "ai-before-after-diagnosis",
+    title: "AI活用 Before / After 診断",
+    usedFor: "業務改善 / AI活用効果の試算",
+    description:
+      "1つの業務について、AI活用前後の作業時間・回数・人数を入力し、時間差と時間価値換算を試算します。金額は入力条件に基づく換算値で、実際の削減額を示すものではありません。",
+    statusLabel: "公開ツール",
+    statusNote: "利用者検証前",
+    href: "https://ai-before-after-diagnosis.pages.dev/",
+  },
+  {
+    slug: "job-posting-checker",
+    title: "求人票改善チェッカー",
+    usedFor: "採用 / 求人票の公開前確認",
+    description:
+      "求人原稿を見ながら質問に回答し、記載不足、社内確認が必要な事項、公開前に確認する事項を整理します。原稿の自動解析や法的適合性の判定は行いません。",
+    statusLabel: "公開ツール",
+    statusNote: "利用者検証前",
+    href: "https://job-posting-checker.pages.dev/",
   },
 ];

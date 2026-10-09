@@ -4,13 +4,13 @@ import { Section } from "@/components/ui/Section";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { Tag } from "@/components/ui/Tag";
 import {
-  supportingProjects,
+  publicTools,
   works,
   type MiniCase as MiniCaseData,
   type Work,
 } from "@/content/works";
 
-/** PROBLEM → APPROACH → CHANGED STATE の要約。compact指定でMore Projects向けに視覚強度を下げる。 */
+/** PROBLEM → APPROACH → CHANGED STATE の要約。compact指定でカード内向けに視覚強度を下げる。 */
 function MiniCase({
   data,
   compact,
@@ -301,82 +301,59 @@ function FeaturedWorkCard({ work }: { work: Work }) {
 }
 
 /**
- * Selected Works の従属コンテンツ。画像やカードを使わず、行として静かに並べることで
- * Featured / Secondary Works の主役性を崩さない。
+ * Selected Works の従属コンテンツ。実際に公開している小規模ツールを、
+ * 画像なしの軽いカードで並べて Featured / Secondary Works の主役性を崩さない。
  */
-function MoreProjects() {
+function PublicTools() {
   return (
     <div className="mt-14 border-t border-line pt-10 sm:mt-16">
       <h3 className="font-mono text-eyebrow font-medium uppercase text-accent">
-        {"// More Projects"}
+        {"// Public Tools"}
       </h3>
       <p className="mt-4 max-w-prose text-sm leading-relaxed text-muted [word-break:auto-phrase]">
-        代表的な制作物以外にも、営業・採用・業務運用の課題をもとに、小さなツールを設計・試作しています。
+        営業・採用・AI活用の現場課題をもとに制作した、小規模な診断・チェックツールです。ブラウザ上で動作し、入力内容を外部へ送信しません。
       </p>
 
-      <ul className="mt-6 border-t border-line">
-        {supportingProjects.map((project, index) => (
-          <li
-            key={project.slug}
-            className="scroll-mt-24 border-b border-line py-5"
-          >
-            <div className="grid gap-x-6 gap-y-2 lg:grid-cols-[2rem_10.5rem_1fr_auto] lg:items-baseline lg:gap-y-0">
-              <span aria-hidden className="font-mono text-xs text-muted">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-
-              <div>
-                <h4 className="text-sm font-semibold text-fg">{project.title}</h4>
-                <p className="mt-1 text-xs font-medium text-accent">
-                  {project.category}
-                </p>
-              </div>
-
-              <p className="text-sm leading-relaxed text-muted">
-                {project.description}
+      <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+        {publicTools.map((tool) => (
+          <li key={tool.slug}>
+            <article className="work-card flex h-full flex-col rounded-card border border-line bg-bg p-5 transition-[border-color,box-shadow] duration-200 hover:border-fg/40 hover:shadow-[0_6px_16px_rgb(14_16_19/0.06)] sm:p-6">
+              <p className="text-xs font-medium text-accent [word-break:auto-phrase]">
+                {tool.usedFor}
+              </p>
+              <h4 className="mt-2 text-base font-semibold text-fg [word-break:auto-phrase]">
+                {tool.title}
+              </h4>
+              <p className="mt-3 text-sm leading-relaxed text-muted [word-break:auto-phrase]">
+                {tool.description}
               </p>
 
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 lg:justify-end">
-                <span className="inline-flex items-center rounded-full border border-line bg-surface px-2.5 py-0.5 font-mono text-[0.6875rem] text-muted">
-                  {project.statusLabel}
-                </span>
-
-                {project.demoHref && (
-                  <a
-                    href={project.demoHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-medium text-accent hover:underline"
-                  >
-                    Live Demo
-                    <span className="sr-only">（{project.title}・別タブで開く）</span>
-                    <span aria-hidden className="work-card-arrow">
-                      &#8599;
+              <div className="mt-auto flex flex-wrap items-center justify-between gap-x-4 gap-y-3 pt-5">
+                <div className="flex flex-wrap gap-2">
+                  <span className="inline-flex items-center rounded-full border border-line bg-surface px-2.5 py-0.5 font-mono text-[0.6875rem] text-muted">
+                    {tool.statusLabel}
+                  </span>
+                  {tool.statusNote && (
+                    <span className="inline-flex items-center rounded-full border border-line px-2.5 py-0.5 font-mono text-[0.6875rem] text-muted">
+                      {tool.statusNote}
                     </span>
-                  </a>
-                )}
-                {project.repoHref && (
-                  <a
-                    href={project.repoHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-medium text-accent hover:underline"
-                  >
-                    GitHub
-                    <span className="sr-only">（{project.title}・別タブで開く）</span>
-                    <span aria-hidden className="work-card-arrow">
-                      &#8599;
-                    </span>
-                  </a>
-                )}
-              </div>
-            </div>
+                  )}
+                </div>
 
-            {project.miniCase && (
-              <div className="lg:pl-[calc(2rem+1.5rem)]">
-                <MiniCase data={project.miniCase} compact />
+                <a
+                  href={tool.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 py-1 text-sm font-medium text-accent hover:underline"
+                >
+                  ツールを開く
+                  <span className="sr-only">（{tool.title}・別タブで開く）</span>
+                  <span aria-hidden className="work-card-arrow">
+                    &#8599;
+                  </span>
+                </a>
               </div>
-            )}
+            </article>
           </li>
         ))}
       </ul>
@@ -408,10 +385,10 @@ export function SelectedWorks() {
         ))}
       </ul>
 
-      <MoreProjects />
+      <PublicTools />
 
       <p className="mt-8 text-sm text-muted">
-        ※ 一部の実績はスクリーンショット・公開URLを順次追加します。掲載内容は公開可能な範囲に限定しています。
+        ※ 掲載内容は公開可能な範囲に限定しています。
       </p>
     </Section>
   );
