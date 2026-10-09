@@ -2,10 +2,10 @@ import { site } from "@/content/site";
 
 import { HeroBackground } from "./HeroBackground";
 
-const highlights = [
-  "営業・商談接点 1,500+",
-  "AI活用ミニ講座 登壇",
-  "Web・業務ツール 実運用",
+const highlights: { label: string; href?: string }[] = [
+  { label: "SES営業・採用の現場経験" },
+  { label: "AI活用ミニ講座 登壇", href: "#speaking" },
+  { label: "Web・業務ツール 実運用" },
 ];
 
 export function Hero() {
@@ -46,12 +46,18 @@ export function Hero() {
 
         <ul className="mt-12 flex flex-wrap gap-x-6 gap-y-3 border-t border-inverse-fg/15 pt-6 text-sm text-inverse-fg/75">
           {highlights.map((item) => (
-            <li key={item} className="flex items-center gap-2">
+            <li key={item.label} className="flex items-center gap-2">
               <span
                 aria-hidden
                 className="inline-block size-1.5 rounded-full bg-accent-on-dark"
               />
-              {item}
+              {item.href ? (
+                <a href={item.href} className="underline underline-offset-4 hover:text-inverse-fg">
+                  {item.label}
+                </a>
+              ) : (
+                item.label
+              )}
             </li>
           ))}
         </ul>

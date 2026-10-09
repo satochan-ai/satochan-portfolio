@@ -88,8 +88,8 @@ export const works: Work[] = [
     summary:
       "候補者・求人・企業・選考情報を横断し、採用ファネル、停滞、離脱理由、次回アクションを可視化する採用業務デモ。",
     highlights: [],
-    // 実装を確認できるリポジトリがこの作業環境にないため、推測で技術名は載せない。
-    stack: [],
+    // 公開Demoのcommit 463e255のpackage・lockfile・実装で確認。
+    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     image: "/images/works/recruitment-insight-dashboard.webp",
     imageAlt:
       "候補者・選考ファネル・要対応を可視化したRecruitment Insightのダッシュボード",
@@ -171,6 +171,7 @@ export const works: Work[] = [
       "Vercel",
     ],
     cardStack: ["Next.js", "TypeScript", "React PDF"],
+    href: "https://receipt-generator-six-tau.vercel.app/",
     image: "/images/works/receipt-generator.png",
     imageAlt:
       "領収証生成ツールの入力画面。左側にイベント情報と発行会社情報の入力欄、右側に領収証のプレビューが表示されている。",
