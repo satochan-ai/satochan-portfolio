@@ -163,7 +163,7 @@ function WorkCard({ work }: { work: Work }) {
                   href={work.caseStudyHref}
                   className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
                 >
-                  Case Study を見る
+                  {work.caseStudyLabel ?? "Case Study を見る"}
                   <span className="sr-only">（{work.title}）</span>
                   <span aria-hidden className="work-card-arrow">&rarr;</span>
                 </a>

@@ -25,6 +25,8 @@ export type Work = {
   imageAlt: string | null;
   /** 詳細な Case Study がある場合、そのアンカー */
   caseStudyHref?: string;
+  /** 詳細リンクの表示名。未指定時は既定の文言を使う。 */
+  caseStudyLabel?: string;
   href?: string;
   /** 公開リンクの表示名。未指定時は既定の文言を使う。 */
   hrefLabel?: string;
@@ -95,6 +97,8 @@ export const works: Work[] = [
       "候補者・選考ファネル・要対応を可視化したRecruitment Insightのダッシュボード",
     href: "https://recruitment-insight-demo.vercel.app/",
     hrefLabel: "Live Demo",
+    caseStudyHref: "#case-recruitment-insight",
+    caseStudyLabel: "取り組みの詳細を見る",
     miniCase: {
       problem:
         "候補者・求人・選考情報が分散すると、停滞と次の対応が見えにくい。",
@@ -116,6 +120,8 @@ export const works: Work[] = [
     stack: ["JavaScript", "HTML", "CSS", "CSV"],
     image: "/images/works/matchpilot.png",
     imageAlt: "MatchPilotの今月KPI画面。人材紹介数・案件提案数・打ち合わせ数の実績と達成率が並んでいる。",
+    caseStudyHref: "#case-matchpilot",
+    caseStudyLabel: "取り組みの詳細を見る",
     miniCase: {
       problem: "営業状況が感覚や記憶に依存し、停滞理由が見えにくい。",
       approach:
