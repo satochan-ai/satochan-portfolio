@@ -1,5 +1,6 @@
 /**
- * Hero 限定の装飾レイヤー（Flow Grid Hero / 静止版）。
+ * Hero 限定の装飾レイヤー（Flow Grid Hero）。
+ * 初回表示時に一度だけ、入力 → 整理・判断 → 仕組み の順に光が流れる（CSS のみ。globals.css 参照）。
  * すべて aria-hidden・pointer-events-none で、アクセシビリティツリーへ入れない。
  * 色は Hero 内で完結させ、全サイト向けの新規カラートークンは追加しない。
  */
@@ -39,6 +40,13 @@ export function HeroBackground() {
           d="M445 185 C 485 185, 498 118, 417 82"
         />
 
+        {/* 実線と同じ形の光の流れ（初回のみ。既存の線は常に表示したまま） */}
+        <path className="hero-flow__pulse hero-flow__pulse--in-1" pathLength={100} d="M150 140 C 220 140, 235 220, 290 222" />
+        <path className="hero-flow__pulse hero-flow__pulse--in-2" pathLength={100} d="M120 250 C 200 250, 240 226, 290 226" />
+        <path className="hero-flow__pulse hero-flow__pulse--in-3" pathLength={100} d="M175 355 C 240 355, 255 250, 288 236" />
+        <path className="hero-flow__pulse hero-flow__pulse--out-1" pathLength={100} d="M290 222 C 360 214, 380 188, 445 186" />
+        <path className="hero-flow__pulse hero-flow__pulse--out-2" pathLength={100} d="M292 230 C 360 260, 390 330, 466 330" />
+
         {/* subtle ring（中央の判断ノード周り） */}
         <circle className="hero-flow__ring" cx="290" cy="225" r="34" />
 
@@ -51,9 +59,9 @@ export function HeroBackground() {
         <circle className="hero-flow__node" cx="415" cy="80" r="4" />
 
         {/* major ノード（入力 / 整理・判断 / 仕組み） */}
-        <circle className="hero-flow__node hero-flow__node--major" cx="150" cy="140" r="6" />
-        <circle className="hero-flow__node hero-flow__node--major" cx="290" cy="225" r="7" />
-        <circle className="hero-flow__node hero-flow__node--major" cx="445" cy="185" r="6" />
+        <circle className="hero-flow__node hero-flow__node--major hero-flow__node--input" cx="150" cy="140" r="6" />
+        <circle className="hero-flow__node hero-flow__node--major hero-flow__node--decision" cx="290" cy="225" r="7" />
+        <circle className="hero-flow__node hero-flow__node--major hero-flow__node--system" cx="445" cy="185" r="6" />
       </svg>
 
       {/* 下部フェード（次セクション Proof の bg-surface へ自然につなぐ） */}
