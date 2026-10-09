@@ -15,8 +15,8 @@ const groups: TechGroup[] = [
   },
   {
     label: "Development",
-    note: "課題に応じて必要な範囲で実装します",
-    items: ["Next.js", "TypeScript", "JavaScript", "Python", "GAS"],
+    note: "Web・業務ツールの実装と、PDFの寸法・採番の検証",
+    items: ["Next.js", "Vite", "TypeScript", "JavaScript", "Python", "GAS"],
   },
   {
     label: "Data / Operations",
@@ -25,8 +25,8 @@ const groups: TechGroup[] = [
   },
   {
     label: "Platform / Workflow",
-    note: "管理と公開",
-    items: ["GitHub", "Vercel"],
+    note: "Webサイト・公開ツールの公開と、ソースの管理",
+    items: ["GitHub", "Vercel", "Cloudflare Pages"],
   },
 ];
 
