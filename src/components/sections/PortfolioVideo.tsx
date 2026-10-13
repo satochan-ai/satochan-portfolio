@@ -26,7 +26,8 @@ type Props = {
 export function PortfolioVideo({ summary, src, poster, posterAlt, children }: Props) {
   const detailsRef = useRef<HTMLDetailsElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const frameRef = useRef<HTMLDivElement>(null);
+  // 動画枠と再生操作・状態表示をまとめた領域。どこかが見えていれば手動再生を尊重し、すべて画面外なら停止する。
+  const playerRef = useRef<HTMLDivElement>(null);
   const playbackAllowed = useRef(false);
   const hydrated = useSyncExternalStore(subscribe, clientSnapshot, serverSnapshot);
   const [opened, setOpened] = useState(false);
@@ -34,15 +35,15 @@ export function PortfolioVideo({ summary, src, poster, posterAlt, children }: Pr
   const [state, setState] = useState<State>("idle");
 
   const canPlay = () => {
-    const bounds = frameRef.current?.getBoundingClientRect();
+    const bounds = playerRef.current?.getBoundingClientRect();
     return detailsRef.current?.open && !document.hidden && bounds &&
       bounds.bottom > 0 && bounds.top < window.innerHeight;
   };
 
   useEffect(() => {
     const video = videoRef.current;
-    const frame = frameRef.current;
-    if (!video || !frame) return;
+    const player = playerRef.current;
+    if (!video || !player) return;
     const stop = () => {
       playbackAllowed.current = false;
       video.pause();
@@ -54,7 +55,7 @@ export function PortfolioVideo({ summary, src, poster, posterAlt, children }: Pr
       new IntersectionObserver(([entry]) => {
         if (!entry.isIntersecting) stop();
       });
-    observer?.observe(frame);
+    observer?.observe(player);
     document.addEventListener("visibilitychange", onVisibility);
     return () => {
       observer?.disconnect();
@@ -101,55 +102,57 @@ export function PortfolioVideo({ summary, src, poster, posterAlt, children }: Pr
       <div className="border-t border-line p-4 sm:p-6">
         <div className="mx-auto max-w-3xl">
           {children}
-          <div ref={frameRef} className="relative mt-5 aspect-video overflow-hidden rounded-card bg-[#08111f]">
-            {opened && (
-              <Image src={poster} alt={posterAlt} width={1280} height={720} unoptimized loading="lazy" className="absolute inset-0 h-full w-full object-contain" />
-            )}
-            <noscript>
-              <Image src={poster} alt={posterAlt} width={1280} height={720} unoptimized loading="lazy" className="absolute inset-0 h-full w-full object-contain" />
-            </noscript>
-            <video
-              ref={videoRef}
-              controls={loaded && state !== "error"}
-              muted
-              playsInline
-              preload="none"
-              tabIndex={loaded ? 0 : -1}
-              aria-label="ポートフォリオ紹介動画（30秒・音声なし）"
-              aria-describedby="portfolio-video-description"
-              className={`absolute inset-0 h-full w-full object-contain ${!loaded ? "invisible" : ""} ${state === "error" ? "hidden" : ""}`}
-              onPlay={() => {
-                // ネイティブcontrolsによる手動再生も許可する。
-                if (canPlay()) playbackAllowed.current = true;
-              }}
-              onPlaying={() => {
-                if (!playbackAllowed.current || !canPlay()) {
-                  videoRef.current?.pause();
-                  return;
-                }
-                setState("playing");
-              }}
-              onPause={() => setState((current) => current === "error" || current === "ended" ? current : "paused")}
-              onEnded={() => setState("ended")}
-              onError={() => setState("error")}
-            />
-          </div>
-          {hydrated && state !== "error" && (
-            <div className="mt-4 flex min-h-11 flex-wrap gap-3">
-              <button type="button" className={buttonClass} onClick={() => {
-                if (state === "playing") {
-                  playbackAllowed.current = false;
-                  videoRef.current?.pause();
-                } else void start();
-              }}>
-                {state === "playing" ? "一時停止" : state === "ended" ? "もう一度再生" : "動画を再生"}
-              </button>
-              {loaded && <button type="button" className={buttonClass} onClick={() => void start(true)}>最初から再生</button>}
+          <div ref={playerRef}>
+            <div className="relative mt-5 aspect-video overflow-hidden rounded-card bg-[#08111f]">
+              {opened && (
+                <Image src={poster} alt={posterAlt} width={1280} height={720} unoptimized loading="lazy" className="absolute inset-0 h-full w-full object-contain" />
+              )}
+              <noscript>
+                <Image src={poster} alt={posterAlt} width={1280} height={720} unoptimized loading="lazy" className="absolute inset-0 h-full w-full object-contain" />
+              </noscript>
+              <video
+                ref={videoRef}
+                controls={loaded && state !== "error"}
+                muted
+                playsInline
+                preload="none"
+                tabIndex={loaded ? 0 : -1}
+                aria-label="ポートフォリオ紹介動画（30秒・音声なし）"
+                aria-describedby="portfolio-video-description"
+                className={`absolute inset-0 h-full w-full object-contain ${!loaded ? "invisible" : ""} ${state === "error" ? "hidden" : ""}`}
+                onPlay={() => {
+                  // ネイティブcontrolsによる手動再生も許可する。
+                  if (canPlay()) playbackAllowed.current = true;
+                }}
+                onPlaying={() => {
+                  if (!playbackAllowed.current || !canPlay()) {
+                    videoRef.current?.pause();
+                    return;
+                  }
+                  setState("playing");
+                }}
+                onPause={() => setState((current) => current === "error" || current === "ended" ? current : "paused")}
+                onEnded={() => setState("ended")}
+                onError={() => setState("error")}
+              />
             </div>
-          )}
-          <p role="status" className="mt-3 text-xs leading-relaxed text-muted">
-            {hydrated ? statusMessages[state] : "動画の再生にはJavaScriptが必要です。画像と説明で内容をご確認いただけます。"}
-          </p>
+            {hydrated && state !== "error" && (
+              <div className="mt-4 flex min-h-11 flex-wrap gap-3">
+                <button type="button" className={buttonClass} onClick={() => {
+                  if (state === "playing") {
+                    playbackAllowed.current = false;
+                    videoRef.current?.pause();
+                  } else void start();
+                }}>
+                  {state === "playing" ? "一時停止" : state === "ended" ? "もう一度再生" : "動画を再生"}
+                </button>
+                {loaded && <button type="button" className={buttonClass} onClick={() => void start(true)}>最初から再生</button>}
+              </div>
+            )}
+            <p role="status" className="mt-3 text-xs leading-relaxed text-muted">
+              {hydrated ? statusMessages[state] : "動画の再生にはJavaScriptが必要です。画像と説明で内容をご確認いただけます。"}
+            </p>
+          </div>
         </div>
       </div>
     </details>
