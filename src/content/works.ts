@@ -1,5 +1,16 @@
 export type WorkStatusKind = "live" | "development" | "speaking" | "personal";
 
+export const portfolioVideo = {
+  summary: "30秒で見る｜現場経験から、制作・公開まで",
+  description:
+    "SES営業・採用の現場経験をもとに、課題整理から業務設計、AIを活用したツール制作・検証・公開までを30秒で紹介します。",
+  note:
+    "交流会サイトは自主運営・実運用。SES案件・人材チェックLiteと求人票改善チェッカーは、公開ツール・利用者検証前です。画面は架空入力の例で、求人チェッカーには未回答項目が残っています。",
+  src: "/videos/portfolio-promo-30s.mp4",
+  poster: "/videos/portfolio-promo-30s-poster.webp",
+  posterAlt: "satochan｜業務改善 × AI活用。課題整理から、制作・検証・公開まで。",
+} as const;
+
 export type Work = {
   slug: string;
   title: string;

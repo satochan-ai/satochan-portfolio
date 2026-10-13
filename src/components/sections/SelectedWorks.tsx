@@ -3,7 +3,9 @@ import Image from "next/image";
 import { Section } from "@/components/ui/Section";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { Tag } from "@/components/ui/Tag";
+import { PortfolioVideo } from "@/components/sections/PortfolioVideo";
 import {
+  portfolioVideo,
   publicTools,
   works,
   type MiniCase as MiniCaseData,
@@ -378,6 +380,20 @@ export function SelectedWorks() {
       title="営業・採用の課題を、運用と試作で具体化。"
       lead="交流会の実運用、採用・営業の業務設計DemoやPrototypeを紹介します。対象業務と設計の判断、現在確認できている状態を、公開状況とともに記載しています。"
     >
+      <PortfolioVideo
+        summary={portfolioVideo.summary}
+        src={portfolioVideo.src}
+        poster={portfolioVideo.poster}
+        posterAlt={portfolioVideo.posterAlt}
+      >
+        <p id="portfolio-video-description" className="text-sm leading-relaxed text-fg">
+          {portfolioVideo.description}
+        </p>
+        <p className="mt-3 text-xs leading-relaxed text-muted">
+          {portfolioVideo.note}
+        </p>
+      </PortfolioVideo>
+
       <ul className="grid gap-6 sm:grid-cols-2">
         <FeaturedWorkCard work={featuredWork} />
         {secondaryWorks.map((work) => (
