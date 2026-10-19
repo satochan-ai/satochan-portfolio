@@ -78,9 +78,9 @@ export const works: Work[] = [
       "Vercel",
     ],
     cardStack: ["Next.js", "TypeScript", "GAS Web App", "Google Spreadsheet"],
-    image: "/images/works/ses-meetup-site.png",
+    image: "/images/works/ses-meetup-site-202610.png",
     imageAlt:
-      "SES営業交流会 申込サイトのトップページ。開催中の回の申込ボタンと、現在・前回の開催情報が並んでいる。",
+      "SES営業交流会 申込サイトの開催案内セクション。開催時間・会場・参加費・定員と、受付中の表示、第7回への申込ボタン、申込受付期間が並んでいる。",
     caseStudyHref: "#case-ses-meetup",
     href: "https://event-entry-site.vercel.app/",
     miniCase: {
@@ -103,9 +103,9 @@ export const works: Work[] = [
     highlights: [],
     // 公開Demoのcommit 463e255のpackage・lockfile・実装で確認。
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    image: "/images/works/recruitment-insight-dashboard.webp",
+    image: "/images/works/recruitment-insight-202610.webp",
     imageAlt:
-      "候補者・選考ファネル・要対応を可視化したRecruitment Insightのダッシュボード",
+      "要対応・優先アクション・採用状況を確認するRecruitment Insightのデモダッシュボード。サンプルデータを表示している。",
     href: "https://recruitment-insight-demo.vercel.app/",
     hrefLabel: "Live Demo",
     caseStudyHref: "#case-recruitment-insight",
@@ -121,23 +121,23 @@ export const works: Work[] = [
   },
   {
     slug: "matchpilot",
-    title: "MatchPilot",
+    title: "MatchPilot CRM",
     category: "Sales Operations / CRM",
     statusLabel: "Prototype / In Development",
     statusKind: "development",
     summary:
-      "SES営業における企業・担当者との接点、打ち合わせ、関係値、次回アクションを整理・可視化する営業支援プロトタイプ。属人的な記憶に依存しない業務設計を検討するための試作です。",
+      "SES営業における企業・担当者との接点、打ち合わせ、関係値、次回アクションを整理・可視化するCRMのプロトタイプ。サンプルデータで画面と管理項目を検討するための試作です。",
     highlights: [],
     stack: ["JavaScript", "HTML", "CSS", "CSV"],
-    image: "/images/works/matchpilot.png",
-    imageAlt: "MatchPilotの今月KPI画面。人材紹介数・案件提案数・打ち合わせ数の実績と達成率が並んでいる。",
+    image: "/images/works/matchpilot-crm-202610.png",
+    imageAlt: "架空のサンプルデータを表示したMatchPilot CRMの会社別サマリー画面。会社ごとの区分・関係値・接点回数・担当者・接点日が並び、左のメニューに次回アクションや打ち合わせ一覧がある。",
     caseStudyHref: "#case-matchpilot",
     caseStudyLabel: "取り組みの詳細を見る",
     miniCase: {
-      problem: "営業状況が感覚や記憶に依存し、停滞理由が見えにくい。",
+      problem: "営業状況が感覚や記憶に依存し、フォロー対象や次の一手が見えにくい。",
       approach:
-        "KPIだけでは次の行動が決まらないため、接点・関係値・NG理由・次回アクションも合わせて見る設計を試作。",
-      changedState: "KPI・接点・次回アクションを、一つの画面で確認できる試作を作成。実際の営業判断への効果は今後検証する。",
+        "企業・担当者ごとの接点と関係値、次回アクションを一覧で追える管理項目を設計した。",
+      changedState: "会社別・担当者別に状況を確認できる試作画面を作成した。実際の営業判断への効果は未検証。",
     },
   },
   {
