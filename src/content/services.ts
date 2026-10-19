@@ -59,7 +59,7 @@ export const services: Service[] = [
         reason: "記録をAIで分析できる形に整理した仕組み。",
       },
       {
-        name: "AI Workflow / Business Skills",
+        name: "AI Workflow / Claude Code Skills",
         reason: "業務手順と判断基準をAI向けに整理した取り組み。",
         href: "/#ai-workflow",
       },
