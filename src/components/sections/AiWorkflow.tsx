@@ -58,14 +58,31 @@ type SkillStat = {
   label: string;
 };
 
-/** 事実ベースの規模のみ。個々のSkill名は一覧化しない。 */
-const skillStats: SkillStat[] = [
-  { value: "40", label: "Business Skills" },
-  { value: "10", label: "Categories" },
+/**
+ * 件数は業務スキル台帳（2026/10/20現在）の登録数。合計は内訳の和から求める。
+ * 登録数であり、独自制作数・日常利用数ではない。個々のSkill名は一覧化しない。
+ */
+const skillBreakdown: SkillStat[] = [
+  { value: "45", label: "業務・制作支援系" },
+  { value: "12", label: "三国志武将型（助言）" },
+  { value: "1", label: "外部導入" },
 ];
 
-/** 代表例として一部のみ表示。カテゴリ全10件は列挙しない。 */
-const skillCategories = ["Sales", "Recruiting", "Matching", "KPI Analysis", "Knowledge"];
+const skillTotal = skillBreakdown.reduce((sum, item) => sum + Number(item.value), 0);
+
+const skillStats: SkillStat[] = [
+  { value: String(skillTotal), label: "Claude Code Skills" },
+  { value: "12", label: "Categories" },
+];
+
+/** 代表例として一部のみ表示。カテゴリ全12件は列挙しない。名称は台帳と一致させる。 */
+const skillCategories = [
+  "提案書・資料作成",
+  "BP(協力会社)営業",
+  "案件・人材マッチング",
+  "面談・採用スクリーニング",
+  "日報・報告・KPI分析",
+];
 
 /** 実在するSkillのみ。営業・採用・分析の幅が分かる範囲に絞り、一覧化はしない。 */
 const skillExamples = [
@@ -116,7 +133,7 @@ export function AiWorkflow() {
 
       <div className="mt-16 border-t border-inverse-fg/15 pt-10 sm:mt-20 sm:pt-12">
         <p className="font-mono text-eyebrow font-medium uppercase text-accent-on-dark">
-          {"// Business Skills"}
+          {"// Claude Code Skills"}
         </p>
 
         <div className="mt-6 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-start lg:gap-16">
@@ -125,7 +142,7 @@ export function AiWorkflow() {
               実務の判断基準と手順を、再利用できる形へ。
             </h3>
             <p className="mt-4 text-sm leading-relaxed text-inverse-fg/70 sm:text-base">
-              SES営業・採用の実務で培った判断基準や手順を、AIでも人でも再利用できる形に整理しています。業務Skillとして、繰り返す業務の進め方を残しています。
+              SES営業・採用の実務で繰り返す判断や文書作成を、Claude CodeのSkillsとして整理しています。業務・制作支援に加え、意思決定を補助する助言型のSkillsも管理しています。
             </p>
 
             <div className="mt-5">
@@ -145,7 +162,7 @@ export function AiWorkflow() {
               </ul>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-inverse-fg/60">
-              特定のAIサービスではなく、業務プロセスと判断基準を再利用できる形で残すことを重視しています。
+              ツールの利用そのものを目的とせず、業務プロセスや判断基準を再利用できる形で残すことを重視しています。
             </p>
 
             <ul className="mt-6 flex flex-wrap gap-2">
@@ -160,24 +177,43 @@ export function AiWorkflow() {
                 </li>
               ))}
             </ul>
+            <p className="mt-4 text-xs leading-relaxed text-inverse-fg/50">
+              登録数には外部導入1件と制作元未確認1件を含みます。すべての独自制作・日常利用を示す数値ではありません。
+            </p>
           </div>
 
-          <dl className="flex gap-10 sm:gap-12 lg:flex-col lg:gap-6">
-            {skillStats.map((stat, index) => (
-              <div
-                key={stat.label}
-                className="skill-stat"
-                style={{ "--stat-index": index } as React.CSSProperties}
-              >
-                <dt className="text-sm font-medium text-inverse-fg/70">
-                  {stat.label}
-                </dt>
-                <dd className="mt-1 text-xl font-bold text-accent-on-dark">
-                  {stat.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
+          <div className="flex flex-col gap-6 lg:gap-8">
+            <dl className="flex gap-10 sm:gap-12 lg:flex-col lg:gap-6">
+              {skillStats.map((stat, index) => (
+                <div
+                  key={stat.label}
+                  className="skill-stat"
+                  style={{ "--stat-index": index } as React.CSSProperties}
+                >
+                  <dt className="text-sm font-medium text-inverse-fg/70">
+                    {stat.label}
+                  </dt>
+                  <dd className="mt-1 text-xl font-bold text-accent-on-dark">
+                    {stat.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
+            <dl className="border-t border-inverse-fg/15 pt-5">
+              {skillBreakdown.map((item) => (
+                <div
+                  key={item.label}
+                  className="flex items-baseline justify-between gap-6 py-1 text-sm"
+                >
+                  <dt className="text-inverse-fg/60">{item.label}</dt>
+                  <dd className="font-mono font-medium text-inverse-fg/85">
+                    {item.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
       </div>
     </Section>
