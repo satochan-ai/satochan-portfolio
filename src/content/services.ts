@@ -75,8 +75,8 @@ export const services: Service[] = [
     examples: ["営業フロー整理", "KPI設計", "BP営業", "商談 / 案件管理", "フォロー運用"],
     relatedWorks: [
       {
-        name: "MatchPilot",
-        reason: "営業状況と次アクションを判断するための設計。",
+        name: "MatchPilot CRM",
+        reason: "企業・担当者との接点と次アクションを管理する設計。",
       },
       {
         name: "MatchFollow",
