@@ -6,6 +6,8 @@ type Talk = {
   category: string;
   audience: string;
   topics: string[];
+  /** 補足説明。必要な実績のみ。 */
+  summary?: string;
   upcoming: boolean;
 };
 
@@ -36,11 +38,25 @@ const talks: Talk[] = [
     date: "2026.09.15",
     title: "AI活用質問会",
     category: "Generative AI Q&A",
-    audience: "第2回 / 参加者からの事前質問に回答",
+    audience: "参加者からの事前質問に回答",
     topics: [
       "生成AI・業務活用の質問対応",
       "Geminiを使ったSESマッチング実演",
     ],
+    upcoming: false,
+  },
+  {
+    date: "2026.10.20",
+    title: "仕事で使える生成AI活用 実践編",
+    category: "Generative AI Training",
+    audience: "つなぐ会 第2回 / 入門編（第1回）に続く実践編・約30分",
+    topics: [
+      "プロンプトとコンテキストの基本",
+      "AIから質問させる方法",
+      "ChatGPTを使った初回商談準備の実演",
+    ],
+    summary:
+      "必要情報の整理から確認事項の具体化までを、初回商談準備の実演で紹介しました（題材は説明用の想定事例です）。AIの回答をそのまま採用せず、人が確認・判断する重要性も説明しました。",
     upcoming: false,
   },
 ];
@@ -95,6 +111,12 @@ export function Speaking() {
                     </li>
                   ))}
                 </ul>
+              )}
+
+              {talk.summary && (
+                <p className="mt-3 max-w-prose text-sm leading-relaxed text-muted">
+                  {talk.summary}
+                </p>
               )}
 
               {talk.upcoming && (

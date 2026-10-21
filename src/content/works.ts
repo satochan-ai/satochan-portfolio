@@ -147,7 +147,7 @@ export const works: Work[] = [
     statusLabel: "Speaking",
     statusKind: "speaking",
     summary:
-      "2026年8月18日に、生成AI初心者向けの約30分のミニ講座を実施。翌日から業務で試せる入門内容に絞って構成しました。",
+      "2026年8月18日に、生成AI初心者向けの約30分のミニ講座を実施。翌日から業務で試せる入門内容に絞って構成しました。続いて10月20日には、ChatGPTによる初回商談準備の実演を含む実践編を実施しました。",
     highlights: [],
     stack: ["生成AI活用", "業務適用の設計", "登壇・教育"],
     image: "/images/works/ai-mini-seminar.png",
