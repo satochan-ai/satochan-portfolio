@@ -378,7 +378,7 @@ export function SelectedWorks() {
       eyebrow="// Selected Works"
       eyebrowVariant="code"
       title="営業・採用の課題を、運用と試作で具体化。"
-      lead="交流会の実運用、採用・営業の業務設計DemoやPrototypeを紹介します。対象業務と設計の判断、現在確認できている状態を、公開状況とともに記載しています。"
+      lead="交流会の実運用、採用・営業の業務設計DemoやPrototype、個人開発のツールやサイトを紹介します。対象業務と設計の判断、現在確認できている状態を、公開状況とともに記載しています。"
     >
       <PortfolioVideo
         summary={portfolioVideo.summary}
