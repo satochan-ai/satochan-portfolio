@@ -193,6 +193,58 @@ export const works: Work[] = [
     imageAlt:
       "領収証生成ツールの入力画面。左側にイベント情報と発行会社情報の入力欄、右側に領収証のプレビューが表示されている。",
   },
+  {
+    slug: "ai-development-hub",
+    title: "AI Development Hub",
+    category: "Developer Tooling / AI Workflow",
+    statusLabel: "Personal / Local Tool",
+    statusKind: "personal",
+    summary:
+      "Claude CodeとCodexを併用して進めている複数プロジェクトの開発状況を、一画面で確認するために制作したローカル管理ツール。自分のPC上でのみ動かしており、公開サービスではありません。",
+    highlights: [
+      "Gitの変更状況と最終活動日時の表示",
+      "Claude Code HooksとCodexのローカル履歴を利用した活動状態の表示",
+    ],
+    // ローカルリポジトリのpackage.json・requirements.txt・READMEで確認。
+    stack: ["Next.js", "FastAPI", "SQLite", "Claude Code Hooks"],
+    image: null,
+    imageAlt: null,
+    miniCase: {
+      problem:
+        "複数のプロジェクトをAIエージェントと並行して進めると、どこで作業が止まっているか、未コミットの変更が残っているかを一つずつ確認する必要がある。",
+      approach:
+        "手入力の管理表を増やさず、Git・Claude Code Hooks・Codexのローカル履歴という既存の記録を活用する設計にした。",
+      changedState:
+        "2026年10月時点で8プロジェクトを登録して利用中。作業時間への効果は計測していない。",
+    },
+  },
+  {
+    slug: "verdy-match-lab",
+    title: "Verdy Match Lab",
+    category: "Personal Project / Sports Data",
+    statusLabel: "Personal / Live（β）",
+    statusKind: "personal",
+    summary:
+      "東京ヴェルディのTOPチーム・U-21と、日テレ・東京ヴェルディベレーザの試合情報をまとめた非公式ファンサイト。クラブ・リーグとは関係のない個人開発です。",
+    highlights: [
+      "試合日程・結果・順位の表示",
+      "試合前プレビューと試合後レビュー",
+    ],
+    // ローカルリポジトリのpackage.jsonと公開URLで確認。
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+    image: "/images/works/verdy-match-lab-202610.png",
+    imageAlt:
+      "Verdy Match LabのTOP TEAMページ。次戦の日付・大会・対戦カード・キックオフ時刻と、前節の結果が表示されている。",
+    href: "https://verdy-match-lab.vercel.app/",
+    miniCase: {
+      problem:
+        "3カテゴリーの日程・結果・順位と、試合ごとの見どころや振り返りを、まとめて追える場所がほしかった。",
+      approach:
+        "公式発表を確認しながら手動でデータを登録し、検証してから公開する運用にした。自動取得は行っていない。",
+      changedState:
+        "PC・スマートフォンで閲覧できるサイトとしてVercelで公開し、試合ごとに更新しながら運用している。",
+    },
+  },
 ];
 
 export type PublicTool = {
