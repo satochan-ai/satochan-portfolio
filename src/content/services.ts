@@ -108,7 +108,7 @@ export const services: Service[] = [
     title: "改善に必要なWeb・業務ツール試作",
     problem: "表計算や手作業だけでは限界だが、大規模な開発を始める段階ではない。",
     support:
-      "課題と必要機能を整理し、フォーム、Dashboard、管理ツールなどをPrototype / MVPとして小さく形にします。",
+      "課題と必要機能を整理し、フォーム、Dashboard、管理ツールなどをPrototype / MVPとして小さく形にします。たとえば、申込フォームと管理表の連携、営業・採用情報の整理、簡易ダッシュボード、繰り返し作業の効率化などをご相談いただけます。",
     after: "必要な機能だけを小さく試し、本格的に作るべきか判断できる。",
     examples: ["申込 / 入力フォーム", "Dashboard", "管理画面", "小規模業務ツール", "Prototype / MVP"],
     relatedWorks: [

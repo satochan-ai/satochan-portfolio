@@ -77,7 +77,21 @@ export function Contact() {
           )}
         </div>
 
-        <ContactForm />
+        <div className="space-y-6">
+          <div className="rounded-card border border-inverse-fg/15 p-7">
+            <h3 className="text-h3 font-bold text-inverse-fg">
+              初回30分のご相談は無料
+            </h3>
+            <p className="mt-4 text-sm leading-relaxed text-inverse-fg/70">
+              調査・資料作成・ツール制作などの実作業は有料です。事前に内容とお見積もりをご提示し、合意いただいてから開始します。
+            </p>
+            <p className="mt-3 text-xs leading-relaxed text-inverse-fg/70">
+              ※無料のご相談は相談内容の確認までとなり、詳細な分析や成果物の作成は含みません。
+            </p>
+          </div>
+
+          <ContactForm />
+        </div>
       </div>
     </Section>
   );
