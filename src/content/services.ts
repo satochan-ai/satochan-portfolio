@@ -41,6 +41,8 @@ export type Service = {
   /** AIと人の役割分担など、設計上の前提を明示したい場合のみ設定する。 */
   principle?: string;
   examples: string[];
+  /** 依頼した場合の成果物の例。納品実績ではなく、対応範囲は相談内容により決める。 */
+  deliverables: string[];
   relatedWorks: RelatedWork[];
 };
 
@@ -53,6 +55,7 @@ export const services: Service[] = [
       "業務フローを整理し、AIに任せる工程と人が判断する工程を切り分けます。繰り返し業務は、小さく試せる運用へ落とし込みます。",
     after: "AIに任せる工程と人が判断する工程が、業務フローの中で切り分けられている。",
     examples: ["業務棚卸し", "AI活用候補の整理", "判断工程の切り分け", "繰り返し業務の標準化"],
+    deliverables: ["業務フローの整理", "AI活用手順の整理"],
     relatedWorks: [
       {
         name: "Obsidian × AI ナレッジ活用",
@@ -73,6 +76,7 @@ export const services: Service[] = [
       "営業フロー、KPI、商談・案件・BP情報、フォロー運用を整理し、状況と次の行動が見える形を設計します。",
     after: "状況と次のアクションを、チームで同じ基準で追える。",
     examples: ["営業フロー整理", "KPI設計", "BP営業", "商談 / 案件管理", "フォロー運用"],
+    deliverables: ["営業管理項目の整理", "フォロー運用の整理"],
     relatedWorks: [
       {
         name: "MatchPilot CRM",
@@ -94,6 +98,7 @@ export const services: Service[] = [
     principle:
       "AIは情報整理や比較を支援し、候補者との対話や最終判断は人が行う前提で設計します。",
     examples: ["採用フロー整理", "面談 / 選考情報整理", "判断基準の標準化", "採用状況の可視化"],
+    deliverables: ["選考管理項目の整理", "採用状況を確認する画面・表の試作"],
     relatedWorks: [
       {
         name: "Recruitment Insight",
@@ -111,6 +116,7 @@ export const services: Service[] = [
       "課題と必要機能を整理し、フォーム、Dashboard、管理ツールなどをPrototype / MVPとして小さく形にします。たとえば、申込フォームと管理表の連携、営業・採用情報の整理、簡易ダッシュボード、繰り返し作業の効率化などをご相談いただけます。",
     after: "必要な機能だけを小さく試し、本格的に作るべきか判断できる。",
     examples: ["申込 / 入力フォーム", "Dashboard", "管理画面", "小規模業務ツール", "Prototype / MVP"],
+    deliverables: ["申込フォーム", "管理表との連携", "簡易ダッシュボード"],
     relatedWorks: [
       {
         name: "SES営業交流会 申込サイト",

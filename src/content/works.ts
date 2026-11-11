@@ -43,6 +43,8 @@ export type Work = {
   hrefLabel?: string;
   /** 代表的な事例のみ設定する要約。未実測の成果数値は含めない。 */
   miniCase?: MiniCase;
+  /** この制作物に関連して相談できる業務。納品実績ではなく、制作物と相談内容の関連付け。 */
+  relatedConsultation?: string;
 };
 
 export type MiniCase = {
@@ -91,6 +93,8 @@ export const works: Work[] = [
       changedState:
         "申込受付、定員管理、受付連絡、キャンセル後の残席復元を一つの運用で進められ、開催ごとに使用・改善できる状態。",
     },
+    relatedConsultation:
+      "申込フォームの制作、管理表との連携、受付業務の効率化などに応用できる事例です。",
   },
   {
     slug: "recruitment-insight",
@@ -118,6 +122,8 @@ export const works: Work[] = [
       changedState:
         "採用情報を横断して確認できる公開Demoとして、改善案を画面で議論・検討できる状態にした。",
     },
+    relatedConsultation:
+      "候補者・求人・選考情報の整理や、採用管理画面の試作に関する参考事例です。",
   },
   {
     slug: "matchpilot",
@@ -139,6 +145,7 @@ export const works: Work[] = [
         "企業・担当者ごとの接点と関係値、次回アクションを一覧で追える管理項目を設計した。",
       changedState: "会社別・担当者別に状況を確認できる試作画面を作成した。実際の営業判断への効果は未検証。",
     },
+    relatedConsultation: "営業接点や次回アクションの管理方法を整理する際の参考事例です。",
   },
   {
     slug: "ai-mini-seminar",
