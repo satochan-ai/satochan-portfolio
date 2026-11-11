@@ -87,6 +87,16 @@ function WorkThumb({ work }: { work: Work }) {
   );
 }
 
+/** 制作物から相談できる業務への関連付け。納品実績ではないことが分かるラベルで表示する。 */
+function RelatedConsultation({ text }: { text: string }) {
+  return (
+    <p className="mt-3 text-xs leading-relaxed text-muted [word-break:auto-phrase]">
+      <span className="mr-1.5 font-medium text-accent">関連するご相談</span>
+      {text}
+    </p>
+  );
+}
+
 /** Secondary Works（Featured以外）は一覧性を優先し、余白と本文量をやや抑えて表示する。 */
 function WorkCard({ work }: { work: Work }) {
   const cardStack = work.cardStack ?? work.stack.slice(0, 4);
@@ -134,6 +144,10 @@ function WorkCard({ work }: { work: Work }) {
         )}
 
         {work.miniCase && <MiniCase data={work.miniCase} compact />}
+
+        {work.relatedConsultation && (
+          <RelatedConsultation text={work.relatedConsultation} />
+        )}
 
         <div className="mt-auto pt-4">
           {cardStack.length > 0 && (
@@ -251,6 +265,10 @@ function FeaturedWorkCard({ work }: { work: Work }) {
           )}
 
           {work.miniCase && <MiniCase data={work.miniCase} />}
+
+          {work.relatedConsultation && (
+            <RelatedConsultation text={work.relatedConsultation} />
+          )}
 
           <div className="mt-auto pt-6 lg:pt-7">
             {work.stack.length > 0 && (

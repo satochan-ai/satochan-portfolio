@@ -59,6 +59,16 @@ export default function ServicesPage() {
                   </p>
                 </div>
 
+                <div className="mt-3.5">
+                  <span className="font-mono text-xs text-accent">DELIVERABLES</span>
+                  <p className="mt-1 text-xs leading-relaxed text-muted">成果物の例（範囲はご相談内容に応じて決めます）</p>
+                  <ul className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium text-fg">
+                    {service.deliverables.map((item) => (
+                      <li key={item} className="[word-break:auto-phrase]">{item}</li>
+                    ))}
+                  </ul>
+                </div>
+
                 {service.principle && (
                   <p className="mt-3 text-xs leading-relaxed text-muted [word-break:auto-phrase]">
                     {service.principle}
