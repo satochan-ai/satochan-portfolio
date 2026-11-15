@@ -142,7 +142,7 @@ export function AiWorkflow() {
               実務の判断基準と手順を、再利用できる形へ。
             </h3>
             <p className="mt-4 text-sm leading-relaxed text-inverse-fg/70 sm:text-base">
-              SES営業・採用の実務で繰り返す判断や文書作成を、Claude CodeのSkillsとして整理しています。業務・制作支援に加え、意思決定を補助する助言型のSkillsも管理しています。
+              Skillsは、AIに作業手順や判断基準を持たせる仕組みです。SES営業・採用の判断や文書作成をClaude CodeのSkillsとして整理し、業務・制作支援に加え、意思決定を補助する助言型も管理しています。
             </p>
 
             <div className="mt-5">
@@ -178,7 +178,7 @@ export function AiWorkflow() {
               ))}
             </ul>
             <p className="mt-4 text-xs leading-relaxed text-inverse-fg/50">
-              登録数には外部導入1件と制作元未確認1件を含みます。すべての独自制作・日常利用を示す数値ではありません。
+              2026年10月20日時点の登録数です。外部導入1件と制作元未確認1件を含みます。すべての独自制作・日常利用を示す数値ではありません。
             </p>
           </div>
 

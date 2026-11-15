@@ -66,9 +66,9 @@ export const works: Work[] = [
     statusLabel: "Live / Production",
     statusKind: "live",
     summary:
-      "自分が運営しているSES営業交流会の、申込から当日運用までを支えるWebサイト。イベント告知ページではなく、定員管理・受付メール・キャンセル・残席復元まで、運営に必要な仕組みを実装しています。",
+      "自分が運営するSES営業交流会で実際に使用している申込サイト。受付情報を管理表に連携し、定員管理・受付メール・キャンセル対応から当日運用までを支えています。",
     highlights: [
-      "申込フォームと定員管理",
+      "申込受付・定員管理とGoogle Spreadsheetへの連携",
       "受付メールとキャンセル後の残席復元",
     ],
     stack: [
@@ -120,7 +120,7 @@ export const works: Work[] = [
       approach:
         "人数だけでは停滞の背景が見えないため、候補者・求人・企業・選考を横断して確認する構造を選んだ。",
       changedState:
-        "採用情報を横断して確認できる公開Demoとして、改善案を画面で議論・検討できる状態にした。",
+        "採用情報を横断して確認できる公開デモ。顧客へのデモ説明経験があり、受注・納品実績ではありません。",
     },
     relatedConsultation:
       "候補者・求人・選考情報の整理や、採用管理画面の試作に関する参考事例です。",
@@ -143,7 +143,7 @@ export const works: Work[] = [
       problem: "営業状況が感覚や記憶に依存し、フォロー対象や次の一手が見えにくい。",
       approach:
         "企業・担当者ごとの接点と関係値、次回アクションを一覧で追える管理項目を設計した。",
-      changedState: "会社別・担当者別に状況を確認できる試作画面を作成した。実際の営業判断への効果は未検証。",
+      changedState: "会社別・担当者別の状況を確認する試作画面を作成。導入実績・営業判断への効果は未検証。",
     },
     relatedConsultation: "営業接点や次回アクションの管理方法を整理する際の参考事例です。",
   },
@@ -207,10 +207,10 @@ export const works: Work[] = [
     statusLabel: "Personal / Local Tool",
     statusKind: "personal",
     summary:
-      "Claude CodeとCodexを併用して進めている複数プロジェクトの開発状況を、一画面で確認するために制作したローカル管理ツール。自分のPC上でのみ動かしており、公開サービスではありません。",
+      "Claude CodeとCodexを併用する個人開発で、作業状況をまとめて確認するためのローカルツール。Gitの変更状況と活動履歴を、自分のPC上で確認しています。公開サービスではありません。",
     highlights: [
       "Gitの変更状況と最終活動日時の表示",
-      "Claude Code HooksとCodexのローカル履歴を利用した活動状態の表示",
+      "Claude Code Hooks（AIの作業状況や実行結果を記録する仕組み）とCodexのローカル履歴を使った活動状態の表示",
     ],
     // ローカルリポジトリのpackage.json・requirements.txt・READMEで確認。
     stack: ["Next.js", "FastAPI", "SQLite", "Claude Code Hooks"],
@@ -222,8 +222,10 @@ export const works: Work[] = [
       approach:
         "手入力の管理表を増やさず、Git・Claude Code Hooks・Codexのローカル履歴という既存の記録を活用する設計にした。",
       changedState:
-        "2026年10月時点で8プロジェクトを登録して利用中。作業時間への効果は計測していない。",
+        "個人のPC上で開発状況の確認に利用中。作業時間への効果は未計測です。",
     },
+    relatedConsultation:
+      "複数ツールに分散した作業状況の整理や、個人・小規模チーム向け管理画面の試作に関する参考事例です。",
   },
   {
     slug: "verdy-match-lab",

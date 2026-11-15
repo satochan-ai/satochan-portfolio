@@ -1,45 +1,23 @@
 import Image from "next/image";
 
 import { Section } from "@/components/ui/Section";
+import { about } from "@/content/site";
 
 /** プロフィール写真が用意できたらここにパスを設定する。null の間は表示しない。 */
 const profilePhoto: { src: string; alt: string } | null = null;
-
-const paragraphs = [
-  "個人の営業活動だけでなく、営業マネジメント、KPI設計、採用フローの整理へ役割を広げ、「案件を決めること」から「決まる状態をつくること」へ取り組み方が変わりました。",
-  "現在は、その経験を業務整理・AI活用・仕組み化へ広げています。業務フローと判断基準を整理し、必要に応じて小規模な業務ツールを試作・検証しています。",
-];
-
-const career = [
-  {
-    period: "16年",
-    title: "SES営業",
-    body: "提案・商談・BP開拓・営業マネジメント",
-  },
-  {
-    period: "10年",
-    title: "採用",
-    body: "母集団形成・面談・入社後フォロー",
-  },
-  {
-    period: "現在",
-    title: "AI活用 / 業務改善 / 開発",
-    body: "課題整理から仕組み化、Web・業務ツールの実装まで",
-  },
-];
 
 export function About() {
   return (
     <Section
       id="about"
       eyebrow="About"
-      title="現場で数字を持ってきた人間が、そのまま仕組みをつくっています。"
-      lead="営業・採用の現場判断を起点に、AI活用と業務改善へ取り組んでいます。"
+      title="SES営業・採用の経験を、業務改善と仕組みづくりに。"
+      lead="これまでの中心的な経験、最近取り組み始めた業務、個人での活動を分けて紹介します。"
       tone="surface"
     >
       <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr]">
         <div className="space-y-5">
-          {paragraphs.map((text) => (
+          {about.paragraphs.map((text) => (
             <p key={text} className="text-sm leading-loose text-fg sm:text-base">
               {text}
             </p>
@@ -64,7 +42,7 @@ export function About() {
               Career
             </h3>
             <ul className="mt-4 border-t border-line">
-              {career.map((item) => (
+              {about.career.map((item) => (
                 <li
                   key={item.title}
                   className="grid grid-cols-[4.5rem_1fr] gap-4 border-b border-line py-5"
