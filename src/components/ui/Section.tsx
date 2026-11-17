@@ -13,6 +13,8 @@ type SectionProps = {
   eyebrow?: string;
   title?: ReactNode;
   lead?: string;
+  /** 導入文の段落に付けるid（旧アンカーの受け皿などに使う）。 */
+  leadId?: string;
   tone?: SectionTone;
   eyebrowVariant?: "default" | "code";
   children: ReactNode;
@@ -23,6 +25,7 @@ export function Section({
   eyebrow,
   title,
   lead,
+  leadId,
   tone = "default",
   eyebrowVariant = "default",
   children,
@@ -57,6 +60,7 @@ export function Section({
             )}
             {lead && (
               <p
+                id={leadId}
                 className={`mt-5 text-base leading-relaxed sm:text-lg ${
                   tone === "dark" ? "text-inverse-fg/70" : "text-muted"
                 }`}
