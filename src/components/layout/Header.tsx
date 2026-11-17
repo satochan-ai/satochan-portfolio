@@ -43,6 +43,20 @@ export function Header() {
           </Link>
         </nav>
       </div>
+      <nav aria-label="セクション" className="overflow-x-auto border-t border-line/70 lg:hidden">
+        <ul className="flex w-max min-w-full items-center gap-1 px-5 sm:px-8">
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className="block whitespace-nowrap rounded-md px-3 py-3 text-sm text-muted transition-colors hover:text-fg focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent"
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   );
 }
