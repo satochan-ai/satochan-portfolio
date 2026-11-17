@@ -44,7 +44,7 @@ export function WhatIDo() {
     <Section
       id="what-i-do"
       eyebrow="What I Do"
-      title="業務を整理し、小さく試して改善する。"
+      title="業務の整理から、試作と検証まで。"
       lead="現場理解を土台に、業務フローと判断基準を設計します。課題に合う手段を選び、必要な試作と検証につなげます。"
       tone="surface"
     >

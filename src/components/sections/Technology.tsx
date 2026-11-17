@@ -36,7 +36,7 @@ export function Technology() {
       id="technology"
       eyebrow="// Technology"
       eyebrowVariant="code"
-      title="使う技術は、目的に対して必要な分だけ。"
+      title="実際に使っている技術"
       lead="スキルレベルを並べるのではなく、実際に手を動かして使っているものを記載しています。"
       tone="surface"
     >

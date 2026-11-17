@@ -55,7 +55,7 @@ export const services: Service[] = [
       "業務フローを整理し、AIに任せる工程と人が判断する工程を切り分けます。繰り返し業務は、小さく試せる運用へ落とし込みます。",
     after: "AIに任せる工程と人が判断する工程が、業務フローの中で切り分けられている。",
     examples: ["業務棚卸し", "AI活用候補の整理", "判断工程の切り分け", "繰り返し業務の標準化"],
-    deliverables: ["業務フローの整理", "AI活用手順の整理"],
+    deliverables: ["現状の業務フロー図", "AIを使う作業の手順メモ"],
     relatedWorks: [
       {
         name: "Obsidian × AI ナレッジ活用",
@@ -76,15 +76,11 @@ export const services: Service[] = [
       "営業フロー、KPI、商談・案件・BP情報、フォロー運用を整理し、状況と次の行動が見える形を設計します。",
     after: "状況と次のアクションを、チームで同じ基準で追える。",
     examples: ["営業フロー整理", "KPI設計", "BP営業", "商談 / 案件管理", "フォロー運用"],
-    deliverables: ["営業管理項目の整理", "フォロー運用の整理"],
+    deliverables: ["営業管理表の項目案", "顧客フォローの担当・頻度のルール案"],
     relatedWorks: [
       {
         name: "MatchPilot CRM",
         reason: "企業・担当者との接点と次アクションを管理する設計。",
-      },
-      {
-        name: "MatchFollow",
-        reason: "稼働後の契約・請求・フォローを扱う試作。",
       },
     ],
   },
@@ -98,7 +94,7 @@ export const services: Service[] = [
     principle:
       "AIは情報整理や比較を支援し、候補者との対話や最終判断は人が行う前提で設計します。",
     examples: ["採用フロー整理", "面談 / 選考情報整理", "判断基準の標準化", "採用状況の可視化"],
-    deliverables: ["選考管理項目の整理", "採用状況を確認する画面・表の試作"],
+    deliverables: ["選考管理表の項目案", "採用状況を確認する画面・表の試作"],
     relatedWorks: [
       {
         name: "Recruitment Insight",
@@ -121,10 +117,6 @@ export const services: Service[] = [
       {
         name: "SES営業交流会 申込サイト",
         reason: "申込から当日運用までを実運用している事例。",
-      },
-      {
-        name: "MeetRoute",
-        reason: "候補日時の受付と承認を整理した試作。",
       },
       {
         name: "領収証生成ツール",
