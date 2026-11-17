@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { Section } from "@/components/ui/Section";
 import { StatusBadge } from "@/components/ui/StatusBadge";
@@ -97,13 +98,20 @@ function RelatedConsultation({ text }: { text: string }) {
   );
 }
 
+type CardOptions = {
+  /** カードに付けるアンカーid。 */
+  anchorId?: string;
+  /** Case Studyへのリンクの前に付けるパス（トップでは "/works"、/works では空）。 */
+  caseBase?: string;
+};
+
 /** Secondary Works（Featured以外）は一覧性を優先し、余白と本文量をやや抑えて表示する。 */
-function WorkCard({ work }: { work: Work }) {
+function WorkCard({ work, anchorId, caseBase = "" }: { work: Work } & CardOptions) {
   const cardStack = work.cardStack ?? work.stack.slice(0, 4);
 
   return (
     <li
-      id={work.slug === "recruitment-insight" ? "recruitment-insight" : undefined}
+      id={anchorId}
       className="work-card flex h-full flex-col overflow-hidden rounded-card border border-line bg-bg transition-[border-color,box-shadow] duration-200 hover:border-fg/40 hover:shadow-[0_6px_16px_rgb(14_16_19/0.06)]"
     >
       <WorkThumb work={work} />
@@ -176,7 +184,7 @@ function WorkCard({ work }: { work: Work }) {
               )}
               {work.caseStudyHref && (
                 <a
-                  href={work.caseStudyHref}
+                  href={`${caseBase}${work.caseStudyHref}`}
                   className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
                 >
                   {work.caseStudyLabel ?? "Case Study を見る"}
@@ -195,9 +203,9 @@ function WorkCard({ work }: { work: Work }) {
 /**
  * Featured Work（代表作）。Featuredラベルで差を出しつつ、他のWorkと同じグリッドの1枠に置く。
  */
-function FeaturedWorkCard({ work }: { work: Work }) {
+function FeaturedWorkCard({ work, anchorId, caseBase = "" }: { work: Work } & CardOptions) {
   return (
-    <li>
+    <li id={anchorId}>
       <article className="work-card flex h-full flex-col overflow-hidden rounded-card border border-line bg-bg transition-[border-color,box-shadow] duration-200 hover:border-fg/40 hover:shadow-[0_6px_16px_rgb(14_16_19/0.06)]">
         <div className="relative aspect-16/10 w-full overflow-hidden border-b border-line bg-surface">
           {work.image ? (
@@ -301,7 +309,7 @@ function FeaturedWorkCard({ work }: { work: Work }) {
                 )}
                 {work.caseStudyHref && (
                   <a
-                    href={work.caseStudyHref}
+                    href={`${caseBase}${work.caseStudyHref}`}
                     className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
                   >
                     Case Study を見る
@@ -383,12 +391,28 @@ function PublicTools() {
 
 const FEATURED_WORK_SLUG = "ses-meetup-site";
 
-export function SelectedWorks() {
+/** 先頭の大きなカード（Featured）と、それ以外の作品に分ける。順序は works.ts のまま。 */
+function splitWorks(list: Work[]) {
   const featuredWork =
-    works.find((work) => work.slug === FEATURED_WORK_SLUG) ?? works[0];
-  const secondaryWorks = works.filter(
-    (work) => work.slug !== featuredWork.slug,
+    list.find((work) => work.slug === FEATURED_WORK_SLUG) ?? list[0];
+  return {
+    featuredWork,
+    secondaryWorks: list.filter((work) => work.slug !== featuredWork.slug),
+  };
+}
+
+function PublicScopeNote() {
+  return (
+    <p className="mt-8 text-sm text-muted">
+      ※ 掲載内容は公開可能な範囲に限定しています。
+    </p>
   );
+}
+
+/** トップページ：代表作品だけを表示し、全件と事例は /works へ案内する。 */
+export function SelectedWorks() {
+  const featuredList = works.filter((work) => work.featured);
+  const { featuredWork, secondaryWorks } = splitWorks(featuredList);
 
   return (
     <Section
@@ -396,7 +420,7 @@ export function SelectedWorks() {
       eyebrow="// Selected Works"
       eyebrowVariant="code"
       title="営業・採用の課題を、運用と試作で具体化。"
-      lead="交流会の実運用、採用・営業の業務設計DemoやPrototype、個人開発のツールやサイトを紹介します。対象業務と設計の判断、現在確認できている状態を、公開状況とともに記載しています。"
+      lead={`交流会の実運用、採用・営業の業務設計DemoやPrototypeから、代表的な${featuredList.length}件を紹介します。ほかの制作物と詳しい取り組み事例は、制作物一覧のページにまとめています。`}
     >
       <PortfolioVideo
         summary={portfolioVideo.summary}
@@ -413,17 +437,61 @@ export function SelectedWorks() {
       </PortfolioVideo>
 
       <ul className="grid gap-6 sm:grid-cols-2">
-        <FeaturedWorkCard work={featuredWork} />
+        <FeaturedWorkCard work={featuredWork} caseBase="/works" />
         {secondaryWorks.map((work) => (
-          <WorkCard key={work.slug} work={work} />
+          <WorkCard
+            key={work.slug}
+            work={work}
+            caseBase="/works"
+            anchorId={work.slug === "recruitment-insight" ? "recruitment-insight" : undefined}
+          />
+        ))}
+      </ul>
+
+      <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+        <Link
+          href="/works"
+          className="inline-flex items-center gap-2 rounded-full border border-fg/20 px-5 py-3 text-sm font-medium text-fg transition-colors hover:border-fg/50"
+        >
+          すべての制作物と事例を見る
+          <span aria-hidden>&rarr;</span>
+        </Link>
+        <Link
+          href="/#contact"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
+        >
+          お問い合わせ
+          <span aria-hidden>&rarr;</span>
+        </Link>
+      </div>
+
+      <PublicScopeNote />
+    </Section>
+  );
+}
+
+/** /works：全作品を元の順序で表示し、公開ツールも続けて掲載する。 */
+export function WorksList() {
+  const { featuredWork, secondaryWorks } = splitWorks(works);
+
+  return (
+    <Section
+      id="works"
+      eyebrow="// Works"
+      eyebrowVariant="code"
+      title="制作物一覧"
+      lead="交流会の実運用、採用・営業の業務設計DemoやPrototype、個人開発のツールやサイトを、公開状況とともに掲載しています。"
+    >
+      <ul className="grid gap-6 sm:grid-cols-2">
+        <FeaturedWorkCard work={featuredWork} anchorId={`work-${featuredWork.slug}`} />
+        {secondaryWorks.map((work) => (
+          <WorkCard key={work.slug} work={work} anchorId={`work-${work.slug}`} />
         ))}
       </ul>
 
       <PublicTools />
 
-      <p className="mt-8 text-sm text-muted">
-        ※ 掲載内容は公開可能な範囲に限定しています。
-      </p>
+      <PublicScopeNote />
     </Section>
   );
 }
