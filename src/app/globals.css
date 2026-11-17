@@ -57,6 +57,12 @@
     scroll-padding-top: 5rem;
   }
 
+  @media (width < 64rem) {
+    html {
+      scroll-padding-top: 8rem;
+    }
+  }
+
   body {
     background-color: var(--color-bg);
     color: var(--color-fg);

@@ -194,7 +194,7 @@ export function CaseStudyIndex() {
           <li key={study.id} id={study.id} className="border-b border-line">
             <Link
               href={`/works#${study.id}`}
-              className="group flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:gap-6"
+              className="group grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 gap-y-1 py-5 sm:flex sm:items-baseline sm:gap-6"
             >
               <span className="font-mono text-xs text-muted">
                 {String(index + 1).padStart(2, "0")}
@@ -203,7 +203,7 @@ export function CaseStudyIndex() {
                 {study.title}
               </span>
               <span className="text-xs text-muted">{study.statusLabel}</span>
-              <span aria-hidden className="text-sm text-accent sm:ml-auto">
+              <span aria-hidden className="col-start-2 row-span-3 row-start-1 self-center text-sm text-accent sm:ml-auto sm:self-auto">
                 &rarr;
               </span>
             </Link>

@@ -436,7 +436,7 @@ export function SelectedWorks() {
         </p>
       </PortfolioVideo>
 
-      <ul className="grid gap-6 sm:grid-cols-2">
+      <ul className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
         <FeaturedWorkCard work={featuredWork} caseBase="/works" />
         {secondaryWorks.map((work) => (
           <WorkCard
