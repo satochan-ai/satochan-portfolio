@@ -26,7 +26,7 @@ export type RelatedWork = {
   name: string;
   /** このServiceの根拠として何を示しているか。Works本文の転記はしない。 */
   reason: string;
-  /** 参照先がSelected Works以外のSectionの場合のみ指定する（既定は /#works）。 */
+  /** 未指定時は /#works。/works へ移した作品やSelected Works以外のSectionを指す場合に指定する。 */
   href?: string;
 };
 
@@ -60,6 +60,7 @@ export const services: Service[] = [
       {
         name: "Obsidian × AI ナレッジ活用",
         reason: "記録をAIで分析できる形に整理した仕組み。",
+        href: "/works#work-obsidian-ai-knowledge",
       },
       {
         name: "AI Workflow / Claude Code Skills",
@@ -121,6 +122,7 @@ export const services: Service[] = [
       {
         name: "領収証生成ツール",
         reason: "手作業の発行業務を小さく形にした事例。",
+        href: "/works#work-receipt-generator",
       },
     ],
   },

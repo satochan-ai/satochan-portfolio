@@ -43,6 +43,8 @@ export type Work = {
   hrefLabel?: string;
   /** 代表的な事例のみ設定する要約。未実測の成果数値は含めない。 */
   miniCase?: MiniCase;
+  /** トップページに代表作品として表示する場合のみ true。全件は /works に表示する。 */
+  featured?: boolean;
   /** この制作物に関連して相談できる業務。納品実績ではなく、制作物と相談内容の関連付け。 */
   relatedConsultation?: string;
 };
@@ -61,6 +63,7 @@ export type MiniCase = {
 export const works: Work[] = [
   {
     slug: "ses-meetup-site",
+    featured: true,
     title: "SES営業交流会 申込サイト",
     category: "Web Application / Event Operations",
     statusLabel: "Live / Production",
@@ -90,6 +93,7 @@ export const works: Work[] = [
   },
   {
     slug: "recruitment-insight",
+    featured: true,
     title: "Recruitment Insight",
     category: "Recruiting Operations",
     statusLabel: "Demo / Recruiting Operations",
@@ -111,6 +115,7 @@ export const works: Work[] = [
   },
   {
     slug: "matchpilot",
+    featured: true,
     title: "MatchPilot CRM",
     category: "Sales Operations / CRM",
     statusLabel: "Prototype / In Development",

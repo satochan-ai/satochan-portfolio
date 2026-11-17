@@ -1,6 +1,6 @@
 import { About } from "@/components/sections/About";
 import { AiWorkflow } from "@/components/sections/AiWorkflow";
-import { CaseStudy } from "@/components/sections/CaseStudy";
+import { CaseStudyIndex } from "@/components/sections/CaseStudy";
 import { Consultation } from "@/components/sections/Consultation";
 import { Contact } from "@/components/sections/Contact";
 import { Hero } from "@/components/sections/Hero";
@@ -19,7 +19,7 @@ export default function Home() {
       <Hero />
       <Proof />
       <SelectedWorks />
-      <CaseStudy />
+      <CaseStudyIndex />
       <WhatIDo />
       <Philosophy />
       <AiWorkflow />

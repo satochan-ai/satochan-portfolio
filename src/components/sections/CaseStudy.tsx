@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { KnowledgeFlow } from "@/components/sections/KnowledgeFlow";
 import { Section } from "@/components/ui/Section";
 import { Tag } from "@/components/ui/Tag";
@@ -171,6 +173,43 @@ export function CaseStudy() {
           </CaseStudyArticle>
         ))}
       </div>
+    </Section>
+  );
+}
+
+/**
+ * トップページ用の事例案内。本文は /works に移したため、旧アンカー
+ * （#case-study と各事例のid）をここで受け止め、/works の該当事例へ案内する。
+ */
+export function CaseStudyIndex() {
+  return (
+    <Section
+      id="case-study"
+      eyebrow="Case Study"
+      title="詳しい取り組み事例"
+      lead="課題・判断・実装・確認できている状態と検証の限界は、制作物一覧のページに掲載しています。"
+    >
+      <ol className="border-t border-line">
+        {caseStudies.map((study, index) => (
+          <li key={study.id} id={study.id} className="border-b border-line">
+            <Link
+              href={`/works#${study.id}`}
+              className="group flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:gap-6"
+            >
+              <span className="font-mono text-xs text-muted">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span className="text-base font-bold text-fg group-hover:text-accent [word-break:auto-phrase]">
+                {study.title}
+              </span>
+              <span className="text-xs text-muted">{study.statusLabel}</span>
+              <span aria-hidden className="text-sm text-accent sm:ml-auto">
+                &rarr;
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ol>
     </Section>
   );
 }
