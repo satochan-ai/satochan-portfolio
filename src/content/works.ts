@@ -85,14 +85,6 @@ export const works: Work[] = [
       "SES営業交流会 申込サイトの開催案内セクション。開催時間・会場・参加費・定員と、受付中の表示、第7回への申込ボタン、申込受付期間が並んでいる。",
     caseStudyHref: "#case-ses-meetup",
     href: "https://event-entry-site.vercel.app/",
-    miniCase: {
-      problem:
-        "申込受付・定員管理・受付連絡・キャンセル対応が別々に残ると、告知サイトだけでは運営を支えられない。",
-      approach:
-        "申込から当日運用を一つの流れとして設計。運営者が普段確認・修正できる表計算にデータを置いた。",
-      changedState:
-        "申込受付、定員管理、受付連絡、キャンセル後の残席復元を一つの運用で進められ、開催ごとに使用・改善できる状態。",
-    },
     relatedConsultation:
       "申込フォームの制作、管理表との連携、受付業務の効率化などに応用できる事例です。",
   },
@@ -103,7 +95,7 @@ export const works: Work[] = [
     statusLabel: "Demo / Recruiting Operations",
     statusKind: "development",
     summary:
-      "候補者・求人・企業・選考情報を横断し、採用ファネル、停滞、離脱理由、次回アクションを可視化する採用業務デモ。",
+      "候補者・求人・企業・選考情報を横断し、採用ファネル、停滞、離脱理由、次回アクションを可視化する採用業務デモ。顧客へのデモ説明経験はありますが、受注・納品実績ではありません。",
     highlights: [],
     // 公開Demoのcommit 463e255のpackage・lockfile・実装で確認。
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
@@ -114,14 +106,6 @@ export const works: Work[] = [
     hrefLabel: "Live Demo",
     caseStudyHref: "#case-recruitment-insight",
     caseStudyLabel: "取り組みの詳細を見る",
-    miniCase: {
-      problem:
-        "候補者・求人・選考情報が分散すると、停滞と次の対応が見えにくい。",
-      approach:
-        "人数だけでは停滞の背景が見えないため、候補者・求人・企業・選考を横断して確認する構造を選んだ。",
-      changedState:
-        "採用情報を横断して確認できる公開デモ。顧客へのデモ説明経験があり、受注・納品実績ではありません。",
-    },
     relatedConsultation:
       "候補者・求人・選考情報の整理や、採用管理画面の試作に関する参考事例です。",
   },
@@ -132,19 +116,13 @@ export const works: Work[] = [
     statusLabel: "Prototype / In Development",
     statusKind: "development",
     summary:
-      "SES営業における企業・担当者との接点、打ち合わせ、関係値、次回アクションを整理・可視化するCRMのプロトタイプ。サンプルデータで画面と管理項目を検討するための試作です。",
+      "SES営業における企業・担当者との接点、打ち合わせ、関係値、次回アクションを整理・可視化するCRMのプロトタイプ。サンプルデータで画面と管理項目を検討するための試作で、導入実績・営業判断への効果は未検証です。",
     highlights: [],
     stack: ["JavaScript", "HTML", "CSS", "CSV"],
     image: "/images/works/matchpilot-crm-202610.png",
     imageAlt: "架空のサンプルデータを表示したMatchPilot CRMの会社別サマリー画面。会社ごとの区分・関係値・接点回数・担当者・接点日が並び、左のメニューに次回アクションや打ち合わせ一覧がある。",
     caseStudyHref: "#case-matchpilot",
     caseStudyLabel: "取り組みの詳細を見る",
-    miniCase: {
-      problem: "営業状況が感覚や記憶に依存し、フォロー対象や次の一手が見えにくい。",
-      approach:
-        "企業・担当者ごとの接点と関係値、次回アクションを一覧で追える管理項目を設計した。",
-      changedState: "会社別・担当者別の状況を確認する試作画面を作成。導入実績・営業判断への効果は未検証。",
-    },
     relatedConsultation: "営業接点や次回アクションの管理方法を整理する際の参考事例です。",
   },
   {

@@ -87,7 +87,7 @@ export const proofPoints: ProofPoint[] = [
     value: "1,500",
     unit: "+",
     label: "営業・商談接点",
-    note: "企業・技術者との接点の累計。現場経験の厚みを示す活動量",
+    note: "企業・技術者との打ち合わせ・商談の累計",
     footnote: "長期間保存している営業・打ち合わせ記録をもとにした概算です。",
   },
 ];

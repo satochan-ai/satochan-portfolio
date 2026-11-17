@@ -11,7 +11,7 @@ export function Proof() {
     >
       <div className="mx-auto w-full max-w-page px-5 sm:px-8">
         <p className="mb-8 max-w-prose text-sm leading-relaxed text-muted">
-          営業・採用の現場経験を、業務の詰まり・例外・判断基準を理解する土台にしています。
+          営業と採用の現場で、どこで仕事が止まるか、どんな例外が起きるかを見てきました。
         </p>
         <dl className="grid grid-cols-1 gap-y-8 sm:grid-cols-3 sm:gap-x-8 sm:gap-y-0">
           {proofPoints.map((point, index) => (
@@ -32,10 +32,10 @@ export function Proof() {
                 {point.footnote && (
                   <a
                     href="#proof-note"
-                    aria-label={`※${index + 1} の注記へ`}
+                    aria-label={`※${footnotes.indexOf(point) + 1} の注記へ`}
                     className="ml-1 align-super font-sans text-[0.3em] font-medium text-muted hover:text-fg"
                   >
-                    ※{index + 1}
+                    ※{footnotes.indexOf(point) + 1}
                   </a>
                 )}
               </dd>
@@ -52,7 +52,7 @@ export function Proof() {
           <ul id="proof-note" className="mt-8 space-y-1 scroll-mt-24">
             {footnotes.map((point) => (
               <li key={point.label} className="text-xs leading-relaxed text-muted">
-                ※{proofPoints.indexOf(point) + 1} {point.footnote}
+                ※{footnotes.indexOf(point) + 1} {point.footnote}
               </li>
             ))}
           </ul>
@@ -63,9 +63,9 @@ export function Proof() {
             Business Impact
           </p>
           <h2 id="business-impact-title" className="mt-3 text-h3 font-bold">
-            営業活動だけでなく、
+            営業チームの立ち上げから、
             <br />
-            立ち上げと仕組み化まで。
+            教育・KPI管理まで。
           </h2>
           <p className="mt-4 max-w-prose text-sm leading-relaxed text-muted sm:text-base">
             新規開拓の立ち上げから、打ち合わせ創出、若手教育、KPI管理まで、営業が継続して動く状態をつくってきました。

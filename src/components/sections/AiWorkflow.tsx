@@ -20,7 +20,7 @@ const steps: Step[] = [
     key: "think",
     label: "Think",
     jp: "課題整理・仮説・質問設計",
-    body: "論点を出し切り、考えの抜けを潰す。広げるのはAI、決めるのは自分。",
+    body: "AIに論点を出させ、抜けている観点を確認する。",
     role: "Human decision",
   },
   {
@@ -41,14 +41,14 @@ const steps: Step[] = [
     key: "operate",
     label: "Operate",
     jp: "実際の業務で使う",
-    body: "作って終わりにせず、運用に乗せる。使って初めて不便が分かる。",
+    body: "自分の業務で実際に使い、不便な点を記録する。",
     role: "Human decision",
   },
   {
     key: "improve",
     label: "Improve",
     jp: "記録と結果を振り返り改善する",
-    body: "分かったことを仕組み側へ戻す。次から同じ手間をかけない。",
+    body: "記録した不便をもとに、手順やツールを直す。",
     role: "Human decision",
   },
 ];
@@ -161,10 +161,6 @@ export function AiWorkflow() {
                 ))}
               </ul>
             </div>
-            <p className="mt-4 text-sm leading-relaxed text-inverse-fg/60">
-              ツールの利用そのものを目的とせず、業務プロセスや判断基準を再利用できる形で残すことを重視しています。
-            </p>
-
             <ul className="mt-6 flex flex-wrap gap-2">
               {skillCategories.map((category, index) => (
                 <li key={category}>
