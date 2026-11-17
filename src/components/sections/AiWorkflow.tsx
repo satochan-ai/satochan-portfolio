@@ -99,6 +99,7 @@ export function AiWorkflow() {
       eyebrowVariant="code"
       title="AIを使うこと自体は、目的にしない。"
       lead="業務改善の中で、情報整理・比較・下書き・傾向整理・試作支援にAIを使います。課題設定、判断、確認、合意形成と最終責任は人が担い、工程ごとに役割を切り分けています。"
+      leadId="philosophy"
       tone="dark"
     >
       <ol className="grid gap-px overflow-hidden rounded-card bg-inverse-fg/15 sm:grid-cols-2 lg:grid-cols-3">

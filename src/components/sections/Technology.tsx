@@ -2,6 +2,7 @@ import { Section } from "@/components/ui/Section";
 
 type TechGroup = {
   label: string;
+  /** カテゴリの補足。現在は表示していない（掲載内容の根拠メモとして残す）。 */
   note: string;
   items: string[];
 };
@@ -40,21 +41,16 @@ export function Technology() {
       lead="スキルレベルを並べるのではなく、実際に手を動かして使っているものを記載しています。"
       tone="surface"
     >
-      <dl className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <dl className="grid grid-cols-2 gap-x-5 gap-y-6 lg:grid-cols-4 lg:gap-x-8">
         {groups.map((group) => (
-          <div key={group.label} className="border-t border-line pt-5">
-            <dt>
-              <span className="text-eyebrow font-medium uppercase text-accent">
-                {group.label}
-              </span>
-              <span className="mt-2 block text-xs leading-relaxed text-muted">
-                {group.note}
-              </span>
+          <div key={group.label} className="min-w-0 border-t border-line pt-4">
+            <dt className="text-eyebrow font-medium uppercase text-accent">
+              {group.label}
             </dt>
             <dd>
-              <ul className="mt-5 space-y-2.5 text-sm font-medium text-fg">
+              <ul className="mt-3 flex flex-wrap gap-x-3 gap-y-1.5 text-sm font-medium text-fg">
                 {group.items.map((item) => (
-                  <li key={item}>{item}</li>
+                  <li key={item} className="[word-break:auto-phrase]">{item}</li>
                 ))}
               </ul>
             </dd>

@@ -30,6 +30,22 @@ export type RelatedWork = {
   href?: string;
 };
 
+export type ServiceAreaLink = {
+  label: string;
+  href: string;
+};
+
+/** トップページ「対応できること」に表示する内容。/services の本文とは別に、短く具体的に書く。 */
+export type ServiceArea = {
+  title: string;
+  /** よくある相談の例（現在の状態）。 */
+  example: string;
+  /** 依頼した場合に行うこと。提供実績や成果は書かない。 */
+  support: string;
+  relatedLabel: string;
+  links: ServiceAreaLink[];
+};
+
 export type Service = {
   no: string;
   title: string;
@@ -44,11 +60,65 @@ export type Service = {
   /** 依頼した場合の成果物の例。納品実績ではなく、対応範囲は相談内容により決める。 */
   deliverables: string[];
   relatedWorks: RelatedWork[];
+  home: ServiceArea;
 };
 
+/** 表示順はトップの「対応できること」と /services で共通（SES → 採用 → AI → Web）。 */
 export const services: Service[] = [
   {
     no: "01",
+    title: "SES営業の仕組み化",
+    problem: "営業情報や次のアクションが、担当者の記憶に依存している。",
+    support:
+      "営業フロー、KPI、商談・案件・BP情報、フォロー運用を整理し、状況と次の行動が見える形を設計します。",
+    after: "状況と次のアクションを、チームで同じ基準で追える。",
+    examples: ["営業フロー整理", "KPI設計", "BP営業", "商談 / 案件管理", "フォロー運用"],
+    deliverables: ["営業管理表の項目案", "顧客フォローの担当・頻度のルール案"],
+    relatedWorks: [
+      {
+        name: "MatchPilot CRM",
+        reason: "企業・担当者との接点と次アクションを管理する設計。",
+      },
+    ],
+    home: {
+      title: "SES営業の仕組みづくり",
+      example: "営業情報や次のアクションが、担当者の記憶に頼っている。",
+      support:
+        "営業フロー・KPI・商談や案件・BP企業の情報と、フォローのルールを整理し、営業管理表の項目案などにまとめます。若手営業向けの業務教育のご相談にも対応します。",
+      relatedLabel: "関連作品",
+      links: [{ label: "MatchPilot CRM（試作）", href: "/works#work-matchpilot" }],
+    },
+  },
+  {
+    no: "02",
+    title: "採用業務改善",
+    problem: "選考状況や評価理由が分散し、採用活動の停滞要因が分からない。",
+    support:
+      "募集から面談、選考、フォローまでを棚卸しし、管理項目や判断基準を標準化します。必要に応じてAI活用も組み込みます。",
+    after: "採用フローと判断基準が整理され、停滞している箇所が見える。",
+    principle:
+      "AIは情報整理や比較を支援し、候補者との対話や最終判断は人が行う前提で設計します。",
+    examples: ["採用フロー整理", "面談 / 選考情報整理", "判断基準の標準化", "採用状況の可視化"],
+    deliverables: ["選考管理表の項目案", "採用状況を確認する画面・表の試作"],
+    relatedWorks: [
+      {
+        name: "Recruitment Insight",
+        reason:
+          "候補者・求人・企業・選考情報を横断し、採用ファネルや離脱理由を可視化した公開デモ。",
+        href: "/#recruitment-insight",
+      },
+    ],
+    home: {
+      title: "採用業務の整理・改善",
+      example: "選考の状況や見送り理由が、担当者ごとにばらばらに残っている。",
+      support:
+        "募集から面談・選考までの流れと管理項目を見直し、選考管理表の項目案や、採用状況を一覧で見る表・画面の試作を用意します。AIは情報の整理に使い、合否の判断は人が行う前提で設計します。",
+      relatedLabel: "関連作品",
+      links: [{ label: "Recruitment Insight（デモ）", href: "/#recruitment-insight" }],
+    },
+  },
+  {
+    no: "03",
     title: "AI活用・業務改善",
     problem: "AIを業務に使いたいが、どこから始めればよいか分からない。",
     support:
@@ -68,42 +138,17 @@ export const services: Service[] = [
         href: "/#ai-workflow",
       },
     ],
-  },
-  {
-    no: "02",
-    title: "SES営業の仕組み化",
-    problem: "営業情報や次のアクションが、担当者の記憶に依存している。",
-    support:
-      "営業フロー、KPI、商談・案件・BP情報、フォロー運用を整理し、状況と次の行動が見える形を設計します。",
-    after: "状況と次のアクションを、チームで同じ基準で追える。",
-    examples: ["営業フロー整理", "KPI設計", "BP営業", "商談 / 案件管理", "フォロー運用"],
-    deliverables: ["営業管理表の項目案", "顧客フォローの担当・頻度のルール案"],
-    relatedWorks: [
-      {
-        name: "MatchPilot CRM",
-        reason: "企業・担当者との接点と次アクションを管理する設計。",
-      },
-    ],
-  },
-  {
-    no: "03",
-    title: "採用業務改善",
-    problem: "選考状況や評価理由が分散し、採用活動の停滞要因が分からない。",
-    support:
-      "募集から面談、選考、フォローまでを棚卸しし、管理項目や判断基準を標準化します。必要に応じてAI活用も組み込みます。",
-    after: "採用フローと判断基準が整理され、停滞している箇所が見える。",
-    principle:
-      "AIは情報整理や比較を支援し、候補者との対話や最終判断は人が行う前提で設計します。",
-    examples: ["採用フロー整理", "面談 / 選考情報整理", "判断基準の標準化", "採用状況の可視化"],
-    deliverables: ["選考管理表の項目案", "採用状況を確認する画面・表の試作"],
-    relatedWorks: [
-      {
-        name: "Recruitment Insight",
-        reason:
-          "候補者・求人・企業・選考情報を横断し、採用ファネルや離脱理由を可視化した公開デモ。",
-        href: "/#recruitment-insight",
-      },
-    ],
+    home: {
+      title: "生成AIの業務活用",
+      example: "AIを業務に使いたいが、どの作業から試せばよいか分からない。",
+      support:
+        "繰り返している作業を洗い出し、AIに任せる部分と人が確認する部分を分けて、作業の手順メモにまとめます。既存のツールや運用の見直しで足りる場合は、新しいツールは作りません。社内向けの生成AI活用講座・勉強会のご相談も受けています。",
+      relatedLabel: "関連",
+      links: [
+        { label: "AI Workflow", href: "/#ai-workflow" },
+        { label: "登壇実績", href: "/#speaking" },
+      ],
+    },
   },
   {
     no: "04",
@@ -125,6 +170,17 @@ export const services: Service[] = [
         href: "/works#work-receipt-generator",
       },
     ],
+    home: {
+      title: "Webサイト・小規模業務ツールの制作",
+      example: "表計算や手作業では限界だが、大きなシステム開発までは必要ない。",
+      support:
+        "申込フォームと管理表の連携、簡易ダッシュボードなど、必要な機能に絞って試作します。実際に使ってから、本格的に作るかどうかを判断できます。",
+      relatedLabel: "関連作品",
+      links: [
+        { label: "SES営業交流会 申込サイト（運用中）", href: "/works#work-ses-meetup-site" },
+        { label: "領収証生成ツール", href: "/works#work-receipt-generator" },
+      ],
+    },
   },
 ];
 

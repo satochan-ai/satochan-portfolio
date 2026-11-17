@@ -1,85 +1,76 @@
+import Link from "next/link";
+
 import { Section } from "@/components/ui/Section";
+import { services } from "@/content/services";
 
-type Service = {
-  no: string;
-  en: string;
-  title: string;
-  body: string;
-  points: string[];
-};
-
-const services: Service[] = [
-  {
-    no: "01",
-    en: "Workflow Design",
-    title: "業務整理",
-    body: "営業フロー、KPI・案件管理、顧客・BP企業との接点管理を整理します。採用では、要件と募集・面談・選考フロー、情報の管理方法を見直します。",
-    points: ["営業・採用の流れと管理項目", "判断基準・例外の言語化"],
-  },
-  {
-    no: "02",
-    en: "AI Enablement",
-    title: "AI活用設計",
-    body: "繰り返し業務を棚卸しし、AIを使える工程と人が判断・確認する工程を整理します。既存ツールや運用改善で対応できる場合は、そちらを優先します。",
-    points: ["AIと既存手段の適用検討", "人が判断・確認する工程の設計"],
-  },
-  {
-    no: "03",
-    en: "Process & Prototyping",
-    title: "仕組み化・試作",
-    body: "改善案を、必要に応じて小規模なWeb・業務ツールとして試作します。要件整理、AIを使った実装、テストを通じて、具体的に検討できる形にします。",
-    points: ["必要な機能と要件の整理", "小規模な試作とテスト"],
-  },
-  {
-    no: "04",
-    en: "Verification & Improvement",
-    title: "検証・改善",
-    body: "利用結果をもとに、確認できたことと未検証のことを分けて改善します。SES営業の業務教育・若手育成や、生成AI活用講座・勉強会にも対応します。",
-    points: ["利用・確認結果をもとに改善", "営業教育・生成AIの講座と勉強会"],
-  },
-];
-
+/**
+ * 「対応できること」。旧 What I Do・Consultation・Use Cases を統合したセクション。
+ * 文言は services.ts の home を参照し、表示順は /services と共通にする。
+ * 旧アンカー：#what-i-do（セクション）、#use-cases（カード一覧）、#consultation（末尾の相談リンク）。
+ */
 export function WhatIDo() {
   return (
     <Section
       id="what-i-do"
       eyebrow="What I Do"
-      title="業務の整理から、試作と検証まで。"
-      lead="現場理解を土台に、業務フローと判断基準を設計します。課題に合う手段を選び、必要な試作と検証につなげます。"
+      title="対応できること"
+      lead="SES営業と採用の実務経験をもとに、次の4つの領域でご相談を受けています。まず今の業務の進め方を伺い、そのうえで何から手を付けるかを一緒に決めます。"
       tone="surface"
     >
-      <ul className="grid gap-6 sm:grid-cols-2">
-        {services.map((service) => (
-          <li
-            key={service.no}
-            className="flex flex-col rounded-card border border-line bg-bg p-7"
-          >
-            <div className="flex items-baseline gap-3">
-              <span className="font-mono text-sm text-accent">
-                {service.no}
-              </span>
-              <span className="text-xs font-medium text-muted">
-                {service.en}
-              </span>
-            </div>
-            <h3 className="mt-4 text-h3 font-bold">{service.title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted">
-              {service.body}
-            </p>
-            <ul className="mt-6 space-y-2 border-t border-line pt-5 text-sm text-fg">
-              {service.points.map((point) => (
-                <li key={point} className="flex gap-2.5">
-                  <span
-                    aria-hidden
-                    className="mt-2 size-1 shrink-0 rounded-full bg-muted"
-                  />
-                  {point}
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))}
+      <ul id="use-cases" className="grid gap-6 sm:grid-cols-2">
+        {services.map((service) => {
+          const area = service.home;
+          return (
+            <li
+              key={service.no}
+              className="flex flex-col rounded-card border border-line bg-bg p-7"
+            >
+              <h3 className="text-h3 font-bold [word-break:auto-phrase]">{area.title}</h3>
+
+              <dl className="mt-4 flex flex-1 flex-col text-sm leading-relaxed">
+                <dt className="text-xs font-medium text-accent">相談例</dt>
+                <dd className="mt-1 font-medium text-fg [word-break:auto-phrase]">
+                  {area.example}
+                </dd>
+
+                <dt className="mt-4 text-xs font-medium text-accent">支援内容</dt>
+                <dd className="mt-1 text-muted">{area.support}</dd>
+
+                <dt className="mt-auto border-t border-line pt-4 text-xs font-medium text-muted">
+                  {area.relatedLabel}
+                </dt>
+                <dd className="mt-2">
+                  <ul className="flex flex-wrap gap-x-5 gap-y-1.5">
+                    {area.links.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          className="font-medium text-accent hover:text-accent-hover hover:underline [word-break:auto-phrase]"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </dd>
+              </dl>
+            </li>
+          );
+        })}
       </ul>
+
+      <p
+        id="consultation"
+        className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted"
+      >
+        成果物の例や進め方は、相談内容のページにまとめています。
+        <Link
+          href="/services"
+          className="inline-flex items-center gap-1.5 font-medium text-accent hover:text-accent-hover hover:underline"
+        >
+          相談内容を見る <span aria-hidden>&rarr;</span>
+        </Link>
+      </p>
     </Section>
   );
 }
