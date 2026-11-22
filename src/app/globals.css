@@ -17,6 +17,8 @@
   --color-accent-on-dark: #8fdcaa;
   --color-accent-soft: #e8f3ec;
   --color-inverse-fg: #f8fafc;
+  /* 暗色セクション（Section tone="dark"）の背景。Hero と同じ深緑。文字色 --color-fg とは分ける */
+  --color-dark: #00260a;
 
   /* typography */
   --font-sans: var(--font-inter), var(--font-noto-jp), ui-sans-serif, system-ui,

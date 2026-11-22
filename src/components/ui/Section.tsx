@@ -5,7 +5,7 @@ type SectionTone = "default" | "surface" | "dark";
 const toneClass: Record<SectionTone, string> = {
   default: "bg-bg text-fg",
   surface: "bg-surface text-fg",
-  dark: "bg-fg text-inverse-fg",
+  dark: "bg-dark text-inverse-fg",
 };
 
 type SectionProps = {
