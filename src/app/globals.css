@@ -7,15 +7,15 @@
 @theme {
   /* color */
   --color-bg: #ffffff;
-  --color-surface: #f3f7ff;
+  --color-surface: #f3f8f4;
   --color-fg: #111827;
   --color-muted: #586375;
-  --color-line: #dbe3f0;
-  --color-accent: #1d4ed8;
-  --color-accent-hover: #173ea9;
-  /* Deep Navy背景（#111827）上で 4.5:1 を満たすアクセント */
-  --color-accent-on-dark: #9bb8ff;
-  --color-accent-soft: #eaf1ff;
+  --color-line: #dee2df;
+  --color-accent: #046a38;
+  --color-accent-hover: #003f10;
+  /* 暗色背景（#111827 / #003F10）上で 4.5:1 を満たすアクセント */
+  --color-accent-on-dark: #8fdcaa;
+  --color-accent-soft: #e8f3ec;
   --color-inverse-fg: #f8fafc;
 
   /* typography */
@@ -212,11 +212,11 @@
 @keyframes hero-ring-emphasis {
   0%,
   100% {
-    stroke: rgba(137, 212, 255, 0.28);
+    stroke: rgba(143, 220, 170, 0.28);
   }
 
   45% {
-    stroke: rgba(137, 212, 255, 0.6);
+    stroke: rgba(143, 220, 170, 0.6);
   }
 }
 
@@ -232,25 +232,25 @@
      - 640px 未満と prefers-reduced-motion: reduce ではアニメーションを宣言しない（静止表示）
      ========================================================= */
   .hero-surface {
-    background-color: #08111f;
+    background-color: #00260a;
     background-image:
       radial-gradient(
         60% 55% at 88% 12%,
-        rgba(47, 107, 255, 0.22),
+        rgba(4, 106, 56, 0.22),
         transparent 70%
       ),
       radial-gradient(
         52% 46% at 92% 78%,
-        rgba(94, 200, 255, 0.13),
+        rgba(143, 220, 170, 0.13),
         transparent 72%
       ),
-      linear-gradient(135deg, #08111f 0%, #0d1b30 48%, #102540 100%);
+      linear-gradient(135deg, #00260a 0%, #00320d 48%, #003f10 100%);
   }
 
   .hero-grid {
     background-image:
-      linear-gradient(rgba(247, 250, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(247, 250, 255, 0.05) 1px, transparent 1px);
+      linear-gradient(rgba(245, 250, 247, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245, 250, 247, 0.05) 1px, transparent 1px);
     background-size: 64px 64px;
     opacity: 0.28;
     -webkit-mask-image: linear-gradient(
@@ -263,44 +263,44 @@
   }
 
   .hero-glow--primary {
-    background: radial-gradient(circle, rgba(47, 107, 255, 0.24), transparent 70%);
+    background: radial-gradient(circle, rgba(4, 106, 56, 0.24), transparent 70%);
     filter: blur(80px);
   }
 
   .hero-glow--secondary {
-    background: radial-gradient(circle, rgba(94, 200, 255, 0.16), transparent 70%);
+    background: radial-gradient(circle, rgba(143, 220, 170, 0.16), transparent 70%);
     filter: blur(90px);
   }
 
   .hero-flow__path {
     fill: none;
-    stroke: rgba(137, 212, 255, 0.24);
+    stroke: rgba(143, 220, 170, 0.24);
     stroke-width: 1.15;
   }
 
   .hero-flow__path--dashed {
-    stroke: rgba(137, 212, 255, 0.2);
+    stroke: rgba(143, 220, 170, 0.2);
     stroke-dasharray: 4 6;
   }
 
   .hero-flow__node {
-    fill: rgba(137, 212, 255, 0.55);
+    fill: rgba(143, 220, 170, 0.55);
   }
 
   .hero-flow__node--major {
-    fill: #89d4ff;
+    fill: #8fdcaa;
   }
 
   .hero-flow__ring {
     fill: none;
-    stroke: rgba(137, 212, 255, 0.28);
+    stroke: rgba(143, 220, 170, 0.28);
     stroke-width: 1;
   }
 
   /* 光の流れ（pathLength=100 基準の短い dash を始点から終点へ流す）。既定では非表示。 */
   .hero-flow__pulse {
     fill: none;
-    stroke: rgba(196, 235, 255, 0.9);
+    stroke: rgba(205, 240, 218, 0.9);
     stroke-width: 1.6;
     stroke-linecap: round;
     stroke-dasharray: 16 100;

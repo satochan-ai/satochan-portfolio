@@ -32,7 +32,7 @@ export function Hero() {
         <div className="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
           <a
             href="#contact"
-            className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-medium text-[#08111f] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+            className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-medium text-[#00260a] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
           >
             業務改善について相談する
           </a>

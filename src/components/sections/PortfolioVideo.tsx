@@ -103,7 +103,7 @@ export function PortfolioVideo({ summary, src, poster, posterAlt, children }: Pr
         <div className="mx-auto max-w-3xl">
           {children}
           <div ref={playerRef}>
-            <div className="relative mt-5 aspect-video overflow-hidden rounded-card bg-[#08111f]">
+            <div className="relative mt-5 aspect-video overflow-hidden rounded-card bg-[#00260a]">
               {opened && (
                 <Image src={poster} alt={posterAlt} width={1280} height={720} unoptimized loading="lazy" className="absolute inset-0 h-full w-full object-contain" />
               )}
