@@ -112,7 +112,7 @@ function WorkCard({ work, anchorId, caseBase = "" }: { work: Work } & CardOption
   return (
     <li
       id={anchorId}
-      className="work-card flex h-full flex-col overflow-hidden rounded-card border border-line bg-bg transition-[border-color,box-shadow] duration-200 hover:border-fg/40 hover:shadow-[0_6px_16px_rgb(14_16_19/0.06)]"
+      className="work-card flex h-full flex-col overflow-hidden rounded-card border border-line bg-bg transition-[border-color,box-shadow] duration-200 hover:border-gold hover:shadow-[0_6px_16px_rgb(14_16_19/0.06)]"
     >
       <WorkThumb work={work} />
 
@@ -206,7 +206,7 @@ function WorkCard({ work, anchorId, caseBase = "" }: { work: Work } & CardOption
 function FeaturedWorkCard({ work, anchorId, caseBase = "" }: { work: Work } & CardOptions) {
   return (
     <li id={anchorId}>
-      <article className="work-card flex h-full flex-col overflow-hidden rounded-card border border-line bg-bg transition-[border-color,box-shadow] duration-200 hover:border-fg/40 hover:shadow-[0_6px_16px_rgb(14_16_19/0.06)]">
+      <article className="work-card flex h-full flex-col overflow-hidden rounded-card border border-line bg-bg transition-[border-color,box-shadow] duration-200 hover:border-gold hover:shadow-[0_6px_16px_rgb(14_16_19/0.06)]">
         <div className="relative aspect-16/10 w-full overflow-hidden border-b border-line bg-surface">
           {work.image ? (
             <Image
@@ -345,7 +345,7 @@ function PublicTools() {
       <ul className="mt-6 grid gap-4 sm:grid-cols-2">
         {publicTools.map((tool) => (
           <li key={tool.slug}>
-            <article className="work-card flex h-full flex-col rounded-card border border-line bg-bg p-5 transition-[border-color,box-shadow] duration-200 hover:border-fg/40 hover:shadow-[0_6px_16px_rgb(14_16_19/0.06)] sm:p-6">
+            <article className="work-card flex h-full flex-col rounded-card border border-line bg-bg p-5 transition-[border-color,box-shadow] duration-200 hover:border-gold hover:shadow-[0_6px_16px_rgb(14_16_19/0.06)] sm:p-6">
               <p className="text-xs font-medium text-accent [word-break:auto-phrase]">
                 {tool.usedFor}
               </p>

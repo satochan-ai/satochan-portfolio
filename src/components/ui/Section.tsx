@@ -44,7 +44,7 @@ export function Section({
                 className={`text-eyebrow font-medium uppercase ${
                   eyebrowVariant === "code" ? "font-mono" : ""
                 } ${
-                  tone === "dark" ? "text-accent-on-dark" : "text-accent"
+                  tone === "dark" ? "text-gold" : "text-accent"
                 }`}
               >
                 {eyebrow}

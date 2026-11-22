@@ -28,7 +28,7 @@ export function Header() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="rounded-md px-3 py-2 text-sm text-muted transition-colors hover:text-fg"
+                  className="rounded-md px-3 py-2 text-sm text-muted decoration-gold decoration-2 underline-offset-[6px] transition-colors hover:text-fg hover:underline"
                 >
                   {item.label}
                 </Link>
@@ -49,7 +49,7 @@ export function Header() {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="block whitespace-nowrap rounded-md px-3 py-3 text-sm text-muted transition-colors hover:text-fg focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent"
+                className="block whitespace-nowrap rounded-md px-3 py-3 text-sm text-muted decoration-gold decoration-2 underline-offset-[6px] transition-colors hover:text-fg hover:underline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent"
               >
                 {item.label}
               </Link>

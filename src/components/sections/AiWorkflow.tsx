@@ -118,7 +118,7 @@ export function AiWorkflow() {
                   {step.label}
                 </h3>
               </div>
-              <span className="font-mono text-[0.625rem] uppercase tracking-[0.12em] text-accent-on-dark/80">
+              <span className="font-mono text-[0.625rem] uppercase tracking-[0.12em] text-gold">
                 {step.role}
               </span>
             </div>

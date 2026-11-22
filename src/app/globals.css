@@ -19,6 +19,8 @@
   --color-inverse-fg: #f8fafc;
   /* 暗色セクション（Section tone="dark"）の背景。Hero と同じ深緑。文字色 --color-fg とは分ける */
   --color-dark: #00260a;
+  /* パイオニアゴールド。差し色専用。文字は暗色地（#00260a 上 5.81:1）だけ。白地では線・枠などの装飾に限る */
+  --color-gold: #a99968;
 
   /* typography */
   --font-sans: var(--font-inter), var(--font-noto-jp), ui-sans-serif, system-ui,

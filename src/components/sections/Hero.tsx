@@ -17,8 +17,13 @@ export function Hero() {
       <HeroBackground />
 
       <div className="relative mx-auto w-full max-w-page px-5 pb-20 pt-16 sm:px-8 sm:pb-28 sm:pt-24">
-        <p className="text-eyebrow font-medium uppercase text-accent-on-dark">
+        <p className="relative text-eyebrow font-medium uppercase text-accent-on-dark">
           {site.tagline}
+          {/* ゴールドの細線。absolute で eyebrow と見出しの間の既存余白（mt-6）に置き、寸法は変えない */}
+          <span
+            aria-hidden
+            className="absolute left-0 top-full mt-2.5 h-0.5 w-12 bg-gold"
+          />
         </p>
 
         <h1 className="mt-6 max-w-[19ch] whitespace-pre-line text-[clamp(2.25rem,5vw,4.5rem)] font-bold leading-[1.14] tracking-[-0.02em] text-inverse-fg [word-break:auto-phrase]">
