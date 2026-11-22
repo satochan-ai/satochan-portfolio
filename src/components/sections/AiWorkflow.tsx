@@ -106,7 +106,7 @@ export function AiWorkflow() {
         {steps.map((step, index) => (
           <li
             key={step.key}
-            className="workflow-step bg-fg p-7"
+            className="workflow-step bg-dark p-7"
             style={{ "--workflow-index": index } as React.CSSProperties}
           >
             <div className="flex items-baseline justify-between gap-3">
