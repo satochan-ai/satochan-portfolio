@@ -11,7 +11,13 @@ export function About() {
     <Section
       id="about"
       eyebrow="About"
-      title="SES営業・採用の経験を、業務改善と仕組みづくりに。"
+      title={
+        <>
+          SES営業・採用の経験を、
+          <br />
+          業務改善と仕組みづくりに。
+        </>
+      }
       lead="これまでの中心的な経験、最近取り組み始めた業務、個人での活動を分けて紹介します。"
       tone="surface"
     >
