@@ -133,7 +133,7 @@ export function AiWorkflow() {
       </ol>
 
       <div className="mt-16 border-t border-inverse-fg/15 pt-10 sm:mt-20 sm:pt-12">
-        <p className="font-mono text-eyebrow font-medium uppercase text-accent-on-dark">
+        <p className="font-mono text-eyebrow font-medium uppercase text-gold">
           {"// Claude Code Skills"}
         </p>
 
