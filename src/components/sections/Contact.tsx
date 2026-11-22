@@ -51,7 +51,7 @@ export function Contact() {
 
           {availableChannels.length > 0 && (
             <div className="rounded-card border border-inverse-fg/15 p-7">
-              <h3 className="text-eyebrow font-medium uppercase text-accent-on-dark">
+              <h3 className="text-eyebrow font-medium uppercase text-gold">
                 Works / Code
               </h3>
               <ul className="mt-5 flex flex-wrap gap-x-8 gap-y-4">

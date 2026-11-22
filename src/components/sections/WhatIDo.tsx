@@ -23,7 +23,7 @@ export function WhatIDo() {
           return (
             <li
               key={service.no}
-              className="flex flex-col rounded-card border border-line bg-bg p-7"
+              className="flex flex-col rounded-card border border-line bg-bg p-7 transition-colors duration-200 hover:border-gold"
             >
               <h3 className="text-h3 font-bold [word-break:auto-phrase]">{area.title}</h3>
 
