@@ -15,14 +15,14 @@ export function Proof() {
         </p>
         <dl className="grid grid-cols-1 gap-y-8 sm:grid-cols-3 sm:gap-x-8 sm:gap-y-0">
           {proofPoints.map((point, index) => (
-            <div key={point.label} className="min-w-0">
+            <div key={point.label} className="group min-w-0">
               <dt className="flex items-baseline gap-2 text-sm font-medium text-fg">
                 <span aria-hidden className="font-mono text-xs text-muted">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 {point.label}
               </dt>
-              <dd className="mt-2 text-stat font-bold tracking-tight text-accent">
+              <dd className="mt-2 text-stat font-bold tracking-tight text-accent transition-colors duration-200 group-hover:text-gold">
                 {point.value}
                 {point.unit && (
                   <span className="ml-0.5 align-super text-[0.45em] font-semibold text-muted">
@@ -73,9 +73,9 @@ export function Proof() {
 
           <dl className="mt-8 grid grid-cols-1 gap-y-8 sm:grid-cols-3 sm:gap-x-8 sm:gap-y-0">
             {businessImpactMetrics.map((metric) => (
-              <div key={metric.label} className="min-w-0">
+              <div key={metric.label} className="group min-w-0">
                 <dt className="text-sm font-medium text-fg">{metric.label}</dt>
-                <dd className="mt-2 text-xl font-bold tracking-tight text-accent sm:text-2xl">
+                <dd className="mt-2 text-xl font-bold tracking-tight text-accent transition-colors duration-200 group-hover:text-gold sm:text-2xl">
                   {metric.value}
                 </dd>
                 <dd className="mt-2 text-xs leading-relaxed text-muted">
