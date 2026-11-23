@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Section } from "@/components/ui/Section";
-import { services, supportProcess, useCaseCategories } from "@/content/services";
+import {
+  serviceFaq,
+  services,
+  supportProcess,
+  useCaseCategories,
+} from "@/content/services";
 import { getSiteUrl } from "@/content/site";
 
 const title = "営業・採用のAI活用・業務改善支援｜Portfolio";
@@ -162,6 +167,20 @@ export default function ServicesPage() {
         <Link href="/#contact" className="inline-flex items-center justify-center rounded-full bg-accent-on-dark px-6 py-3.5 text-sm font-medium text-fg transition-colors hover:bg-inverse-fg">
           相談する
         </Link>
+      </Section>
+      <Section id="service-faq" title="よくある質問">
+        <ul className="max-w-prose border-t border-line">
+          {serviceFaq.map(({ question, answer }) => (
+            <li key={question} className="border-b border-line py-6">
+              <h3 className="text-h3 font-bold [word-break:auto-phrase]">
+                <span className="mr-2 text-accent">Q.</span>{" "}{question}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted [word-break:auto-phrase]">
+                <span className="mr-2 font-medium text-accent">A.</span>{" "}{answer}
+              </p>
+            </li>
+          ))}
+        </ul>
       </Section>
     </>
   );
