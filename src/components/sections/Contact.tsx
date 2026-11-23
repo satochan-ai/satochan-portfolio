@@ -1,5 +1,5 @@
 import { Section } from "@/components/ui/Section";
-import { contactChannels, contactTopics } from "@/content/site";
+import { contactChannels, contactSteps, contactTopics } from "@/content/site";
 
 import { ContactForm } from "./ContactForm";
 
@@ -48,6 +48,25 @@ export function Contact() {
               現状のヒアリングから始めます。いきなりツールを作る前に、どこに手間がかかっているのか、AIに任せる工程と人が判断する工程をどう分けるのかを整理するところからご一緒します。
             </p>
           </div>
+
+          <section
+            aria-labelledby="contact-flow-title"
+            className="rounded-card border border-inverse-fg/15 p-7"
+          >
+            <h3 id="contact-flow-title" className="text-h3 font-bold text-inverse-fg">
+              問い合わせ後の流れ
+            </h3>
+            <ol className="mt-4 list-decimal space-y-4 pl-5 text-sm marker:font-mono marker:text-gold">
+              {contactSteps.map(({ title, description }) => (
+                <li key={title} className="pl-1">
+                  <h4 className="font-medium text-inverse-fg">{title}</h4>
+                  <p className="mt-1 leading-relaxed text-inverse-fg/70">
+                    {description}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </section>
 
           {availableChannels.length > 0 && (
             <div className="rounded-card border border-inverse-fg/15 p-7">
