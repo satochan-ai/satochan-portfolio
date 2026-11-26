@@ -109,11 +109,11 @@ export function AiWorkflow() {
     >
       <AiRoleDiagram />
 
-      <div className="mt-16 border-t border-inverse-fg/15 pt-10 sm:mt-20 sm:pt-12">
+      <div className="mt-12 border-t border-inverse-fg/15 pt-8 sm:mt-16 sm:pt-10">
         <p className="font-mono text-eyebrow font-medium uppercase text-gold">
           {"// How I Work"}
         </p>
-        <h3 className="mt-3 text-h3 font-bold text-inverse-fg">仕事の進め方</h3>
+        <h3 className="mt-2 text-h3 font-bold text-inverse-fg">仕事の進め方</h3>
       </div>
 
       <ol className="mt-6 grid gap-px overflow-hidden rounded-card bg-inverse-fg/15 sm:grid-cols-2 lg:grid-cols-3">
@@ -148,7 +148,7 @@ export function AiWorkflow() {
 
       <aside
         aria-labelledby="quality-check-title"
-        className="mt-10 rounded-card border border-gold/40 p-5 sm:p-8"
+        className="mt-8 rounded-card border border-gold/40 p-5 sm:p-7"
       >
         <p className="font-mono text-eyebrow font-medium uppercase text-gold">
           {"// Quality Check｜品質管理の実践例"}
@@ -162,7 +162,7 @@ export function AiWorkflow() {
         <p className="mt-3 max-w-prose text-sm leading-relaxed text-inverse-fg/75 sm:text-base">
           {qualityCheckCase.body}
         </p>
-        <dl className="mt-5 grid gap-x-8 gap-y-1.5 text-sm sm:grid-cols-3">
+        <dl className="mt-4 grid gap-x-8 gap-y-1 text-sm sm:grid-cols-3">
           {qualityCheckCase.roles.map((item) => (
             <div key={item.actor} className="flex flex-wrap gap-x-2 sm:block">
               <dt className="font-medium text-inverse-fg/90">{item.actor}</dt>
@@ -172,7 +172,7 @@ export function AiWorkflow() {
         </dl>
         <Link
           href={qualityCheckCase.link.href}
-          className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-accent-on-dark hover:underline"
+          className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent-on-dark hover:underline"
         >
           {qualityCheckCase.link.label} <span aria-hidden>&rarr;</span>
         </Link>

@@ -167,7 +167,8 @@ export type AiWorkflowLayer = {
   label: string;
   jp: string;
   actor: AiWorkflowActor;
-  items: string[];
+  /** 層の担当内容を一文で要約する。詳細なツールの役割は折りたたみ側に置く。 */
+  summary: string;
   /** その層で主に使うAIツール。利用実態を確認できたものだけを載せる。 */
   tools?: string[];
   /** 戻り工程の説明。矢印は装飾のため、戻り先は必ず文章でも示す。 */
@@ -184,14 +185,14 @@ export const aiWorkflowLayers: AiWorkflowLayer[] = [
     label: "Human Director",
     jp: "課題設定・意思決定",
     actor: "human",
-    items: ["課題設定", "要件決定", "優先順位", "最終責任"],
+    summary: "目的・要件・優先順位・最終責任",
   },
   {
     no: "02",
     label: "AI Strategic Partner",
     jp: "調査・設計・計画",
     actor: "ai",
-    items: ["情報整理", "課題分析", "要件定義支援", "タスク分解", "作業指示"],
+    summary: "課題整理・要件定義支援・作業指示",
     tools: ["ChatGPT"],
   },
   {
@@ -199,49 +200,44 @@ export const aiWorkflowLayers: AiWorkflowLayer[] = [
     label: "AI Development Agents",
     jp: "制作・実装・検証",
     actor: "ai",
-    items: ["技術設計", "資料制作", "コード実装", "テスト", "動作検証"],
+    summary: "技術設計・実装・テスト・動作検証",
     tools: ["Claude Code", "Codex"],
   },
   {
     no: "04",
     label: "Quality Assurance",
-    jp: "人とAIによる品質管理",
+    jp: "品質管理",
     actor: "both",
-    items: ["事実確認", "レビュー", "テスト", "出力の検証", "問題発見時の修正・停止"],
-    tools: ["ChatGPT", "Codex"],
-    returnNote: "問題が見つかれば、必要な工程へ戻って直す",
+    summary: "事実確認・レビュー・テスト・修正・停止",
+    returnNote: "問題があれば必要な工程へ戻る",
   },
   {
     no: "05",
     label: "Human Approval",
     jp: "最終承認・運用・改善",
     actor: "human",
-    items: ["成果物の確認", "公開・納品の判断", "実運用", "継続改善"],
-    returnNote: "実運用で見つかった課題は、01の課題設定から見直す",
+    summary: "成果物の確認・公開判断・継続改善",
+    returnNote: "運用後の課題は01の課題設定へ戻る",
   },
 ];
 
 /**
- * 掲載するAIツールと役割。開発記録・運用で確認できた範囲に限る。
+ * 掲載するAIツールと役割（折りたたみ内に表示）。開発記録・運用で確認できた範囲に限る。
  * Claude（チャット版）・Gemini・Antigravity は、この図解での役割を確認できるまで載せない。
  * 本番公開そのものはVercel等が行うため、AIが単独で本番公開する表現にしない。
  */
 export const aiWorkflowTools = [
-  { name: "ChatGPT", role: "課題整理・要件定義支援・作業指示・変更内容の確認とレビュー支援" },
-  { name: "Claude Code", role: "技術設計・実装・テスト・PR作成などのリリース作業" },
-  { name: "Codex", role: "実装・テスト・コードレビューと検証" },
+  { name: "ChatGPT", role: "課題整理・要件定義支援・作業指示・レビュー支援" },
+  { name: "Claude Code", role: "技術設計・実装・テスト・リリース作業" },
+  { name: "Codex", role: "実装・テスト・コードレビュー・検証" },
 ];
 
 /** AIモデルではない補助ツール。公開済みの説明範囲を超える内容（内部構成・構想）は載せない。 */
 export const aiWorkflowSupports = [
-  {
-    name: "Obsidian",
-    role: "開発記録・営業記録・業務ナレッジを蓄積する仕組み",
-    href: "/works#case-obsidian-ai",
-  },
+  { name: "Obsidian", role: "記録・ナレッジ管理", href: "/works#case-obsidian-ai" },
   {
     name: "AI Development Hub",
-    role: "複数のAI開発ツールの作業状況・進捗を確認する個人開発のローカルツール",
+    role: "複数AIの開発状況・進捗確認",
     href: "/works#work-ai-development-hub",
   },
 ];
