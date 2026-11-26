@@ -1,4 +1,9 @@
+import Link from "next/link";
+
 import { Section } from "@/components/ui/Section";
+import { qualityCheckCase } from "@/content/site";
+
+import { AiRoleDiagram } from "./AiRoleDiagram";
 
 type Step = {
   key: string;
@@ -98,11 +103,20 @@ export function AiWorkflow() {
       eyebrow="// AI Workflow"
       eyebrowVariant="code"
       title="AIを使うこと自体は、目的にしない。"
-      lead="業務改善の中で、情報整理・比較・下書き・傾向整理・試作支援にAIを使います。課題設定、判断、確認、合意形成と最終責任は人が担い、工程ごとに役割を切り分けています。"
+      lead="情報整理や資料の下書きから、業務ツールの設計・実装・テスト・レビューまで、作業内容に応じて複数のAIを使い分けています。課題設定と品質基準の決定、出力の確認、合意形成、公開の判断と最終責任は人が担います。"
       leadId="philosophy"
       tone="dark"
     >
-      <ol className="grid gap-px overflow-hidden rounded-card bg-inverse-fg/15 sm:grid-cols-2 lg:grid-cols-3">
+      <AiRoleDiagram />
+
+      <div className="mt-12 border-t border-inverse-fg/15 pt-8 sm:mt-16 sm:pt-10">
+        <p className="font-mono text-eyebrow font-medium uppercase text-gold">
+          {"// How I Work"}
+        </p>
+        <h3 className="mt-2 text-h3 font-bold text-inverse-fg">仕事の進め方</h3>
+      </div>
+
+      <ol className="mt-6 grid gap-px overflow-hidden rounded-card bg-inverse-fg/15 sm:grid-cols-2 lg:grid-cols-3">
         {steps.map((step, index) => (
           <li
             key={step.key}
@@ -131,6 +145,38 @@ export function AiWorkflow() {
           </li>
         ))}
       </ol>
+
+      <aside
+        aria-labelledby="quality-check-title"
+        className="mt-8 rounded-card border border-gold/40 p-5 sm:p-7"
+      >
+        <p className="font-mono text-eyebrow font-medium uppercase text-gold">
+          {"// Quality Check｜品質管理の実践例"}
+        </p>
+        <h3
+          id="quality-check-title"
+          className="mt-3 text-h3 font-bold text-inverse-fg [word-break:auto-phrase]"
+        >
+          {qualityCheckCase.title}
+        </h3>
+        <p className="mt-3 max-w-prose text-sm leading-relaxed text-inverse-fg/75 sm:text-base">
+          {qualityCheckCase.body}
+        </p>
+        <dl className="mt-4 grid gap-x-8 gap-y-1 text-sm sm:grid-cols-3">
+          {qualityCheckCase.roles.map((item) => (
+            <div key={item.actor} className="flex flex-wrap gap-x-2 sm:block">
+              <dt className="font-medium text-inverse-fg/90">{item.actor}</dt>
+              <dd className="text-inverse-fg/65">{item.role}</dd>
+            </div>
+          ))}
+        </dl>
+        <Link
+          href={qualityCheckCase.link.href}
+          className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent-on-dark hover:underline"
+        >
+          {qualityCheckCase.link.label} <span aria-hidden>&rarr;</span>
+        </Link>
+      </aside>
 
       <div className="mt-16 border-t border-inverse-fg/15 pt-10 sm:mt-20 sm:pt-12">
         <p className="font-mono text-eyebrow font-medium uppercase text-gold">

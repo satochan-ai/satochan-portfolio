@@ -159,3 +159,106 @@ export const contactSteps = [
     description: "実作業が必要な場合は、内容・費用・進め方をご提示し、合意いただいてから開始します。",
   },
 ];
+
+export type AiWorkflowActor = "human" | "ai" | "both";
+
+export type AiWorkflowLayer = {
+  no: string;
+  label: string;
+  jp: string;
+  actor: AiWorkflowActor;
+  /** 層の担当内容を一文で要約する。詳細なツールの役割は折りたたみ側に置く。 */
+  summary: string;
+  /** その層で主に使うAIツール。利用実態を確認できたものだけを載せる。 */
+  tools?: string[];
+  /** 戻り工程の説明。矢印は装飾のため、戻り先は必ず文章でも示す。 */
+  returnNote?: string;
+};
+
+/**
+ * Human-led AI Workflow の5層。現在のAI活用方法を一般化した概念図で、
+ * 各工程が自動で連携・実行される仕組みを示すものではない。
+ */
+export const aiWorkflowLayers: AiWorkflowLayer[] = [
+  {
+    no: "01",
+    label: "Human Director",
+    jp: "課題設定・意思決定",
+    actor: "human",
+    summary: "目的・要件・優先順位・最終責任",
+  },
+  {
+    no: "02",
+    label: "AI Strategic Partner",
+    jp: "調査・設計・計画",
+    actor: "ai",
+    summary: "課題整理・要件定義支援・作業指示",
+    tools: ["ChatGPT"],
+  },
+  {
+    no: "03",
+    label: "AI Development Agents",
+    jp: "制作・実装・検証",
+    actor: "ai",
+    summary: "技術設計・実装・テスト・動作検証",
+    tools: ["Claude Code", "Codex"],
+  },
+  {
+    no: "04",
+    label: "Quality Assurance",
+    jp: "品質管理",
+    actor: "both",
+    summary: "事実確認・レビュー・テスト・修正・停止",
+    returnNote: "問題があれば必要な工程へ戻る",
+  },
+  {
+    no: "05",
+    label: "Human Approval",
+    jp: "最終承認・運用・改善",
+    actor: "human",
+    summary: "成果物の確認・公開判断・継続改善",
+    returnNote: "運用後の課題は01の課題設定へ戻る",
+  },
+];
+
+/**
+ * 掲載するAIツールと役割（折りたたみ内に表示）。開発記録・運用で確認できた範囲に限る。
+ * Claude（チャット版）・Gemini・Antigravity は、この図解での役割を確認できるまで載せない。
+ * 本番公開そのものはVercel等が行うため、AIが単独で本番公開する表現にしない。
+ */
+export const aiWorkflowTools = [
+  { name: "ChatGPT", role: "課題整理・要件定義支援・作業指示・レビュー支援" },
+  { name: "Claude Code", role: "技術設計・実装・テスト・リリース作業" },
+  { name: "Codex", role: "実装・テスト・コードレビュー・検証" },
+];
+
+/** AIモデルではない補助ツール。公開済みの説明範囲を超える内容（内部構成・構想）は載せない。 */
+export const aiWorkflowSupports = [
+  { name: "Obsidian", role: "記録・ナレッジ管理", href: "/works#case-obsidian-ai" },
+  {
+    name: "AI Development Hub",
+    role: "複数AIの開発状況・進捗確認",
+    href: "/works#work-ai-development-hub",
+  },
+];
+
+export const aiWorkflowNotes = [
+  "ツールは作業内容や難易度に応じて使い分けています。",
+  "現在のAI活用方法を一般化した概念図です。すべてのAIが同時に稼働し、各工程が自動で連携していることを示すものではありません。",
+];
+
+/**
+ * 品質管理の実践例（2026年11月24〜25日のポートフォリオ更新）。
+ * AI Development Hub が自動で検出・停止・再開した事例ではない。
+ * 事実確認時と再開時の担当AIを記録で特定できないため「開発担当AI」と表記する。
+ */
+export const qualityCheckCase = {
+  title: "事実と指示に矛盾があれば止める。未確認事項は明示し、人が判断する。",
+  body: "ポートフォリオの更新時に、本番反映済みという指示と開発記録の食い違いをAIが検出したため、実装を保留しました。リリース確認後に作業を再開し、テスト・レビュー・人間による承認を経て公開しました。",
+  roles: [
+    { actor: "人間", role: "掲載判断・最終承認" },
+    { actor: "ChatGPT", role: "掲載設計・作業指示・レビュー支援" },
+    { actor: "開発担当AI", role: "事実確認・実装・テスト" },
+  ],
+  link: { label: "関連するCase Study：SES営業交流会 申込サイト", href: "/works#case-ses-meetup" },
+};
