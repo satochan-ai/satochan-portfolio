@@ -98,15 +98,32 @@ function RelatedConsultation({ text }: { text: string }) {
   );
 }
 
+/** 制作でのAIの使い方。/works の一覧でだけ表示する。 */
+function AiUsage({ text }: { text: string }) {
+  return (
+    <p className="mt-3 text-xs leading-relaxed text-muted [word-break:auto-phrase]">
+      <span className="mr-1.5 font-medium text-accent">AIの使い方</span>
+      {text}
+    </p>
+  );
+}
+
 type CardOptions = {
   /** カードに付けるアンカーid。 */
   anchorId?: string;
   /** Case Studyへのリンクの前に付けるパス（トップでは "/works"、/works では空）。 */
   caseBase?: string;
+  /** AIの使い方を表示するか。トップページの情報量を増やさないため既定は無効。 */
+  showAiUsage?: boolean;
 };
 
 /** Secondary Works（Featured以外）は一覧性を優先し、余白と本文量をやや抑えて表示する。 */
-function WorkCard({ work, anchorId, caseBase = "" }: { work: Work } & CardOptions) {
+function WorkCard({
+  work,
+  anchorId,
+  caseBase = "",
+  showAiUsage = false,
+}: { work: Work } & CardOptions) {
   const cardStack = work.cardStack ?? work.stack.slice(0, 4);
 
   return (
@@ -152,6 +169,8 @@ function WorkCard({ work, anchorId, caseBase = "" }: { work: Work } & CardOption
         )}
 
         {work.miniCase && <MiniCase data={work.miniCase} compact />}
+
+        {showAiUsage && work.aiUsage && <AiUsage text={work.aiUsage} />}
 
         {work.relatedConsultation && (
           <RelatedConsultation text={work.relatedConsultation} />
@@ -203,7 +222,12 @@ function WorkCard({ work, anchorId, caseBase = "" }: { work: Work } & CardOption
 /**
  * Featured Work（代表作）。Featuredラベルで差を出しつつ、他のWorkと同じグリッドの1枠に置く。
  */
-function FeaturedWorkCard({ work, anchorId, caseBase = "" }: { work: Work } & CardOptions) {
+function FeaturedWorkCard({
+  work,
+  anchorId,
+  caseBase = "",
+  showAiUsage = false,
+}: { work: Work } & CardOptions) {
   return (
     <li id={anchorId}>
       <article className="work-card flex h-full flex-col overflow-hidden rounded-card border border-line bg-bg transition-[border-color,box-shadow] duration-200 hover:border-gold hover:shadow-[0_6px_16px_rgb(14_16_19/0.06)]">
@@ -273,6 +297,8 @@ function FeaturedWorkCard({ work, anchorId, caseBase = "" }: { work: Work } & Ca
           )}
 
           {work.miniCase && <MiniCase data={work.miniCase} />}
+
+          {showAiUsage && work.aiUsage && <AiUsage text={work.aiUsage} />}
 
           {work.relatedConsultation && (
             <RelatedConsultation text={work.relatedConsultation} />
@@ -483,9 +509,18 @@ export function WorksList() {
       lead="交流会の実運用、採用・営業の業務設計DemoやPrototype、個人開発のツールやサイトを、公開状況とともに掲載しています。"
     >
       <ul className="grid gap-6 sm:grid-cols-2">
-        <FeaturedWorkCard work={featuredWork} anchorId={`work-${featuredWork.slug}`} />
+        <FeaturedWorkCard
+          work={featuredWork}
+          anchorId={`work-${featuredWork.slug}`}
+          showAiUsage
+        />
         {secondaryWorks.map((work) => (
-          <WorkCard key={work.slug} work={work} anchorId={`work-${work.slug}`} />
+          <WorkCard
+            key={work.slug}
+            work={work}
+            anchorId={`work-${work.slug}`}
+            showAiUsage
+          />
         ))}
       </ul>
 
