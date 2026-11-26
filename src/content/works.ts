@@ -47,6 +47,12 @@ export type Work = {
   featured?: boolean;
   /** この制作物に関連して相談できる業務。納品実績ではなく、制作物と相談内容の関連付け。 */
   relatedConsultation?: string;
+  /**
+   * 制作でのAIの使い方。開発記録・実装・PR等で確認できた範囲だけを書く。
+   * /works の一覧にだけ表示し、トップページの代表作品カードには出さない。
+   * Case Study がある作品は、Case Study 側の説明に統合して重複させない。
+   */
+  aiUsage?: string;
 };
 
 export type MiniCase = {
@@ -140,6 +146,9 @@ export const works: Work[] = [
       "2026年8月18日に、生成AI初心者向けの約30分のミニ講座を実施。翌日から業務で試せる入門内容に絞って構成しました。続いて10月20日には、ChatGPTによる初回商談準備の実演を含む実践編を実施しました。",
     highlights: [],
     stack: ["生成AI活用", "業務適用の設計", "登壇・教育"],
+    // 10月20日の講座の企画記録と、AIツールで生成したスライドの制作記録で確認。
+    aiUsage:
+      "講座の構成やスライド作成にAIを活用し、初心者にも理解しやすい説明の順序や表現を自分で確認して仕上げました。",
     image: "/images/works/ai-mini-seminar.png",
     imageAlt: "AI活用ミニ講座「明日から仕事で使える 生成AI活用入門」のスライド表紙。2026.08.18 実施。",
   },
@@ -169,6 +178,9 @@ export const works: Work[] = [
     summary:
       "交流会の領収証発行業務を、必要な範囲で小さく形にして実装・公開したWebツール。",
     highlights: ["入力内容からPDFの領収証を生成"],
+    // リポジトリの要件定義・基本設計の文書と、src/lib の単体テストで確認。
+    aiUsage:
+      "要件定義と基本設計を文書化し、AIを活用して入力画面とPDF生成機能を実装しました。金額計算・採番・PDFレイアウトを対象とした単体テストも用意しています。",
     stack: [
       "Next.js",
       "TypeScript",
@@ -236,6 +248,9 @@ export const works: Work[] = [
       changedState:
         "PC・スマートフォンで閲覧できるサイトとしてVercelで公開し、試合ごとに更新しながら運用している。",
     },
+    // リポジトリの試合更新Runbook・構造化Promptで確認。公式情報の自動取得ではない。
+    aiUsage:
+      "公式発表の本文を自分で貼り付け、Claude Code・Codexで試合データの形に整理。日付・HOME/AWAY・スコア・選手名は公式情報と照合し、テスト・型チェック・ビルドを通してから更新しています。",
   },
 ];
 
